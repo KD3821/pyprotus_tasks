@@ -1,5 +1,5 @@
 # pyprotus
-<img align="center" src="/python_professional.png"/>
+<span style="display:block;text-align:center">![Alt text](/python_professional.png)</span>
 
 <h1 align="center">Practice & Tasks</h1>
 <p align="center">
