@@ -105,9 +105,9 @@ time_med - медиана $request_time для данного URL'а</li></ul>
 </tr>
 <tr>
   <td>nginx-access-other.log-20231218</td>
-  <td>20</td>
-  <td>0.00 %</td>
-  <td>0.004 секунд</td>
+  <td>для теста</td>
+  <td>парсинга</td>
+  <td>названия</td>
   <td>27.8 kB</td>
 </tr>
 </tbody>
