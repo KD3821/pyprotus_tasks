@@ -1,15 +1,9 @@
 # log_analyzer
 
-<h1 align="center">Referral service (Django REST framework)</h1>
-<p align="center">
+<h1 align="center">Log Analyzer (анализатор логов)</h1>
+<p align="center"><img src="https://img.shields.io/badge/made_by-KD3821-lightblue"></p>
 
-<img src="https://img.shields.io/badge/made_by-KD3821-lightcoral" >
-
-<p align="center">Log Analyzer (анализатор логов)</p><br>
-
-<b>Описание работы сервиса</b><br>
-
-<b>Про отчет:<b></br>
+<b>Описание работы анализатора</b><br>
 <ul>
 <li>
 count - сĸольĸо раз встречается URL, абсолютное значение</li>
@@ -27,7 +21,7 @@ time_max - маĸсимальный $request_time для данного URL'а</
 time_med - медиана $request_time для данного URL'а</li></ul>
 
 
-![Alt text](/report-2023.12.16.png)
+<p align="center"><img src="https://github.com/kd3821/pyprotus_tasks/blob/main/img/report-2023.12.16.png?raw=true"></p>
 
 
 <b>Краткая инструкция по работе с анализатором лога</b><br><br>
