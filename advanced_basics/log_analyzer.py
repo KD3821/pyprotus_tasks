@@ -14,13 +14,14 @@ import re
 import sys
 from statistics import median
 import logging
+import argparse
+import json
 
 
 config = {
     "REPORT_SIZE": 1000,
     "REPORT_DIR": "./reports",
-    "LOG_DIR": "./log",
-    "LOG_FILE": "log_analyzer.log"  # try
+    "LOG_DIR": "./log"
 }
 
 
@@ -28,10 +29,33 @@ def get_config():
     """
     Считываем (или используем встроенный) конфиг
     """
+    parser = argparse.ArgumentParser(description='Чтение настроек из файла конфигурации (--config=*.json)')
+    parser.add_argument("--config", required=False, type=str)
+    config_file = parser.parse_args()
+
+    if config_file.config:
+        config_file_name = config_file.config
+
+        try:
+            data = json.load(open(config_file_name))  # Считываем данные конфигурации из файла 'config.json'
+
+            config_data = config
+
+            for key, value in data.items():
+                config_data[key] = value
+
+            return config_data
+
+        except FileNotFoundError:
+            return {'failure': 'Файл конфигурации указан, но не найден.'}
+
+        except json.decoder.JSONDecodeError:
+            return config
+
     return config
 
 
-def setup_logging(configuration=None, logging_level='info'):
+def setup_logging(configuration, logging_level='info'):
     """
     Задаем настройки логирования работы скрипта, по-умолчанию используем уровень 'INFO'
     """
@@ -41,9 +65,6 @@ def setup_logging(configuration=None, logging_level='info'):
         'error': logging.ERROR,
         'info': logging.INFO
     }
-
-    if not configuration:
-        configuration = get_config()
 
     if logging_level not in param_set:
         logging_level = 'info'
@@ -70,7 +91,7 @@ def find_log_file(file_name_pattern, dir_name):
     """
     with os.scandir(path=dir_name) as it:
         for entry in it:
-            if fnmatch.fnmatch(entry.name, file_name_pattern):
+            if fnmatch.fnmatch(entry.name, file_name_pattern):  # noqa
                 yield entry
 
 
@@ -100,10 +121,13 @@ def get_recent_log_file(file_iterator):
         try:
             f = next(file_iterator)
             recent_date, recent_file_name = find_latest_date(f, recent_date)
+
             if recent_file_name:
                 file_name = recent_file_name
+
         except StopIteration:
             break
+
     return file_name, recent_date
 
 
@@ -111,13 +135,18 @@ def check_report_exist(report_date, report_dir_name):
     """
     Проверяем наличие ранее созданного отчета по файлу с самой новой датой. Если в наличии - останавливаем обработку
     """
+    if not os.path.exists(report_dir_name):
+        return False
+
     report_file_pattern = 'report' + '-' + str(report_date)[:4] + '.' + str(report_date)[4:6] + '.' \
                           + str(report_date)[-2:] + '.html'
 
     with os.scandir(path=report_dir_name) as it:
         for entry in it:
-            if fnmatch.fnmatch(entry.name, report_file_pattern):
+            if fnmatch.fnmatch(entry.name, report_file_pattern):  # noqa
                 return True
+
+    return False
 
 
 def process_logs(file_name, log_dir_name):
@@ -140,11 +169,13 @@ def validate_log(log):
     Валидация формата логирования - проверяем: url содержит '/', код ответа 'is_numeric', время приводится к типу float
     """
     try:
-        log[8].isnumeric()
+        if not log[8].isnumeric():
+            return False
         if log[6].index('/') == -1:
             return False
     except ValueError:
         return False
+
     try:
         float(log[-1])
         return True
@@ -159,6 +190,17 @@ def get_url_time(x):
     return x.get('time_sum')
 
 
+def time_it(func):
+    import time
+    def wrapper(*args, **kwargs):  # noqa
+        t = time.time()
+        res = func(*args, **kwargs)
+        logging.info(f"Время выполнения анализа: {round(time.time() - t, 3)} секунд.")
+        return res
+    return wrapper
+
+
+@time_it
 def process_lines(line_iterator, file_name, log_dir_name, report_size, fail_coefficient=20):
     """
     Основная обработка логов.
@@ -192,7 +234,7 @@ def process_lines(line_iterator, file_name, log_dir_name, report_size, fail_coef
                 line_time_sum = 0.0
                 line_time_list = []
 
-                log_iterator = process_logs(file_name, log_dir_name)
+                log_iterator = process_logs(file_name, log_dir_name)  # noqa
 
                 while True:
                     try:
@@ -220,14 +262,14 @@ def process_lines(line_iterator, file_name, log_dir_name, report_size, fail_coef
                     except StopIteration:
                         if first_time:
                             first_time = False
-                            logging.info(f"Всего логов, включая невалидные: {total_count}")
+                            logging.info(f"Всего логов, включая невалидные: {total_count} шт.")
 
                             validity_perc = invalid_count / total_count * 100
-                            logging.info(f"% невалидных логов: {validity_perc:.2f} %. Допустимо: {fail_coefficient} %")
+                            logging.info(f"Невалидные логи: {validity_perc:.2f} % (допустимо: {fail_coefficient} %).")
 
-                            if validity_perc > fail_coefficient:
+                            if validity_perc > fail_coefficient:  # Проверяем превышение порога валидности логов
                                 logs_validated = False
-                                logging.info(f"Превышен порог погрешности ({fail_coefficient} %)")
+                                logging.info(f"Превышен порог погрешности ({fail_coefficient} %).")
                         break
 
                 line_count_perc = line_count / total_count * 100
@@ -242,11 +284,11 @@ def process_lines(line_iterator, file_name, log_dir_name, report_size, fail_coef
                     'url': line_url,
                     'count': line_count,
                     'count_perc': line_count_perc,
-                    'time_sum': line_time_sum,
-                    'time_perc': line_time_sum_perc,
-                    'time_avg': line_time_avg,
+                    'time_sum': round(line_time_sum, 3),
+                    'time_perc': round(line_time_sum_perc, 3),
+                    'time_avg': round(line_time_avg, 3),
                     'time_max': line_time_max,
-                    'time_med': line_time_median
+                    'time_med': round(line_time_median, 3)
                 })
 
             except StopIteration:
@@ -264,11 +306,11 @@ def process_lines(line_iterator, file_name, log_dir_name, report_size, fail_coef
 
     except KeyboardInterrupt:
         logging.exception(msg="Обработка логов остановлена.")
-        return {'action': 'Принудительная остановка'}
+        return {'failure': 'Принудительная остановка.'}
 
     except Exception as e:
         logging.exception(msg=f"Обработка логов прервана.", exc_info=True)
-        return {'action': f'{e}'}
+        return {'failure': f'{e}'}
 
 
 def create_report_file(final_data, file_date, dir_path):
@@ -305,11 +347,15 @@ def create_report_file(final_data, file_date, dir_path):
 def main():
     actual_conf = get_config()
 
+    if actual_conf.get('failure'):
+        logging.error(f"{actual_conf.get('failure')}")
+        sys.exit()
+
     setup_logging(actual_conf, logging_level='info')
 
-    gen_log_file = find_log_file("nginx-access-ui.log*", actual_conf.get("LOG_DIR"))
+    gen_log_files = find_log_file("nginx-access-ui.log*", actual_conf.get("LOG_DIR"))
 
-    log_file_name, report_date = get_recent_log_file(gen_log_file)
+    log_file_name, report_date = get_recent_log_file(gen_log_files)
 
     if check_report_exist(report_date, actual_conf.get("REPORT_DIR")):
         logging.error('Отчет за указанную дату уже создан.')
@@ -322,14 +368,14 @@ def main():
         log_file_name,
         actual_conf.get("LOG_DIR"),
         actual_conf.get("REPORT_SIZE"),
-        fail_coefficient=30
+        fail_coefficient=50  # Установить порог валидности логов в %
     )
 
     if not isinstance(urls, list):
         if not urls:
-            logging.error("Обработка логов невозможна. Проверьте формат логирования")
-
-        logging.error(f"Причина: {urls.get('action')}")
+            logging.error("Обработка логов невозможна. Проверьте формат логирования.")
+        else:
+            logging.error(f"Причина: {urls.get('failure')}")
         sys.exit()
 
     create_report_file(urls, report_date, actual_conf.get("REPORT_DIR"))
