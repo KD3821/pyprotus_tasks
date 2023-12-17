@@ -1,5 +1,5 @@
 # pyprotus
-<p align="center"><img src="https://github.com/kd3821/pyprotus_tasks/blob/main/python_professional.png?raw=true"></p>
+<p align="center"><img src="https://github.com/kd3821/pyprotus_tasks/blob/main/img/python_professional.png?raw=true"></p>
 
 <h1 align="center">Practice & Tasks</h1>
 <p align="center">
