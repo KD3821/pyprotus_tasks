@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import abc
 import json
 import datetime
 import logging
@@ -40,17 +39,16 @@ GENDERS = {
 
 
 class FieldMeta(type):
-    INIT_PARAMS = {
-        'required': bool,
-        'nullable': bool
-    }
-
+    """
+    Метакласс, от которого наследуется класс Поля запроса
+    """
     def custom_init(self, *args, **kwargs):
-        for key, value in self.__class__.INIT_PARAMS.items():
+        for key, value in kwargs.items():
             setattr(self, key, value)
 
     @staticmethod
-    def validate_attr(attr):
+    def validate_attr(attr, label):
+        # does nothing - may implement some validation here
         return attr
 
     def get_validator(self, instance):
@@ -68,7 +66,8 @@ class FieldMeta(type):
 
     def __set__(self, instance, value):
         validator = self.get_validator(instance)
-        valid_value = validator(value)
+        label = self.name[1:]
+        valid_value = validator(value, label)
         setattr(instance, self.name, valid_value)
 
     def __new__(mcs, name, bases, attrs):
@@ -83,15 +82,22 @@ class FieldMeta(type):
 
 
 class MyStr(str):
+    """
+    Вспомогательный класс - добавляет возможность конкатенации строк (для работы авторизации: account + login + SALT)
+    """
     def __add__(self, val):
         return MyStr(super().__add__(str(val)))
 
 
 class RequestMeta(type):
+    """
+    Метакласс, от которого наследуется класс Запроса
+    """
     def custom_init(self, *args, **kwargs):
         m_args = kwargs.get('method_args')
+        m_args_are_valid = isinstance(m_args, dict)
         for key, value in self.class_attrs.items():
-            if isinstance(m_args, dict):
+            if m_args_are_valid:
                 if key in m_args.keys():
                     value = m_args.get(key)
             if isinstance(value, CharField):
@@ -103,16 +109,17 @@ class RequestMeta(type):
         cls.__init__ = RequestMeta.custom_init
 
 
-class CharField(object, metaclass=FieldMeta):
+class CharField(metaclass=FieldMeta):
 
     @classmethod
-    def validate_attr(cls, field):
+    def validate_attr(cls, field, label):
         if not isinstance(field, str):
-            raise ValueError({cls.__name__: 'Поле должно быть строкой.'})
+            raise ValueError(f'{label} - {cls.__name__}: Ошибка валидации: поле должно быть строкой.')
         return field
 
 
-class ArgumentsField(object, metaclass=FieldMeta):
+class ArgumentsField(metaclass=FieldMeta):
+
     def __get__(self, instance, owner):
         return getattr(instance, self.name, {})
 
@@ -123,71 +130,73 @@ class ArgumentsField(object, metaclass=FieldMeta):
 class EmailField(CharField):
 
     @classmethod
-    def validate_attr(cls, email):
+    def validate_attr(cls, email, label):
         if email.__class__ == str:
             if email.find('@') == -1:
-                raise ValueError({cls.__name__: 'Ошибка валидации: email должен содержать @ символ.'})
+                raise ValueError(f'{label} - {cls.__name__}: Ошибка валидации: email должен содержать @ символ.')
             elif email.count('@') > 1:
-                raise ValueError({cls.__name__: 'Ошибка валидации: некорректный email'})
+                raise ValueError(f'{label} - {cls.__name__}: Ошибка валидации: некорректный email')
             return email
 
 
-class PhoneField(object, metaclass=FieldMeta):
+class PhoneField(metaclass=FieldMeta):
 
     @classmethod
-    def validate_attr(cls, value):
+    def validate_attr(cls, value, label):
         if isinstance(value, (int, str)):
             number = str(value)
             if len(number) > 0:
                 if number[0] != '7':
-                    raise ValueError({cls.__name__: 'Некорректный номер телефона: первая цифра должна быть 7.'})
+                    raise ValueError(f'{label} - {cls.__name__}: Некорректный номер телефона: начинается не с 7.')
                 elif len(number) != 11:
-                    raise ValueError({cls.__name__: 'Некорректный номер телефона: должен содержать 11 символов.'})
+                    raise ValueError(f'{label} - {cls.__name__}: Некорректный номер телефона: не содержит 11 символов.')
                 elif not number.isnumeric():
-                    raise ValueError({cls.__name__: 'Некорректный номер телефона: должен состоять из цифр.'})
+                    raise ValueError(f'{label} - {cls.__name__}: Некорректный номер телефона: должен состоять из цифр.')
                 return value
 
 
-class DateField(object, metaclass=FieldMeta):
+class DateField(metaclass=FieldMeta):
 
     @classmethod
-    def validate_attr(cls, date):
+    def validate_attr(cls, date, label):
         if isinstance(date, str):
             try:
                 formatted_date = datetime.datetime.strptime(date, "%d.%m.%Y")
             except Exception as e:
-                raise ValueError({cls.__name__: f'Неверный формат даты: {e}'})
+                raise ValueError(f'{label} - {cls.__name__}: Ошибка валидации: неверный формат даты: {e}')
             return formatted_date
 
 
-class BirthDayField(object, metaclass=FieldMeta):
+class BirthDayField(metaclass=FieldMeta):
 
     @classmethod
-    def validate_attr(cls, value):
+    def validate_attr(cls, value, label):
         if isinstance(value, str):
             try:
                 formatted_date = datetime.datetime.strptime(value, "%d.%m.%Y")
                 if formatted_date >= datetime.datetime(1970, 1, 1):
                     return formatted_date
             except Exception as e:
-                raise ValueError({cls.__name__: f'Неверный формат даты: {e}'})
-            raise ValueError({cls.__name__: 'Дата рождения не может быть ранее 01 января 1970'})
+                raise ValueError(f'{label} - {cls.__name__}: Ошибка валидации: неверный формат даты: {e}')
+            raise ValueError(f'{label} - {cls.__name__}: Дата рождения не может быть ранее 01 января 1970')
 
 
-class GenderField(object, metaclass=FieldMeta):
+class GenderField(metaclass=FieldMeta):
 
     @classmethod
-    def validate_attr(cls, gender):
+    def validate_attr(cls, gender, label):
         if gender != '' and gender is not None:
             if isinstance(gender, int):
                 if gender not in GENDERS.keys():
-                    raise ValueError({cls.__name__: 'Указаны неверный вариант пола.'})
+                    raise ValueError(f'{label} - {cls.__name__}: Ошибка валидации: указан неверный вариант пола.')
+                if gender == 0:
+                    gender = '0 is not False'
                 return gender
             if not isinstance(gender, GenderField):
-                raise ValueError({cls.__name__: 'Указатель на пол должен быть числом.'})
+                raise ValueError(f'{label} - {cls.__name__}: Ошибка валидации: указатель на пол должен быть числом.')
 
 
-class ClientIDsField(object, metaclass=FieldMeta):
+class ClientIDsField(metaclass=FieldMeta):
     def __init__(self, clients_ids=[], required=True):
         self.required = required
         self.clients_ids = clients_ids
@@ -196,21 +205,21 @@ class ClientIDsField(object, metaclass=FieldMeta):
         return len(self.clients_ids)
 
     @classmethod
-    def validate_attr(cls, attr):
+    def validate_attr(cls, attr, label):
         if not isinstance(attr, list) or len(attr) == 0:
-            raise ValueError({cls.__name__: 'Значение поля должно являться непустым массивом.'})
+            raise ValueError(f'{label} - {cls.__name__}: Ошибка валидации: поле должно являться непустым массивом.')
         for i in attr:
             if not isinstance(i, int):
-                raise ValueError({cls.__name__: 'Массив должен содержать только целые числа.'})
+                raise ValueError(f'{label} - {cls.__name__}: Ошибка валидации: массив должен содержать целые числа.')
         return attr
 
 
-class ClientsInterestsRequest(object, metaclass=RequestMeta):
+class ClientsInterestsRequest(metaclass=RequestMeta):
     client_ids = ClientIDsField(required=True)
     date = DateField(required=False, nullable=True)
 
 
-class OnlineScoreRequest(object, metaclass=RequestMeta):
+class OnlineScoreRequest(metaclass=RequestMeta):
     first_name = CharField(required=False, nullable=True)
     last_name = CharField(required=False, nullable=True)
     email = EmailField(required=False, nullable=True)
@@ -219,7 +228,7 @@ class OnlineScoreRequest(object, metaclass=RequestMeta):
     gender = GenderField(required=False, nullable=True)
 
 
-class MethodRequest(object, metaclass=RequestMeta):
+class MethodRequest(metaclass=RequestMeta):
     account = CharField(required=False, nullable=True)
     login = CharField(required=True, nullable=True)
     token = CharField(required=True, nullable=True)
@@ -250,7 +259,10 @@ def check_auth(request):
 
 
 def method_handler(request, ctx, store):
-    response, code = None, None
+    """
+    Используется для тестирования
+    """
+    response, code = {'error': 'Default Error Message'}, INVALID_REQUEST
     method_name = request.get('body').get('method')
     if method_name:
         handlers = {
@@ -263,14 +275,26 @@ def method_handler(request, ctx, store):
 
 
 def check_mandatory_fields(req_body):
-    mandatory_fields = ('login', 'method', 'token', 'arguments')
-    for key in mandatory_fields:
-        if key not in req_body.keys():
-            return f"Отсутствует обязательное для подсчета score поле {key}."
+    """
+    Проверка, что в теле запроса присутствуют все обязательные поля ( required = True )
+    """
+    failed_list = list()
+    for k, v in MethodRequest.class_attrs.items():
+        required = getattr(v, 'required', None)
+        if required and k not in req_body.keys():
+            failed_list.append(k)
+    if failed_list:
+        msg = 'Заполните обязательное(ые) поле(я) для подсчета score:'
+        for i in failed_list:
+            msg += f' {i},'
+        return msg.rstrip(',') + '.'
     return None
 
 
 def check_method_args(arguments):
+    """
+    Проверяем, что в аргументах запроса присутствует хотя бы одна пара полей, необходимая для расчета score
+    """
     has_list = list()
     ok = False
     pairs = [('phone', 'email'), ('first_name', 'last_name'), ('gender', 'birthday')]
@@ -280,13 +304,16 @@ def check_method_args(arguments):
         if first is not None and last is not None:
             ok = True
         for i in pair:
-            interest = arguments.get(i)
-            if interest:
+            field = arguments.get(i)
+            if field is not None:
                 has_list.append(i)
     return {'ok': ok, 'has': has_list}
 
 
 def online_score_handler(request, ctx, store):
+    """
+    Обрабатываем запрос 'online_score'
+    """
     req_body = request.get('body')
 
     failed = check_mandatory_fields(req_body)
@@ -336,6 +363,9 @@ def online_score_handler(request, ctx, store):
 
 
 def clients_interests_handler(request, ctx, store):
+    """
+    Обрабатываем запрос 'clients_interests'
+    """
     req_body = request.get('body')
 
     failed = check_mandatory_fields(req_body)
