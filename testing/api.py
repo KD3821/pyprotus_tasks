@@ -9,6 +9,7 @@ import uuid
 from optparse import OptionParser
 from http.server import HTTPServer, BaseHTTPRequestHandler
 
+from store import MyStore
 from scoring import get_score, get_interests
 
 
@@ -112,10 +113,10 @@ class RequestMeta(type):
 class CharField(metaclass=FieldMeta):
 
     @classmethod
-    def validate_attr(cls, field, label):
-        if not isinstance(field, str):
+    def validate_attr(cls, value, label):
+        if not isinstance(value, str):
             raise ValueError(f'{label} - {cls.__name__}: Ошибка валидации: поле должно быть строкой.')
-        return field
+        return value
 
 
 class ArgumentsField(metaclass=FieldMeta):
@@ -130,13 +131,16 @@ class ArgumentsField(metaclass=FieldMeta):
 class EmailField(CharField):
 
     @classmethod
-    def validate_attr(cls, email, label):
-        if email.__class__ == str:
-            if email.find('@') == -1:
-                raise ValueError(f'{label} - {cls.__name__}: Ошибка валидации: email должен содержать @ символ.')
-            elif email.count('@') > 1:
-                raise ValueError(f'{label} - {cls.__name__}: Ошибка валидации: некорректный email')
-            return email
+    def validate_attr(cls, value, label):
+        if not isinstance(value, MyStr):
+            if isinstance(value, str):
+                if value.find('@') == -1:
+                    raise ValueError(f'{label} - {cls.__name__}: Ошибка валидации: email должен содержать @ символ.')
+                elif value.count('@') > 1:
+                    raise ValueError(f'{label} - {cls.__name__}: Ошибка валидации: некорректный email')
+                return value
+            if not isinstance(value, type(None)):
+                raise ValueError(f'{label} - {cls.__name__}: Ошибка валидации: некорректный email!')
 
 
 class PhoneField(metaclass=FieldMeta):
@@ -170,6 +174,7 @@ class BirthDayField(metaclass=FieldMeta):
 
     @classmethod
     def validate_attr(cls, value, label):
+
         if isinstance(value, str):
             try:
                 formatted_date = datetime.datetime.strptime(value, "%d.%m.%Y")
@@ -190,6 +195,8 @@ class GenderField(metaclass=FieldMeta):
                     raise ValueError(f'{label} - {cls.__name__}: Ошибка валидации: указан неверный вариант пола.')
                 if gender == 0:
                     gender = '0 is not False'
+                if gender == 1 and isinstance(gender, bool):
+                    raise ValueError(f'{label} - {cls.__name__}: Ошибка валидации: указатель на пол должен быть числом.')
                 return gender
             if not isinstance(gender, GenderField):
                 raise ValueError(f'{label} - {cls.__name__}: Ошибка валидации: указатель на пол должен быть числом.')
@@ -416,7 +423,8 @@ class MainHTTPHandler(BaseHTTPRequestHandler):
         "online_score": online_score_handler,
         "clients_interests": clients_interests_handler
     }
-    store = None
+    # store = None
+    store = MyStore()
 
     def get_request_id(self, headers):
         return headers.get('HTTP_X_REQUEST_ID', uuid.uuid4().hex)
@@ -458,7 +466,7 @@ class MainHTTPHandler(BaseHTTPRequestHandler):
 
 if __name__ == "__main__":
     op = OptionParser()
-    op.add_option("-p", "--port", action="store", type=int, default=8080)
+    op.add_option("-p", "--port", action="store", type=int, default=8080)  # changed from 8080
     op.add_option("-l", "--log", action="store", default=None)
     (opts, args) = op.parse_args()
     logging.basicConfig(filename=opts.log, level=logging.INFO,
