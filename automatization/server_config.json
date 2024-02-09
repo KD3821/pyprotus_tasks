@@ -1,0 +1,8 @@
+{
+    "USER": "www-data",
+    "HOST": "127.0.0.1",
+    "PORT": 8000,
+    "WORKER_PROCESSES": 5,
+    "ERROR_LOG_FILE": "./logs/error.log",
+    "ACCESS_LOG_FILE": "./logs/access.log"
+}

@@ -1,0 +1,81 @@
+[2024.02.09 06:25:10] I Запуск сервера: 127.0.0.1:8080 workers:1
+[2024.02.09 06:25:10] I Запуск worker процесса [pid: 71066].
+[2024.02.09 06:25:19] I [worker 71066] новое соединение ('127.0.0.1', 56124)
+[2024.02.09 06:25:19] I Данные запроса от ('127.0.0.1', 56124):
+path: {0: 'catalog'}
+queries: {'product': 'Nike', 'size': '41'}
+method: POST
+protocol: HTTP/1.1
+body: {
+    "name": "Denis",
+    "email": "denis@hotmail.com"
+}
+extras: 
+headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA3MjU0OTM3LCJpYXQiOjE3MDcyNTEzMzcsImp0aSI6ImI5ZDg3MGY3N2Y5MzRmYzQ5YTgxODcyOGE0MGJjZWJhIiwidXNlcl9pZCI6Mn0.S8ebLuPehGy8qkCq_ScZWv5cQpEVhOaRsxSuMTFK7tI', 'User-Agent': 'PostmanRuntime/7.36.1', 'Accept': '*/*', 'Postman-Token': 'dc4e1c14-ee96-4db0-bc9f-66e9d0c0803a', 'Host': '127.0.0.1:8080', 'Accept-Encoding': ['gzip', 'deflate', 'br'], 'Connection': 'keep-alive', 'Content-Length': '57', 'Cookie': 'csrftoken=jmX0wdLCmXYEVskYhmyAvNeXkpB3dN2nAhRpf7ZHa6OccKvXlok9ow99rCeHf4aA'}
+file: {}
+[2024.02.09 06:25:19] I [worker 71066] ответ для соединения ('127.0.0.1', 56124): b'HTTP/1.1 405 Method Not Allowed\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: 03:02:1707438310, 09/02/202'
+[2024.02.09 06:25:19] I [worker 71066] Закрываем соединение ('127.0.0.1', 56124)
+[2024.02.09 06:25:26] I [worker 71066] новое соединение ('127.0.0.1', 34556)
+[2024.02.09 06:25:26] I Данные запроса от ('127.0.0.1', 34556):
+path: {0: 'roses.jpg'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: 
+extras: 
+headers: {'Host': '127.0.0.1:8080', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'sec-ch-ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"', 'sec-ch-ua-mobile': '?0', 'sec-ch-ua-platform': '"Linux"', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', 'Sec-Fetch-Site': 'none', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Sec-Fetch-Dest': 'document', 'Accept-Encoding': ['gzip', 'deflate', 'br'], 'Accept-Language': 'ru-RU,ru;q=0.9'}
+file: {'Content-Type': 'image/jpeg', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/roses.jpg', 'Accept-Ranges': 'bytes'}
+[2024.02.09 06:25:26] I [worker 71066] ответ для соединения ('127.0.0.1', 34556): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: 03:02:1707438310, 09/02/2024 GMT\r\nLast-Modi'
+[2024.02.09 06:25:26] I [worker 71066] Закрываем соединение ('127.0.0.1', 34556)
+[2024.02.09 06:25:26] I [worker 71066] новое соединение ('127.0.0.1', 34560)
+[2024.02.09 06:25:26] I Данные запроса от ('127.0.0.1', 34560):
+path: {0: 'favicon.ico'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: 
+extras: 
+headers: {'Host': '127.0.0.1:8080', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'sec-ch-ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"', 'sec-ch-ua-mobile': '?0', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'sec-ch-ua-platform': '"Linux"', 'Accept': 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'no-cors', 'Sec-Fetch-Dest': 'image', 'Referer': 'http://127.0.0.1:8080/roses.jpg', 'Accept-Encoding': ['gzip', 'deflate', 'br'], 'Accept-Language': 'ru-RU,ru;q=0.9'}
+file: {'Content-Type': 'image/x-icon', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/favicon.ico', 'Accept-Ranges': 'bytes'}
+[2024.02.09 06:25:26] I [worker 71066] ответ для соединения ('127.0.0.1', 34560): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: 03:02:1707438310, 09/02/2024 GMT\r\nLast-Modi'
+[2024.02.09 06:25:26] I [worker 71066] Закрываем соединение ('127.0.0.1', 34560)
+[2024.02.09 06:25:35] I [worker 71066] новое соединение ('127.0.0.1', 52312)
+[2024.02.09 06:25:35] I Данные запроса от ('127.0.0.1', 52312):
+path: {0: 'file.html'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: 
+extras: 
+headers: {'Host': '127.0.0.1:8080', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'sec-ch-ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"', 'sec-ch-ua-mobile': '?0', 'sec-ch-ua-platform': '"Linux"', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', 'Sec-Fetch-Site': 'none', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Sec-Fetch-Dest': 'document', 'Accept-Encoding': ['gzip', 'deflate', 'br'], 'Accept-Language': 'ru-RU,ru;q=0.9'}
+file: {'Content-Type': 'text/html', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/file.html', 'Accept-Ranges': 'bytes'}
+[2024.02.09 06:25:35] I [worker 71066] ответ для соединения ('127.0.0.1', 52312): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: 03:02:1707438310, 09/02/2024 GMT\r\nLast-Modi'
+[2024.02.09 06:25:35] I [worker 71066] Закрываем соединение ('127.0.0.1', 52312)
+[2024.02.09 06:25:35] I [worker 71066] новое соединение ('127.0.0.1', 52320)
+[2024.02.09 06:25:35] I Данные запроса от ('127.0.0.1', 52320):
+path: {0: 'print.css'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: 
+extras: 
+headers: {'Host': '127.0.0.1:8080', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'sec-ch-ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"', 'sec-ch-ua-mobile': '?0', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'sec-ch-ua-platform': '"Linux"', 'Accept': 'text/css,*/*;q=0.1', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'no-cors', 'Sec-Fetch-Dest': 'style', 'Referer': 'http://127.0.0.1:8080/file.html', 'Accept-Encoding': ['gzip', 'deflate', 'br'], 'Accept-Language': 'ru-RU,ru;q=0.9'}
+file: {'Content-Type': 'text/css', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/print.css', 'Accept-Ranges': 'bytes'}
+[2024.02.09 06:25:35] I [worker 71066] ответ для соединения ('127.0.0.1', 52320): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: 03:02:1707438310, 09/02/2024 GMT\r\nLast-Modi'
+[2024.02.09 06:25:35] I [worker 71066] Закрываем соединение ('127.0.0.1', 52320)
+[2024.02.09 06:25:35] I [worker 71066] новое соединение ('127.0.0.1', 52336)
+[2024.02.09 06:25:35] I Данные запроса от ('127.0.0.1', 52336):
+path: {0: 'favicon.ico'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: 
+extras: 
+headers: {'Host': '127.0.0.1:8080', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'sec-ch-ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"', 'sec-ch-ua-mobile': '?0', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'sec-ch-ua-platform': '"Linux"', 'Accept': 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'no-cors', 'Sec-Fetch-Dest': 'image', 'Referer': 'http://127.0.0.1:8080/file.html', 'Accept-Encoding': ['gzip', 'deflate', 'br'], 'Accept-Language': 'ru-RU,ru;q=0.9'}
+file: {'Content-Type': 'image/x-icon', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/favicon.ico', 'Accept-Ranges': 'bytes'}
+[2024.02.09 06:25:35] I [worker 71066] ответ для соединения ('127.0.0.1', 52336): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: 03:02:1707438310, 09/02/2024 GMT\r\nLast-Modi'
+[2024.02.09 06:25:35] I [worker 71066] Закрываем соединение ('127.0.0.1', 52336)
+[2024.02.09 06:26:42] I [worker 71066] новое соединение ('127.0.0.1', 52792)
+[2024.02.09 06:26:42] I [worker 71066] ответ для соединения ('127.0.0.1', 52792): b'\xd0\xad\xd0\xa5\xd0\x9e: JUST TESTING TCP\n'
+[2024.02.09 06:26:42] I [worker 71066] Закрываем соединение ('127.0.0.1', 52792)
+[2024.02.09 06:27:06] I Остановка работы сервера: 127.0.0.1:8080
