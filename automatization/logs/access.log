@@ -77,5 +77,140 @@ file: {'Content-Type': 'image/x-icon', 'path': '/home/dk/PycharmProjects/pyprotu
 [2024.02.09 06:25:35] I [worker 71066] Закрываем соединение ('127.0.0.1', 52336)
 [2024.02.09 06:26:42] I [worker 71066] новое соединение ('127.0.0.1', 52792)
 [2024.02.09 06:26:42] I [worker 71066] ответ для соединения ('127.0.0.1', 52792): b'\xd0\xad\xd0\xa5\xd0\x9e: JUST TESTING TCP\n'
-[2024.02.09 06:26:42] I [worker 71066] Закрываем соединение ('127.0.0.1', 52792)
-[2024.02.09 06:27:06] I Остановка работы сервера: 127.0.0.1:8080
+[2024.02.10 06:46:18] I Остановка работы сервера: 127.0.0.1:8080
+[2024.02.10 06:49:11] I Запуск сервера: 127.0.0.1:8080 workers:1
+[2024.02.10 06:49:11] I Запуск worker процесса [pid: 32928].
+[2024.02.10 06:49:17] I [worker 32928] новое соединение ('127.0.0.1', 53620)
+[2024.02.10 06:49:17] I Данные запроса от ('127.0.0.1', 53620):
+path: {0: 'api', 1: 'get_score', 2: '54'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: 
+extras: 
+headers: {'User-Agent': 'PostmanRuntime/7.36.1', 'Accept': '*/*', 'Postman-Token': 'e8464468-18ad-49ce-a4b8-153c4eb67fee', 'Host': '127.0.0.1:8080', 'Accept-Encoding': ['gzip', 'deflate', 'br'], 'Connection': 'keep-alive', 'Cookie': 'csrftoken=jmX0wdLCmXYEVskYhmyAvNeXkpB3dN2nAhRpf7ZHa6OccKvXlok9ow99rCeHf4aA'}
+file: {}
+[2024.02.10 06:49:17] E Предупреждение БД: отсутствуют данные для пользователя с id: 54
+[2024.02.10 06:49:17] I [worker 32928] ответ для соединения ('127.0.0.1', 53620): b'HTTP/1.1 404 Not Found\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: 03:02:1707526151, 10/02/2024 GMT\r\nCo'
+[2024.02.10 06:49:17] I [worker 32928] закрываем соединение ('127.0.0.1', 53620)
+[2024.02.10 06:49:22] I [worker 32928] новое соединение ('127.0.0.1', 33688)
+[2024.02.10 06:49:22] I Данные запроса от ('127.0.0.1', 33688):
+path: {0: 'api', 1: 'get_score', 2: '5'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: 
+extras: 
+headers: {'User-Agent': 'PostmanRuntime/7.36.1', 'Accept': '*/*', 'Postman-Token': 'ec89cbfb-4005-4fd6-b0e3-45f67c1f8590', 'Host': '127.0.0.1:8080', 'Accept-Encoding': ['gzip', 'deflate', 'br'], 'Connection': 'keep-alive', 'Cookie': 'csrftoken=jmX0wdLCmXYEVskYhmyAvNeXkpB3dN2nAhRpf7ZHa6OccKvXlok9ow99rCeHf4aA'}
+file: {}
+[2024.02.10 06:49:22] I [worker 32928] ответ для соединения ('127.0.0.1', 33688): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: 03:02:1707526151, 10/02/2024 GMT\r\nContent-T'
+[2024.02.10 06:49:22] I [worker 32928] закрываем соединение ('127.0.0.1', 33688)
+[2024.02.10 06:49:30] I [worker 32928] новое соединение ('127.0.0.1', 46998)
+[2024.02.10 06:49:30] I Данные запроса от ('127.0.0.1', 46998):
+path: {0: 'api', 1: 'get_score', 2: '1'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: 
+extras: 
+headers: {'User-Agent': 'PostmanRuntime/7.36.1', 'Accept': '*/*', 'Postman-Token': 'ad7c674c-ddb4-4e72-8772-936e587641cc', 'Host': '127.0.0.1:8080', 'Accept-Encoding': ['gzip', 'deflate', 'br'], 'Connection': 'keep-alive', 'Cookie': 'csrftoken=jmX0wdLCmXYEVskYhmyAvNeXkpB3dN2nAhRpf7ZHa6OccKvXlok9ow99rCeHf4aA'}
+file: {}
+[2024.02.10 06:49:30] I [worker 32928] ответ для соединения ('127.0.0.1', 46998): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: 03:02:1707526151, 10/02/2024 GMT\r\nContent-T'
+[2024.02.10 06:49:30] I [worker 32928] закрываем соединение ('127.0.0.1', 46998)
+[2024.02.10 06:49:34] I [worker 32928] новое соединение ('127.0.0.1', 47008)
+[2024.02.10 06:49:34] I Данные запроса от ('127.0.0.1', 47008):
+path: {0: 'api', 1: 'get_score', 2: '%D1%80'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: 
+extras: 
+headers: {'User-Agent': 'PostmanRuntime/7.36.1', 'Accept': '*/*', 'Postman-Token': 'c4e5b5e8-36c9-41eb-a580-58526478a44d', 'Host': '127.0.0.1:8080', 'Accept-Encoding': ['gzip', 'deflate', 'br'], 'Connection': 'keep-alive', 'Cookie': 'csrftoken=jmX0wdLCmXYEVskYhmyAvNeXkpB3dN2nAhRpf7ZHa6OccKvXlok9ow99rCeHf4aA'}
+file: {}
+[2024.02.10 06:49:34] I [worker 32928] ответ для соединения ('127.0.0.1', 47008): b'HTTP/1.1 404 Not Found\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: 03:02:1707526151, 10/02/2024 GMT\r\nCo'
+[2024.02.10 06:49:34] I [worker 32928] закрываем соединение ('127.0.0.1', 47008)
+[2024.02.10 06:49:52] I [worker 32928] новое соединение ('127.0.0.1', 56780)
+[2024.02.10 06:49:52] I Данные запроса от ('127.0.0.1', 56780):
+path: {0: 'api', 1: 'get_interests', 2: '3'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: 
+extras: 
+headers: {'User-Agent': 'PostmanRuntime/7.36.1', 'Accept': '*/*', 'Postman-Token': '957b61b1-9439-48ef-b228-ff7b23f0081d', 'Host': '127.0.0.1:8080', 'Accept-Encoding': ['gzip', 'deflate', 'br'], 'Connection': 'keep-alive', 'Cookie': 'csrftoken=jmX0wdLCmXYEVskYhmyAvNeXkpB3dN2nAhRpf7ZHa6OccKvXlok9ow99rCeHf4aA'}
+file: {}
+[2024.02.10 06:49:52] I [worker 32928] ответ для соединения ('127.0.0.1', 56780): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: 03:02:1707526151, 10/02/2024 GMT\r\nContent-T'
+[2024.02.10 06:49:52] I [worker 32928] закрываем соединение ('127.0.0.1', 56780)
+[2024.02.10 06:49:59] I [worker 32928] новое соединение ('127.0.0.1', 56784)
+[2024.02.10 06:49:59] I Данные запроса от ('127.0.0.1', 56784):
+path: {0: 'api', 1: 'get_interests', 2: 'aa'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: 
+extras: 
+headers: {'User-Agent': 'PostmanRuntime/7.36.1', 'Accept': '*/*', 'Postman-Token': '90b6487f-10c6-44f2-b3ae-6d9de343d53b', 'Host': '127.0.0.1:8080', 'Accept-Encoding': ['gzip', 'deflate', 'br'], 'Connection': 'keep-alive', 'Cookie': 'csrftoken=jmX0wdLCmXYEVskYhmyAvNeXkpB3dN2nAhRpf7ZHa6OccKvXlok9ow99rCeHf4aA'}
+file: {}
+[2024.02.10 06:49:59] I [worker 32928] ответ для соединения ('127.0.0.1', 56784): b'HTTP/1.1 404 Not Found\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: 03:02:1707526151, 10/02/2024 GMT\r\nCo'
+[2024.02.10 06:49:59] I [worker 32928] закрываем соединение ('127.0.0.1', 56784)
+[2024.02.10 06:50:03] I [worker 32928] новое соединение ('127.0.0.1', 42762)
+[2024.02.10 06:50:03] I Данные запроса от ('127.0.0.1', 42762):
+path: {0: 'api', 1: 'get_interestss', 2: 'aa'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: 
+extras: 
+headers: {'User-Agent': 'PostmanRuntime/7.36.1', 'Accept': '*/*', 'Postman-Token': 'b508e6d4-2807-47d3-860a-37bf86685e54', 'Host': '127.0.0.1:8080', 'Accept-Encoding': ['gzip', 'deflate', 'br'], 'Connection': 'keep-alive', 'Cookie': 'csrftoken=jmX0wdLCmXYEVskYhmyAvNeXkpB3dN2nAhRpf7ZHa6OccKvXlok9ow99rCeHf4aA'}
+file: {}
+[2024.02.10 06:50:03] I [worker 32928] ответ для соединения ('127.0.0.1', 42762): b'HTTP/1.1 404 Not Found\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: 03:02:1707526151, 10/02/2024 GMT\r\nCo'
+[2024.02.10 06:50:03] I [worker 32928] закрываем соединение ('127.0.0.1', 42762)
+[2024.02.10 06:50:15] I [worker 32928] новое соединение ('127.0.0.1', 53580)
+[2024.02.10 06:50:15] I Данные запроса от ('127.0.0.1', 53580):
+path: {0: 'api', 1: 'get_interests', 2: ''}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: 
+extras: 
+headers: {'User-Agent': 'PostmanRuntime/7.36.1', 'Accept': '*/*', 'Postman-Token': '368bd2e9-0dff-4f17-892a-fc68508c6c7b', 'Host': '127.0.0.1:8080', 'Accept-Encoding': ['gzip', 'deflate', 'br'], 'Connection': 'keep-alive', 'Cookie': 'csrftoken=jmX0wdLCmXYEVskYhmyAvNeXkpB3dN2nAhRpf7ZHa6OccKvXlok9ow99rCeHf4aA'}
+file: {}
+[2024.02.10 06:50:15] I [worker 32928] ответ для соединения ('127.0.0.1', 53580): b'HTTP/1.1 404 Not Found\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: 03:02:1707526151, 10/02/2024 GMT\r\nCo'
+[2024.02.10 06:50:15] I [worker 32928] закрываем соединение ('127.0.0.1', 53580)
+[2024.02.10 06:50:27] I [worker 32928] новое соединение ('127.0.0.1', 56722)
+[2024.02.10 06:50:27] I Данные запроса от ('127.0.0.1', 56722):
+path: {0: 'file.html'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: 
+extras: 
+headers: {'User-Agent': 'PostmanRuntime/7.36.1', 'Accept': '*/*', 'Postman-Token': '1d7efb3d-4325-44ae-8ac5-d6584ce723d8', 'Host': '127.0.0.1:8080', 'Accept-Encoding': ['gzip', 'deflate', 'br'], 'Connection': 'keep-alive', 'Cookie': 'csrftoken=jmX0wdLCmXYEVskYhmyAvNeXkpB3dN2nAhRpf7ZHa6OccKvXlok9ow99rCeHf4aA'}
+file: {'Content-Type': 'text/html', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/file.html', 'Accept-Ranges': 'bytes'}
+[2024.02.10 06:50:27] I [worker 32928] ответ для соединения ('127.0.0.1', 56722): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: 03:02:1707526151, 10/02/2024 GMT\r\nLast-Modi'
+[2024.02.10 06:50:27] I [worker 32928] закрываем соединение ('127.0.0.1', 56722)
+[2024.02.10 06:50:39] I [worker 32928] новое соединение ('127.0.0.1', 52694)
+[2024.02.10 06:50:39] I Данные запроса от ('127.0.0.1', 52694):
+path: {0: 'roses.jpg'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: 
+extras: 
+headers: {'User-Agent': 'PostmanRuntime/7.36.1', 'Accept': '*/*', 'Postman-Token': 'c64eb034-17ef-4bb3-897d-2b87df348913', 'Host': '127.0.0.1:8080', 'Accept-Encoding': ['gzip', 'deflate', 'br'], 'Connection': 'keep-alive', 'Cookie': 'csrftoken=jmX0wdLCmXYEVskYhmyAvNeXkpB3dN2nAhRpf7ZHa6OccKvXlok9ow99rCeHf4aA'}
+file: {'Content-Type': 'image/jpeg', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/roses.jpg', 'Accept-Ranges': 'bytes'}
+[2024.02.10 06:50:39] I [worker 32928] ответ для соединения ('127.0.0.1', 52694): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: 03:02:1707526151, 10/02/2024 GMT\r\nLast-Modi'
+[2024.02.10 06:50:39] I [worker 32928] закрываем соединение ('127.0.0.1', 52694)
+[2024.02.10 06:51:02] I [worker 32928] новое соединение ('127.0.0.1', 56386)
+[2024.02.10 06:51:02] I Данные запроса от ('127.0.0.1', 56386):
+path: {0: 'api', 1: 'get_score', 2: '1'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: Cookie: username-127-0-0-1-8888="2|1:0|10:1706904549|23:username-127-0-0-1-8888|196:eyJ1c2VybmFtZSI6ICI2MmY0MGRjNzNjZTk0ZDU4YWIyYzkwODY5ZTEyMzIxMSIsICJuYW1lIjogIkFub255bW91cyBTaW5vcGUiLCAiZGlzcGxheV9uYW1lIjogIkFub255bW91cyBTaW5vcGUiLCAiaW5pdGlhbHMiOiAiQVMiLCAiY29sb3IiOiBudWxsfQ==|1fa574cffcd2
+extras: Accept-Language: ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7,tr;q=0.6
+headers: {'Host': '127.0.0.1:8080', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'sec-ch-ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"', 'sec-ch-ua-mobile': '?0', 'sec-ch-ua-platform': '"Linux"', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', 'Sec-Fetch-Site': 'none', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Sec-Fetch-Dest': 'document', 'Accept-Encoding': ['gzip', 'deflate', 'br']}
+file: {}
+[2024.02.10 06:51:02] I [worker 32928] ответ для соединения ('127.0.0.1', 56386): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: 03:02:1707526151, 10/02/2024 GMT\r\nContent-T'
+[2024.02.10 06:51:02] I [worker 32928] закрываем соединение ('127.0.0.1', 56386)
+[2024.02.10 06:51:40] I Остановка работы сервера: 127.0.0.1:8080

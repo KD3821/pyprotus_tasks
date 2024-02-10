@@ -46,6 +46,7 @@ class CustomServer:
     def process_request(self, conn, request, worker_pid):
         handler_class = define_handler(request=request)
         handler = handler_class(conn=conn, request=request, document_root=self.document_root)
+        print(f"{handler.__dict__}")
         response_data = handler.response()
         logging.info(f"[worker {worker_pid}] ответ для соединения ('{handler.client_host}', {handler.client_port}): "
                      f"{response_data[:100]}")
@@ -53,7 +54,7 @@ class CustomServer:
 
     @staticmethod
     def finish_request(conn, worker_pid):
-        logging.info(f'[worker {worker_pid}] Закрываем соединение {conn}')
+        logging.info(f'[worker {worker_pid}] закрываем соединение {conn}')
 
 
 if __name__ == "__main__":

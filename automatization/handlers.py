@@ -2,6 +2,8 @@ import os
 import logging
 from datetime import datetime, timedelta
 
+from api import get_api_service
+
 
 def confirm_http_protocol(request):
     request_data = request.decode().split('\r\n')
@@ -64,6 +66,11 @@ class HttpRequestHandler(BaseRequestHandler):
         'Connection': 'keep-alive'
     }
     BAD_REQ_FIRST = 'HTTP/1.1 405 Method Not Allowed'
+    BAD_PARAM_FIRST = 'HTTP/1.1 404 Not Found'
+    NOT_FOUND_FIRST = 'HTTP/1.1 404 Not Found'
+    BAD_REQ_BODY = '{\n"result": "ОШИБКА ЗАПРОСА",\n"message": "Разрешены только HTTP запросы: GET и HEAD."\n}'
+    BAD_PARAM_BODY = '{\n"result": "ОШИБКА ЗАПРОСА",\n"message": "Невалидные параметры запроса."\n}'
+    NOT_FOUND_BODY = '{\n"result": "ОШИБКА ЗАПРОСА",\n"message": "Отсутствуют данные для пользователя."\n}'
     BAD_REQ_HEADERS = {
         'Server': 'denserv/1.18.0 (Subuntu)',
         'Date': datetime.strftime(datetime.utcnow(), "%H:%m:%s, %d/%m/%Y GMT"),
@@ -75,11 +82,9 @@ class HttpRequestHandler(BaseRequestHandler):
         'Referrer-Policy': 'same-origin',
         'Cross-Origin-Opener-Policy': 'same-origin'
     }
-    BAD_REQ_BODY = '{\n"result": "ОШИБКА ЗАПРОСА",\n"message": "Разрешены только HTTP запросы: GET и HEAD."\n}'
 
     def __init__(self, conn: tuple, request: bytes = None, document_root: str = None):
         super().__init__(conn, request, document_root)
-        self.data = request.decode()
         self.path_params = dict()
         self.queries = dict()
         self.headers = dict()
@@ -89,6 +94,8 @@ class HttpRequestHandler(BaseRequestHandler):
         first_line_list = data.pop(0).split(' ')
 
         params = first_line_list[1].split('/')
+        if params[0] == '':
+            params.pop(0)
         last = params.pop(-1)
         for i, path in enumerate(params):
             if path != '':
@@ -144,12 +151,44 @@ class HttpRequestHandler(BaseRequestHandler):
             return True
         return False
 
+    def pass_to_backend(self):
+        if self.path_params.get(0) == 'api':
+            return True
+        return False
+
     def response(self):
         if not self.check_method_allowed():
             bad_req_str = ''
             for key, value in self.BAD_REQ_HEADERS.items():
                 bad_req_str += f"{key}: {value}\r\n"
             return f"{self.BAD_REQ_FIRST}\r\n{bad_req_str}\r\n\n{self.BAD_REQ_BODY}".encode()
+
+        if self.pass_to_backend():
+            api_service_handler = get_api_service(self.path_params)
+
+            if api_service_handler is None:
+                bad_req_str = ''
+                for key, value in self.BAD_REQ_HEADERS.items():
+                    bad_req_str += f"{key}: {value}\r\n"
+                return f"{self.BAD_PARAM_FIRST}\r\n{bad_req_str}\r\n\n{self.BAD_PARAM_BODY}".encode()
+
+            data = api_service_handler.retrieve_data()
+
+            if data.get('error'):
+                bad_req_str = ''
+                for key, value in self.BAD_REQ_HEADERS.items():
+                    bad_req_str += f"{key}: {value}\r\n"
+                return f"{self.NOT_FOUND_FIRST}\r\n{bad_req_str}\r\n\n{self.NOT_FOUND_BODY}".encode()
+
+            else:
+                db_req_body = '{'
+                for key, value in data.items():
+                    db_req_body += f'\n"{key}": "{value}",'
+                db_req_body = db_req_body.rstrip(',') + '\n}'
+                db_req_str = ''
+                for key, value in self.OK_REQ_HEADERS.items():
+                    db_req_str += f"{key}: {value}\r\n"
+                return f"{self.OK_REQ_FIRST}\r\n{db_req_str}\r\n\n{db_req_body}".encode()
 
         if self.document:
             ok_req_str = ''
