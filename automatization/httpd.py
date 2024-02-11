@@ -4,16 +4,18 @@ import sys
 import logging
 
 from utils import get_config
+from database import DatabaseEngine
 from handlers import define_handler
 
 
 class CustomServer:
 
-    def __init__(self, host='', port=8080, workers=4, document_root=None):
+    def __init__(self, host='', port=8080, workers=4, document_root=None, db_name='example.db'):
         self.host = host
         self.port = port
         self.workers = workers
         self.document_root = document_root
+        self.db_engine = DatabaseEngine(db_name)
 
     def serve_forever(self):
         server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -25,7 +27,7 @@ class CustomServer:
 
             if child_pid == 0:
                 worker_pid = os.getpid()
-                logging.info(f'Запуск worker процесса [pid: {worker_pid}].')
+                logging.info(f'[worker {worker_pid}] запуск процесса ')
                 try:
                     while True:
                         client_socket, addr = server_socket.accept()
@@ -41,12 +43,17 @@ class CustomServer:
                         self.finish_request(conn=connection, worker_pid=worker_pid)
                         client_socket.close()
                 except KeyboardInterrupt:
+                    logging.info(f"[worker {worker_pid}] остановка процесса")
                     sys.exit()
 
     def process_request(self, conn, request, worker_pid):
         handler_class = define_handler(request=request)
-        handler = handler_class(conn=conn, request=request, document_root=self.document_root)
-        print(f"{handler.__dict__}")
+        handler = handler_class(
+            conn=conn,
+            request=request,
+            document_root=self.document_root,
+            db_engine=self.db_engine
+        )
         response_data = handler.response()
         logging.info(f"[worker {worker_pid}] ответ для соединения ('{handler.client_host}', {handler.client_port}): "
                      f"{response_data[:100]}")
@@ -78,7 +85,8 @@ if __name__ == "__main__":
         host=config.get('HOST'),
         port=config.get('PORT'),
         workers=config.get('WORKER_PROCESSES'),
-        document_root=config.get('DOCUMENT_ROOT')
+        document_root=config.get('DOCUMENT_ROOT'),
+        db_name='backend.db'
     )
     try:
         server.serve_forever()

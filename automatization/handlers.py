@@ -1,8 +1,10 @@
 import os
 import logging
 from datetime import datetime, timedelta
+import json
 
-from api import get_api_service
+from routers import get_api_service
+from database import DatabaseEngine
 
 
 def confirm_http_protocol(request):
@@ -23,10 +25,11 @@ def define_handler(request):
 
 
 class BaseRequestHandler:
-    def __init__(self, conn: tuple, request: bytes = None, document_root: str = None):
+    def __init__(self, conn: tuple, db_engine: DatabaseEngine, request: bytes = None, document_root: str = None):
         self.client_host = conn[0]
         self.client_port = conn[-1]
         self.data = request.decode()
+        self.db_engine = db_engine
         self.document_root = document_root
 
     def response(self):
@@ -35,7 +38,7 @@ class BaseRequestHandler:
 
 
 class HttpRequestHandler(BaseRequestHandler):
-    ALLOWED_METHODS = {'GET', 'HEAD'}
+    ALLOWED_METHODS = {'GET', 'HEAD', 'PUT'}  # can add more methods
     ALLOWED_FILE_FORMATS = {
         'html': 'text/html',
         'pdf': 'text/pdf',
@@ -83,8 +86,8 @@ class HttpRequestHandler(BaseRequestHandler):
         'Cross-Origin-Opener-Policy': 'same-origin'
     }
 
-    def __init__(self, conn: tuple, request: bytes = None, document_root: str = None):
-        super().__init__(conn, request, document_root)
+    def __init__(self, conn: tuple, db_engine: DatabaseEngine, request: bytes = None, document_root: str = None):
+        super().__init__(conn, db_engine, request, document_root)
         self.path_params = dict()
         self.queries = dict()
         self.headers = dict()
@@ -123,8 +126,16 @@ class HttpRequestHandler(BaseRequestHandler):
 
         self.method = first_line_list[0]
         self.protocol = first_line_list[-1]
-        self.body = data.pop(-1)
-        self.extras = data.pop(-1)
+        body = data.pop(-1)
+        if body != '':
+            self.body = json.loads(body)
+        else:
+            self.body = dict()
+        extras = data.pop(-1)
+        if extras != '':
+            self.extras = json.loads(extras)
+        else:
+            self.extras = dict()
 
         for line in data:
             sep_index = line.find(':')
@@ -164,7 +175,12 @@ class HttpRequestHandler(BaseRequestHandler):
             return f"{self.BAD_REQ_FIRST}\r\n{bad_req_str}\r\n\n{self.BAD_REQ_BODY}".encode()
 
         if self.pass_to_backend():
-            api_service_handler = get_api_service(self.path_params)
+            api_service_handler = get_api_service(
+                path_params=self.path_params,
+                method=self.method,
+                data=self.body,
+                db=self.db_engine
+            )
 
             if api_service_handler is None:
                 bad_req_str = ''
@@ -172,7 +188,7 @@ class HttpRequestHandler(BaseRequestHandler):
                     bad_req_str += f"{key}: {value}\r\n"
                 return f"{self.BAD_PARAM_FIRST}\r\n{bad_req_str}\r\n\n{self.BAD_PARAM_BODY}".encode()
 
-            data = api_service_handler.retrieve_data()
+            data = api_service_handler.response()
 
             if data.get('error'):
                 bad_req_str = ''

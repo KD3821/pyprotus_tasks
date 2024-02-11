@@ -213,4 +213,148 @@ headers: {'Host': '127.0.0.1:8080', 'Connection': 'keep-alive', 'Pragma': 'no-ca
 file: {}
 [2024.02.10 06:51:02] I [worker 32928] ответ для соединения ('127.0.0.1', 56386): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: 03:02:1707526151, 10/02/2024 GMT\r\nContent-T'
 [2024.02.10 06:51:02] I [worker 32928] закрываем соединение ('127.0.0.1', 56386)
-[2024.02.10 06:51:40] I Остановка работы сервера: 127.0.0.1:8080
+[2024.02.11 04:39:12] I [worker 32210] остановка процесса
+[2024.02.11 04:39:12] I Остановка работы сервера: 127.0.0.1:8080
+[2024.02.11 04:39:14] I Запуск сервера: 127.0.0.1:8080 workers:1
+[2024.02.11 04:39:14] E Найден файл с БД: 'backend.db'
+[2024.02.11 04:39:14] E Ошибка запуска сервера: [Errno 98] Address already in use
+[2024.02.11 04:41:19] I Запуск сервера: 127.0.0.1:8080 workers:1
+[2024.02.11 04:41:19] E Найден файл с БД: 'backend.db'
+[2024.02.11 04:41:19] I [worker 32338] запуск процесса 
+[2024.02.11 04:41:26] I [worker 32338] новое соединение ('127.0.0.1', 48076)
+[2024.02.11 04:41:26] I Данные запроса от ('127.0.0.1', 48076):
+path: {0: 'api', 1: 'score', 2: '1'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'User-Agent': 'PostmanRuntime/7.36.1', 'Accept': '*/*', 'Postman-Token': '486f4fba-1c46-470a-8cb8-5a02c279b757', 'Host': '127.0.0.1:8080', 'Accept-Encoding': ['gzip', 'deflate', 'br'], 'Connection': 'keep-alive', 'Cookie': 'csrftoken=jmX0wdLCmXYEVskYhmyAvNeXkpB3dN2nAhRpf7ZHa6OccKvXlok9ow99rCeHf4aA'}
+file: {}
+[2024.02.11 04:41:26] I [worker 32338] ответ для соединения ('127.0.0.1', 48076): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: 01:02:1707604879, 11/02/2024 GMT\r\nContent-T'
+[2024.02.11 04:41:26] I [worker 32338] закрываем соединение ('127.0.0.1', 48076)
+[2024.02.11 04:41:35] I [worker 32338] новое соединение ('127.0.0.1', 41206)
+[2024.02.11 04:41:35] I Данные запроса от ('127.0.0.1', 41206):
+path: {0: 'api', 1: 'score', 2: '1'}
+queries: {}
+method: PUT
+protocol: HTTP/1.1
+body: {'score': '4.6'}
+extras: {}
+headers: {'Content-Type': 'application/json', 'User-Agent': 'PostmanRuntime/7.36.1', 'Accept': '*/*', 'Postman-Token': '8671ef97-f7af-43d6-a0af-5364f3583928', 'Host': '127.0.0.1:8080', 'Accept-Encoding': ['gzip', 'deflate', 'br'], 'Connection': 'keep-alive', 'Content-Length': '22', 'Cookie': 'csrftoken=jmX0wdLCmXYEVskYhmyAvNeXkpB3dN2nAhRpf7ZHa6OccKvXlok9ow99rCeHf4aA'}
+file: {}
+[2024.02.11 04:41:35] I [worker 32338] ответ для соединения ('127.0.0.1', 41206): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: 01:02:1707604879, 11/02/2024 GMT\r\nContent-T'
+[2024.02.11 04:41:35] I [worker 32338] закрываем соединение ('127.0.0.1', 41206)
+[2024.02.11 04:41:52] I [worker 32338] новое соединение ('127.0.0.1', 44988)
+[2024.02.11 04:41:52] I Данные запроса от ('127.0.0.1', 44988):
+path: {0: 'api', 1: 'score', 2: '7'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'User-Agent': 'PostmanRuntime/7.36.1', 'Accept': '*/*', 'Postman-Token': '49d4a164-de43-4832-9144-fdb0dd83bbde', 'Host': '127.0.0.1:8080', 'Accept-Encoding': ['gzip', 'deflate', 'br'], 'Connection': 'keep-alive', 'Cookie': 'csrftoken=jmX0wdLCmXYEVskYhmyAvNeXkpB3dN2nAhRpf7ZHa6OccKvXlok9ow99rCeHf4aA'}
+file: {}
+[2024.02.11 04:41:52] E Предупреждение БД: отсутствуют данные для пользователя с id: 7
+[2024.02.11 04:41:52] I [worker 32338] ответ для соединения ('127.0.0.1', 44988): b'HTTP/1.1 404 Not Found\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: 01:02:1707604879, 11/02/2024 GMT\r\nCo'
+[2024.02.11 04:41:52] I [worker 32338] закрываем соединение ('127.0.0.1', 44988)
+[2024.02.11 04:41:58] I [worker 32338] новое соединение ('127.0.0.1', 49238)
+[2024.02.11 04:41:58] I Данные запроса от ('127.0.0.1', 49238):
+path: {0: 'api', 1: 'score', 2: '3'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'User-Agent': 'PostmanRuntime/7.36.1', 'Accept': '*/*', 'Postman-Token': '54fdf5a2-e32f-4ca2-b4e3-635b1d8248f2', 'Host': '127.0.0.1:8080', 'Accept-Encoding': ['gzip', 'deflate', 'br'], 'Connection': 'keep-alive', 'Cookie': 'csrftoken=jmX0wdLCmXYEVskYhmyAvNeXkpB3dN2nAhRpf7ZHa6OccKvXlok9ow99rCeHf4aA'}
+file: {}
+[2024.02.11 04:41:58] I [worker 32338] ответ для соединения ('127.0.0.1', 49238): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: 01:02:1707604879, 11/02/2024 GMT\r\nContent-T'
+[2024.02.11 04:41:58] I [worker 32338] закрываем соединение ('127.0.0.1', 49238)
+[2024.02.11 04:42:14] I [worker 32338] новое соединение ('127.0.0.1', 41864)
+[2024.02.11 04:42:14] I Данные запроса от ('127.0.0.1', 41864):
+path: {0: 'api', 1: 'score', 2: '3'}
+queries: {}
+method: PUT
+protocol: HTTP/1.1
+body: {'score': '2.6'}
+extras: {}
+headers: {'Content-Type': 'application/json', 'User-Agent': 'PostmanRuntime/7.36.1', 'Accept': '*/*', 'Postman-Token': '04b07e80-0f36-4f9d-915a-31588e8ed71c', 'Host': '127.0.0.1:8080', 'Accept-Encoding': ['gzip', 'deflate', 'br'], 'Connection': 'keep-alive', 'Content-Length': '22', 'Cookie': 'csrftoken=jmX0wdLCmXYEVskYhmyAvNeXkpB3dN2nAhRpf7ZHa6OccKvXlok9ow99rCeHf4aA'}
+file: {}
+[2024.02.11 04:42:14] I [worker 32338] ответ для соединения ('127.0.0.1', 41864): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: 01:02:1707604879, 11/02/2024 GMT\r\nContent-T'
+[2024.02.11 04:42:14] I [worker 32338] закрываем соединение ('127.0.0.1', 41864)
+[2024.02.11 04:42:18] I [worker 32338] новое соединение ('127.0.0.1', 41870)
+[2024.02.11 04:42:18] I Данные запроса от ('127.0.0.1', 41870):
+path: {0: 'api', 1: 'score', 2: '3'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'User-Agent': 'PostmanRuntime/7.36.1', 'Accept': '*/*', 'Postman-Token': '5ecc1464-0f66-4d7c-8df7-8cff61533439', 'Host': '127.0.0.1:8080', 'Accept-Encoding': ['gzip', 'deflate', 'br'], 'Connection': 'keep-alive', 'Cookie': 'csrftoken=jmX0wdLCmXYEVskYhmyAvNeXkpB3dN2nAhRpf7ZHa6OccKvXlok9ow99rCeHf4aA'}
+file: {}
+[2024.02.11 04:42:18] I [worker 32338] ответ для соединения ('127.0.0.1', 41870): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: 01:02:1707604879, 11/02/2024 GMT\r\nContent-T'
+[2024.02.11 04:42:18] I [worker 32338] закрываем соединение ('127.0.0.1', 41870)
+[2024.02.11 04:42:37] I [worker 32338] новое соединение ('127.0.0.1', 38214)
+[2024.02.11 04:42:37] I Данные запроса от ('127.0.0.1', 38214):
+path: {0: 'api', 1: 'interests', 2: '3'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'User-Agent': 'PostmanRuntime/7.36.1', 'Accept': '*/*', 'Postman-Token': 'c446f3ed-884f-4f7b-9b9e-2b7b91e851a4', 'Host': '127.0.0.1:8080', 'Accept-Encoding': ['gzip', 'deflate', 'br'], 'Connection': 'keep-alive', 'Cookie': 'csrftoken=jmX0wdLCmXYEVskYhmyAvNeXkpB3dN2nAhRpf7ZHa6OccKvXlok9ow99rCeHf4aA'}
+file: {}
+[2024.02.11 04:42:37] I [worker 32338] ответ для соединения ('127.0.0.1', 38214): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: 01:02:1707604879, 11/02/2024 GMT\r\nContent-T'
+[2024.02.11 04:42:37] I [worker 32338] закрываем соединение ('127.0.0.1', 38214)
+[2024.02.11 04:43:24] I [worker 32338] новое соединение ('127.0.0.1', 55770)
+[2024.02.11 04:43:24] I Данные запроса от ('127.0.0.1', 55770):
+path: {0: 'api', 1: 'interests', 2: '3'}
+queries: {}
+method: PUT
+protocol: HTTP/1.1
+body: {'travel': 'false', 'hitech': 'true', 'sport': 'true', 'music': 'true'}
+extras: {}
+headers: {'Content-Type': 'application/json', 'User-Agent': 'PostmanRuntime/7.36.1', 'Accept': '*/*', 'Postman-Token': '20a6bb9b-4064-48cb-8460-c3610b7eb6a6', 'Host': '127.0.0.1:8080', 'Accept-Encoding': ['gzip', 'deflate', 'br'], 'Connection': 'keep-alive', 'Content-Length': '89', 'Cookie': 'csrftoken=jmX0wdLCmXYEVskYhmyAvNeXkpB3dN2nAhRpf7ZHa6OccKvXlok9ow99rCeHf4aA'}
+file: {}
+[2024.02.11 04:43:25] I [worker 32338] ответ для соединения ('127.0.0.1', 55770): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: 01:02:1707604879, 11/02/2024 GMT\r\nContent-T'
+[2024.02.11 04:43:25] I [worker 32338] закрываем соединение ('127.0.0.1', 55770)
+[2024.02.11 04:43:34] I [worker 32338] новое соединение ('127.0.0.1', 33620)
+[2024.02.11 04:43:34] I Данные запроса от ('127.0.0.1', 33620):
+path: {0: 'api', 1: 'interests', 2: '7'}
+queries: {}
+method: PUT
+protocol: HTTP/1.1
+body: {'travel': 'false', 'hitech': 'true', 'sport': 'true', 'music': 'true'}
+extras: {}
+headers: {'Content-Type': 'application/json', 'User-Agent': 'PostmanRuntime/7.36.1', 'Accept': '*/*', 'Postman-Token': '74a3b7b0-bb75-453b-aa52-6fb894d0b7e8', 'Host': '127.0.0.1:8080', 'Accept-Encoding': ['gzip', 'deflate', 'br'], 'Connection': 'keep-alive', 'Content-Length': '89', 'Cookie': 'csrftoken=jmX0wdLCmXYEVskYhmyAvNeXkpB3dN2nAhRpf7ZHa6OccKvXlok9ow99rCeHf4aA'}
+file: {}
+[2024.02.11 04:43:34] E Предупреждение БД: отсутствуют данные для пользователя с id: 7
+[2024.02.11 04:43:34] I [worker 32338] ответ для соединения ('127.0.0.1', 33620): b'HTTP/1.1 404 Not Found\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: 01:02:1707604879, 11/02/2024 GMT\r\nCo'
+[2024.02.11 04:43:34] I [worker 32338] закрываем соединение ('127.0.0.1', 33620)
+[2024.02.11 04:43:40] I [worker 32338] новое соединение ('127.0.0.1', 33636)
+[2024.02.11 04:43:40] I Данные запроса от ('127.0.0.1', 33636):
+path: {0: 'api', 1: 'inrests', 2: '7'}
+queries: {}
+method: PUT
+protocol: HTTP/1.1
+body: {'travel': 'false', 'hitech': 'true', 'sport': 'true', 'music': 'true'}
+extras: {}
+headers: {'Content-Type': 'application/json', 'User-Agent': 'PostmanRuntime/7.36.1', 'Accept': '*/*', 'Postman-Token': '1a6a58a0-8c3d-4dc3-b7ef-f549733ddb89', 'Host': '127.0.0.1:8080', 'Accept-Encoding': ['gzip', 'deflate', 'br'], 'Connection': 'keep-alive', 'Content-Length': '89', 'Cookie': 'csrftoken=jmX0wdLCmXYEVskYhmyAvNeXkpB3dN2nAhRpf7ZHa6OccKvXlok9ow99rCeHf4aA'}
+file: {}
+[2024.02.11 04:43:40] I [worker 32338] ответ для соединения ('127.0.0.1', 33636): b'HTTP/1.1 404 Not Found\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: 01:02:1707604879, 11/02/2024 GMT\r\nCo'
+[2024.02.11 04:43:40] I [worker 32338] закрываем соединение ('127.0.0.1', 33636)
+[2024.02.11 04:43:53] I [worker 32338] новое соединение ('127.0.0.1', 34508)
+[2024.02.11 04:43:53] I Данные запроса от ('127.0.0.1', 34508):
+path: {0: 'api', 1: 'interests', 2: '1'}
+queries: {}
+method: PUT
+protocol: HTTP/1.1
+body: {'travel': 'false', 'hitech': 'true', 'sport': 'true', 'music': 'true'}
+extras: {}
+headers: {'Content-Type': 'application/json', 'User-Agent': 'PostmanRuntime/7.36.1', 'Accept': '*/*', 'Postman-Token': '6a16ff1a-3d59-4637-8b4b-e848d59e351e', 'Host': '127.0.0.1:8080', 'Accept-Encoding': ['gzip', 'deflate', 'br'], 'Connection': 'keep-alive', 'Content-Length': '89', 'Cookie': 'csrftoken=jmX0wdLCmXYEVskYhmyAvNeXkpB3dN2nAhRpf7ZHa6OccKvXlok9ow99rCeHf4aA'}
+file: {}
+[2024.02.11 04:43:53] I [worker 32338] ответ для соединения ('127.0.0.1', 34508): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: 01:02:1707604879, 11/02/2024 GMT\r\nContent-T'
+[2024.02.11 04:43:53] I [worker 32338] закрываем соединение ('127.0.0.1', 34508)
+[2024.02.11 04:44:29] I [worker 32338] новое соединение ('127.0.0.1', 60682)
+[2024.02.11 04:44:29] I [worker 32338] ответ для соединения ('127.0.0.1', 60682): b'\xd0\xad\xd0\xa5\xd0\x9e: DFDF\n'
+[2024.02.11 04:44:29] I [worker 32338] закрываем соединение ('127.0.0.1', 60682)
