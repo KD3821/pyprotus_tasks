@@ -95,7 +95,7 @@ if __name__ == "__main__":
         try:
             os.waitpid(-1, 0)
         except KeyboardInterrupt:
-            logging.info(f"Остановка работы сервера: {config.get('HOST')}:{config.get('PORT')}")
+            logging.info(f"Остановка работы сервера: {config.get('HOST')}:{config.get('PORT')}\n")
             sys.exit()
     except socket.error as e:
         logging.error(f"Ошибка запуска сервера: {e}")

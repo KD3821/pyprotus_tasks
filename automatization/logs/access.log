@@ -616,3 +616,70 @@ file: {}
 [2024.02.12 06:56:38] I [worker 47670] закрываем соединение ('127.0.0.1', 58100)
 [2024.02.12 06:57:03] I [worker 47670] остановка процесса
 [2024.02.12 06:57:03] I Остановка работы сервера: 127.0.0.1:8080
+[2024.02.12 23:38:35] I [worker 17093] остановка процесса
+[2024.02.12 23:38:35] I Остановка работы сервера: 127.0.0.1:8080
+[2024.02.12 23:38:36] I Запуск сервера: 127.0.0.1:8080 workers:1
+[2024.02.12 23:38:36] E Найден файл с БД: 'backend.db'
+[2024.02.12 23:38:36] I [worker 17203] запуск процесса 
+[2024.02.12 23:38:44] I [worker 17203] новое соединение ('127.0.0.1', 56634)
+[2024.02.12 23:38:44] I Данные запроса от ('127.0.0.1', 56634):
+path: {0: ''}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'Host': '127.0.0.1:8080', 'Connection': 'keep-alive', 'sec-ch-ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"', 'sec-ch-ua-mobile': '?0', 'sec-ch-ua-platform': '"Linux"', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', 'Sec-Fetch-Site': 'none', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Sec-Fetch-Dest': 'document', 'Accept-Encoding': 'gzip, deflate, br', 'Accept-Language': 'ru-RU,ru;q=0.9'}
+file: {}
+[2024.02.12 23:38:44] I [worker 17203] ответ для соединения ('127.0.0.1', 56634): b'HTTP/1.1 404 Not Found\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: 20:02:1707759516, 12/02/2024 GMT\r\nCo'
+[2024.02.12 23:38:44] I [worker 17203] закрываем соединение ('127.0.0.1', 56634)
+[2024.02.12 23:40:29] I [worker 17203] остановка процесса
+[2024.02.12 23:40:29] I Остановка работы сервера: 127.0.0.1:8080
+[2024.02.12 23:40:37] I Запуск сервера: 127.0.0.1:8080 workers:1
+[2024.02.12 23:40:37] E Найден файл с БД: 'backend.db'
+[2024.02.12 23:40:37] I [worker 17281] запуск процесса 
+[2024.02.12 23:40:44] I [worker 17281] остановка процесса
+[2024.02.12 23:40:44] I Остановка работы сервера: 127.0.0.1:8080
+
+[2024.02.12 23:41:01] I Запуск сервера: 127.0.0.1:8080 workers:1
+[2024.02.12 23:41:01] E Найден файл с БД: 'backend.db'
+[2024.02.12 23:41:01] I [worker 17304] запуск процесса 
+[2024.02.12 23:43:09] I [worker 17304] новое соединение ('127.0.0.1', 59222)
+[2024.02.12 23:43:09] I Данные запроса от ('127.0.0.1', 59222):
+path: {0: 'roses.jpg'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'Host': '127.0.0.1:8080', 'Connection': 'keep-alive', 'sec-ch-ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"', 'sec-ch-ua-mobile': '?0', 'sec-ch-ua-platform': '"Linux"', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'Sec-Purpose': 'prefetch;prerender', 'Purpose': 'prefetch', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', 'Sec-Fetch-Site': 'none', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Sec-Fetch-Dest': 'document', 'Accept-Encoding': 'gzip, deflate, br', 'Accept-Language': 'ru-RU,ru;q=0.9'}
+file: {'Content-Type': 'image/jpeg', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/roses.jpg', 'Accept-Ranges': 'bytes'}
+[2024.02.12 23:43:09] I [worker 17304] ответ для соединения ('127.0.0.1', 59222): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: 20:02:1707759661, 12/02/2024 GMT\r\nLast-Modi'
+[2024.02.12 23:43:09] I [worker 17304] закрываем соединение ('127.0.0.1', 59222)
+[2024.02.12 23:43:16] I [worker 17304] новое соединение ('127.0.0.1', 38484)
+[2024.02.12 23:43:16] I Данные запроса от ('127.0.0.1', 38484):
+path: {0: 'main'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'Host': '127.0.0.1:8080', 'Connection': 'keep-alive', 'sec-ch-ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"', 'sec-ch-ua-mobile': '?0', 'sec-ch-ua-platform': '"Linux"', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'Sec-Purpose': 'prefetch;prerender', 'Purpose': 'prefetch', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', 'Sec-Fetch-Site': 'none', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Sec-Fetch-Dest': 'document', 'Accept-Encoding': 'gzip, deflate, br', 'Accept-Language': 'ru-RU,ru;q=0.9'}
+file: {}
+[2024.02.12 23:43:16] I [worker 17304] ответ для соединения ('127.0.0.1', 38484): b'HTTP/1.1. 301 Moved Permanently\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: 20:02:1707759661, 12/02/202'
+[2024.02.12 23:43:16] I [worker 17304] закрываем соединение ('127.0.0.1', 38484)
+[2024.02.12 23:43:30] I [worker 17304] новое соединение ('127.0.0.1', 44130)
+[2024.02.12 23:43:30] I Данные запроса от ('127.0.0.1', 44130):
+path: {0: 'api', 1: 'scores', 2: '1'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'Host': '127.0.0.1:8080', 'Connection': 'keep-alive', 'sec-ch-ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"', 'sec-ch-ua-mobile': '?0', 'sec-ch-ua-platform': '"Linux"', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', 'Sec-Fetch-Site': 'none', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Sec-Fetch-Dest': 'document', 'Accept-Encoding': 'gzip, deflate, br', 'Accept-Language': 'ru-RU,ru;q=0.9'}
+file: {}
+[2024.02.12 23:43:30] I [worker 17304] ответ для соединения ('127.0.0.1', 44130): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: 20:02:1707759661, 12/02/2024 GMT\r\nContent-T'
+[2024.02.12 23:43:30] I [worker 17304] закрываем соединение ('127.0.0.1', 44130)
+[2024.02.12 23:43:36] I [worker 17304] остановка процесса
+[2024.02.12 23:43:36] I Остановка работы сервера: 127.0.0.1:8080
+

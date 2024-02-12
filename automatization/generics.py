@@ -1,6 +1,5 @@
 import logging
 import sqlite3
-import json
 
 from database import DatabaseEngine
 
@@ -12,6 +11,8 @@ class AbstractAPIService:
         self.method = method
         self.db = db
         self.service = ''
+        self.need_formatting = False
+        self.skip_formatting_fields = list()
         self.page_size = 10
 
     def get(self):
@@ -44,12 +45,13 @@ class AbstractAPIService:
         response = response_method(query, fields_order=fields_order)
         return response
 
-    def format_get_data(self, data):  # for bool formatting from 1-0 to true-false
-        need_formatting = getattr(self, 'need_formatting', False)
+    def format_get_data(self, data):  # for formatting 'bool' type data from 1-0 to true-false (from db_records to repr)
+        need_formatting = getattr(self, 'need_formatting')
+        skip_fields = getattr(self, 'skip_formatting_fields')
         if need_formatting:
             valid_data = dict()
             for key, value in data.items():
-                if key != self.field_id:
+                if key not in skip_fields:
                     valid_data.update({key: "true"}) if value == 1 else valid_data.update({key: "false"})
                 else:
                     valid_data.update({key: value})
@@ -101,9 +103,9 @@ class AbstractListCreateAPIService(AbstractAPIService):
                 conn.close()
         return self.get_response(getattr(self, 'get').__call__())
 
-    def format_post_data(self, data, order):  # for bool formatting from 1-0 to true-false
+    def format_post_data(self, data, order):  # for bool formatting from true-false to 1-0 (from repr to db_records)
         value_list = list()
-        need_formatting = getattr(self, 'need_formatting', False)
+        need_formatting = getattr(self, 'need_formatting')
         if need_formatting:
             for key in order:
                 value_list.append('1' if data.get(key) == 'true' else '0')
@@ -113,17 +115,15 @@ class AbstractListCreateAPIService(AbstractAPIService):
         return tuple(value_list)
 
 
-class AbstractDetailAPIService:
+class AbstractDetailAPIService(AbstractAPIService):
     ALLOWED_METHODS = {'GET', 'PUT', 'DELETE'}
 
-    def __init__(self, method: str, client_id: int, db: DatabaseEngine, data: dict = None):
-        self.method = method
+    def __init__(self,  method: str, client_id: int, db: DatabaseEngine, data: dict = None):
+        super().__init__(method, db)
         self.client_id = client_id
-        self.db = db
         self.data = data
-        self.service = ''
 
-    def get(self):
+    def get(self):  # override get method for detail repr
         table, field_id = self.validate_service_attrs()
         query = f"SELECT * FROM {table} WHERE {field_id} = ?"
         return query
@@ -133,24 +133,7 @@ class AbstractDetailAPIService:
         query = f"DELETE from {table} WHERE {field_id} = ?"""
         return query
 
-    def allowed_method(self):
-        if self.method not in self.ALLOWED_METHODS:
-            return False
-        return True
-
-    def format_get_data(self, data):  # for bool formatting from 1-0 to true-false
-        need_formatting = getattr(self, 'need_formatting', False)
-        if need_formatting:
-            valid_data = dict()
-            for key, value in data.items():
-                if key != self.field_id:
-                    valid_data.update({key: "true"}) if value == 1 else valid_data.update({key: "false"})
-                else:
-                    valid_data.update({key: value})
-            return valid_data
-        return data
-
-    def format_put_data(self, data, order):  # for bool formatting from 1-0 to true-false
+    def format_put_data(self, data, order):  # for bool formatting from true-false to 1-0 (from repr to db_records)
         value_list = list()
         need_formatting = getattr(self, 'need_formatting', False)
         if need_formatting:
@@ -160,19 +143,6 @@ class AbstractDetailAPIService:
             for key in order:
                 value_list.append(data.get(key))
         return tuple(value_list)
-
-    def response(self):
-        if not self.allowed_method():
-            return {'error': True, 'method': self.method}
-        fields_order = list()
-        service_method = getattr(self, self.method.lower())
-        response_method = getattr(self, self.method.lower() + '_response')
-        if self.method in ('GET', 'DELETE'):
-            query = service_method()
-        elif self.method == 'PUT':
-            query, fields_order = service_method()
-        response = response_method(query, fields_order=fields_order)
-        return response
 
     def delete_response(self, query, **kwargs):
         data = dict()
@@ -206,7 +176,7 @@ class AbstractDetailAPIService:
                 conn.close()
         return self.get_response(getattr(self, 'get').__call__())
 
-    def get_response(self, query, **kwargs):
+    def get_response(self, query, **kwargs):  # override get_response for detail repr
         db_data = dict()
         try:
             conn = self.db.get_dict_con()
@@ -229,7 +199,7 @@ class AbstractDetailAPIService:
             logging.error(f"Предупреждение БД: отсутствуют данные для пользователя с id: {self.client_id}")
         return data
 
-    def validate_service_attrs(self):
+    def validate_service_attrs(self):  # override validate_service_attrs for detail repr
         try:
             table = getattr(self, 'table')
         except AttributeError:

@@ -38,7 +38,7 @@ class BaseRequestHandler:
 
 
 class HttpRequestHandler(BaseRequestHandler):
-    ALLOWED_METHODS = {'GET', 'HEAD', 'PUT', 'DELETE', 'POST'}  # can add more methods
+    ALLOWED_METHODS = {'GET', 'HEAD', 'PUT', 'DELETE', 'POST'}  # may add-remove methods
     CREATE_UPDATE_METHODS = {'POST', 'PUT'}
     ALLOWED_FILE_FORMATS = {
         'html': 'text/html',
@@ -67,6 +67,8 @@ class HttpRequestHandler(BaseRequestHandler):
 
     OK_REQ_FIRST = 'HTTP/1.1 200 OK'
 
+    REDIRECT_FIRST = 'HTTP/1.1. 301 Moved Permanently'
+
     OK_REQ_HEADERS = {
         'Server': 'denserv/1.18.0 (Subuntu)',
         'Date': datetime.strftime(datetime.utcnow(), "%H:%m:%s, %d/%m/%Y GMT"),
@@ -76,7 +78,7 @@ class HttpRequestHandler(BaseRequestHandler):
     }
 
     NOT_FOUND_FIRST = 'HTTP/1.1 404 Not Found'
-    NOT_FOUND_BODY = '{\n"result": "ОШИБКА ЗАПРОСА",\n"message": "Отсутствуют данные для пользователя."\n}'
+    NOT_FOUND_BODY = '{\n"result": "ОШИБКА ЗАПРОСА",\n"message": "Страница не найдена."\n}'
 
     BAD_PARAM_FIRST = 'HTTP/1.1 404 Not Found'
     BAD_PARAM_BODY = '{\n"result": "ОШИБКА ЗАПРОСА",\n"message": "Невалидные параметры запроса."\n}'
@@ -97,6 +99,30 @@ class HttpRequestHandler(BaseRequestHandler):
     }
 
     DELETE_OK_FIRST = 'HTTP/1.1 204 No Content'
+
+    URL_ENCODING_PAIRS = {
+        '%20': ' ',
+        '%21': '!',
+        '%22': '"',
+        '%23': '#',
+        '%24': '$',
+        '%25': '%',
+        '%26': '&',
+        '%27': "'",
+        '%28': '(',
+        '%29': ')',
+        '%2A': '*',
+        '%2B': '+',
+        '%2C': ',',
+        '%2F': '/',
+        '%3A': ':',
+        '%3B': ';',
+        '%3D': '=',
+        '%3F': '?',
+        '%40': '@',
+        '%5B': '[',
+        '%5D': ']'
+    }
 
     def __init__(self, conn: tuple, db_engine: DatabaseEngine, request: bytes = None, document_root: str = None):
         super().__init__(conn, db_engine, request, document_root)
@@ -122,7 +148,7 @@ class HttpRequestHandler(BaseRequestHandler):
             if last_list[-1] in self.ALLOWED_FILE_FORMATS.keys():
                 self.document = {
                     'Content-Type': self.ALLOWED_FILE_FORMATS.get(last_list[-1]),
-                    'path': os.path.join(self.document_root, last),
+                    'path': os.path.join(self.document_root, *self.path_params.values(), last),
                     'Accept-Ranges': 'bytes'
                 }
         elif last.find('?') != -1:  # query param
@@ -196,6 +222,39 @@ class HttpRequestHandler(BaseRequestHandler):
             return True
         return False
 
+    def response_file(self, file_path):
+        ok_req_str = ''
+        for key, value in self.OK_REQ_HEADERS.items():
+            if key in self.document.keys():
+                continue
+            ok_req_str += f"{key}: {value}\r\n"
+        for k, v in self.document.items():
+            ok_req_str += f"{k}: {v}\r\n"
+        try:
+            with open(f"{file_path}", "rb") as img_file:
+                img_bytes = img_file.read()
+                ok_req_str += f"Content-Length: {len(img_bytes)}\r\n"
+
+                if self.body:
+                    for k, v in self.body.items():
+                        if k == 'Cookie':  # if cookie was sent in request then add our cookies (just for practice)
+                            timestamp = datetime.timestamp(datetime.utcnow())
+                            ok_req_str += f"Set-Cookie: user=CoolUser-{timestamp}\r\n"
+                            ok_req_str += "Access-Control-Expose-Headers: Set-Cookie\r\n"
+                            continue
+                        ok_req_str += f"{k}: {v}\r\n"
+
+                if self.extras:
+                    for k, v in self.extras.items():
+                        ok_req_str += f"{k}: {v}\r\n"
+
+            image_response = f"{self.OK_REQ_FIRST}\r\n{ok_req_str}\n".encode()
+            image_response += img_bytes
+            return image_response
+
+        except FileNotFoundError:
+            return self.bad_response(self.NOT_FOUND_FIRST, self.NOT_FOUND_BODY)
+
     def response(self):
         if not self.check_method_allowed():
             return self.bad_response(self.BAD_METHOD_FIRST, self.BAD_METHOD_BODY)
@@ -242,37 +301,27 @@ class HttpRequestHandler(BaseRequestHandler):
                 return f"{self.OK_REQ_FIRST}\r\n{db_req_str}\r\n\n{db_req_body}".encode()
 
         if self.document:
-            ok_req_str = ''
-            for key, value in self.OK_REQ_HEADERS.items():
-                if key in self.document.keys():
-                    continue
-                ok_req_str += f"{key}: {value}\r\n"
-            for k, v in self.document.items():
-                ok_req_str += f"{k}: {v}\r\n"
+            doc_path = self.document.get('path')
+            for key, value in self.URL_ENCODING_PAIRS.items():  # replace url encoding symbols
+                while True:
+                    index = doc_path.find(key)
+                    if index != -1:
+                        doc_path = doc_path.replace(key, value)
+                    else:
+                        break
+            return self.response_file(doc_path)
 
-            try:
-                with open(f"{self.document.get('path')}", "rb") as img_file:
-                    img_bytes = img_file.read()
-                    ok_req_str += f"Content-Length: {len(img_bytes)}\r\n"
+        dir_name = self.path_params.get(0)
 
-                    if self.body:
-                        for k, v in self.body.items():
-                            if k == 'Cookie':  # if cookie was sent in request then add our cookies (just for practice)
-                                timestamp = datetime.timestamp(datetime.utcnow())
-                                ok_req_str += f"Set-Cookie: user=CoolUser-{timestamp}\r\n"
-                                ok_req_str += "Access-Control-Expose-Headers: Set-Cookie\r\n"
-                                continue
-                            ok_req_str += f"{k}: {v}\r\n"
-
-                    if self.extras:
-                        for k, v in self.extras.items():
-                            ok_req_str += f"{k}: {v}\r\n"
-
-                image_response = f"{self.OK_REQ_FIRST}\r\n{ok_req_str}\n".encode()
-                image_response += img_bytes
-                return image_response
-
-            except FileNotFoundError:
-                return self.bad_response(self.NOT_FOUND_FIRST, self.NOT_FOUND_BODY)
+        if dir_name != '' and os.path.exists(f'{self.document_root}/{dir_name}'):  # redirect to folder's 'index.html'
+            moved_path = 'index.html'
+            return self.redirect(moved_path)
 
         return self.bad_response(self.BAD_PARAM_FIRST, self.BAD_PARAM_BODY)
+
+    def redirect(self, path):
+        redirect_str = ''
+        for key, value in self.OK_REQ_HEADERS.items():
+            redirect_str += f"{key}: {value}\r\n"
+        redirect_str += f"Location: {path}"
+        return f"{self.REDIRECT_FIRST}\r\n{redirect_str}\r\n".encode()

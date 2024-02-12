@@ -19,12 +19,12 @@ url_patterns = [
         lambda method, client_id, data, db: InterestsDetailAPIService(method, client_id, db, data)
     ),
     (
-        'api/score',
+        'api/scores',
         ('GET', 'POST'),
         lambda method, data, db: ScoreListCreateAPIService(method, db, data)
     ),
     (
-        'api/score/<int:id>',
+        'api/scores/<int:id>',
         ('GET', 'PUT', 'DELETE'),
         lambda method, client_id, data, db: ScoreDetailAPIService(method, client_id, db, data)
     )
