@@ -55,6 +55,8 @@ class CustomServer:
             db_engine=self.db_engine
         )
         response_data = handler.response()
+        if response_data is None:
+            response_data = b'Error: page not found'
         logging.info(f"[worker {worker_pid}] ответ для соединения ('{handler.client_host}', {handler.client_port}): "
                      f"{response_data[:100]}")
         return response_data
@@ -98,3 +100,10 @@ if __name__ == "__main__":
     except socket.error as e:
         logging.error(f"Ошибка запуска сервера: {e}")
         sys.exit()
+
+
+"""
+python3 httpd.py -config server_config.json
+python3 httpd.py -w 1
+python3 httpd.py -w 1 -r /home/dk/PycharmProjects/pyprotus/automatization/documents
+"""

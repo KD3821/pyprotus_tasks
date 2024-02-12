@@ -51,10 +51,3 @@ def get_config():
             return config
 
     return config
-
-
-"""
-python3 httpd.py -config server_config.json
-python3 httpd.py -w 1
-python3 httpd.py -w 1 -r /home/dk/PycharmProjects/pyprotus/automatization/documents
-"""

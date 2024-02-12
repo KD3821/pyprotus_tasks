@@ -36,13 +36,13 @@ class DatabaseEngine:
         cursor.execute(
             """
             CREATE TABLE IF NOT EXISTS client_scores
-            ([client_id] INTEGER PRIMARY KEY, [score] REAL)
+            ([client_id] INTEGER PRIMARY KEY AUTOINCREMENT, [score] REAL)
             """
         )
         cursor.execute(
             """
             CREATE TABLE IF NOT EXISTS client_interests
-            ([client_id] INTEGER PRIMARY KEY, [travel] INTEGER, [hitech] INTEGER, [sport] INTEGER, [music] INTEGER)
+            ([client_id] INTEGER PRIMARY KEY AUTOINCREMENT, [travel] INTEGER, [hitech] INTEGER, [sport] INTEGER, [music] INTEGER)
             """
         )
         cursor.executemany("INSERT INTO client_scores VALUES (?, ?)", cls.INITIAL_SCORE_VALUES)
@@ -60,6 +60,6 @@ class DatabaseEngine:
         conn.row_factory = self.dict_factory
         return conn
 
-    def get_update_con(self):
+    def get_reg_con(self):
         conn = sqlite3.connect(self.db_name)
         return conn

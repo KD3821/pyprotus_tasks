@@ -11,7 +11,7 @@ url_patterns = [
     (
         'api/interests',
         ('GET', 'POST'),
-        lambda method, data, db: InterestsListCreateAPIService(method, data, db)
+        lambda method, data, db: InterestsListCreateAPIService(method, db, data)
     ),
     (
         'api/interests/<int:id>',
@@ -21,7 +21,7 @@ url_patterns = [
     (
         'api/score',
         ('GET', 'POST'),
-        lambda method, data, db: ScoreListCreateAPIService(method, data, db)
+        lambda method, data, db: ScoreListCreateAPIService(method, db, data)
     ),
     (
         'api/score/<int:id>',
