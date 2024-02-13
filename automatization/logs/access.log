@@ -1,56 +1,425 @@
-[2024.02.13 05:44:42] I [worker 29395] новое соединение ('127.0.0.1', 43688)
-[2024.02.13 05:44:42] I Данные запроса от ('127.0.0.1', 43688):
-path: {0: 'main', 1: 'test..html'}
-queries: {'search': 'Rose'}
+[2024.02.13 13:21:20] I [worker 8500] новое соединение ('127.0.0.1', 47122)
+[2024.02.13 13:21:20] I Данные запроса от ('127.0.0.1', 47122):
+path: {0: 'index.html'}
+queries: {}
 method: GET
 protocol: HTTP/1.1
 body: {}
 extras: {}
-headers: {'User-Agent': 'PostmanRuntime/7.36.1', 'Accept': '*/*', 'Postman-Token': '60f9dd4d-f5a2-435c-9059-8d5b9ca2805e', 'Host': '127.0.0.1:8080', 'Accept-Encoding': 'gzip, deflate, br', 'Connection': 'keep-alive', 'Cookie': 'csrftoken=jmX0wdLCmXYEVskYhmyAvNeXkpB3dN2nAhRpf7ZHa6OccKvXlok9ow99rCeHf4aA'}
-file: {'Content-Type': 'text/html', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/main/test..html', 'Accept-Ranges': 'bytes'}
-[2024.02.13 05:44:42] I [worker 29395] ответ для соединения ('127.0.0.1', 43688): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 02:44:26 GMT\r\nLast-Modifie'
-[2024.02.13 05:44:42] I [worker 29395] закрываем соединение ('127.0.0.1', 43688)
-[2024.02.13 05:46:43] I [worker 29396] новое соединение ('127.0.0.1', 39114)
-[2024.02.13 05:46:43] I Данные запроса от ('127.0.0.1', 39114):
-path: {0: 'api', 1: 'interests'}
+headers: {'Host': '127.0.0.1:8080', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'sec-ch-ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"', 'sec-ch-ua-mobile': '?0', 'sec-ch-ua-platform': '"Linux"', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', 'Sec-Fetch-Site': 'none', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Sec-Fetch-Dest': 'document', 'Accept-Encoding': 'gzip, deflate, br', 'Accept-Language': 'ru-RU,ru;q=0.9'}
+file: {'Content-Type': 'text/html', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/index.html', 'Accept-Ranges': 'bytes'}
+[2024.02.13 13:21:20] I [worker 8500] ответ для соединения ('127.0.0.1', 47122): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 10:19:27 GMT\r\nLast-Modifie'
+[2024.02.13 13:21:20] I [worker 8500] закрываем соединение ('127.0.0.1', 47122)
+[2024.02.13 13:21:20] I [worker 8501] новое соединение ('127.0.0.1', 47138)
+[2024.02.13 13:21:20] I Данные запроса от ('127.0.0.1', 47138):
+path: {0: 'print.css'}
 queries: {}
-method: POST
+method: GET
 protocol: HTTP/1.1
-body: {'travel': 'true', 'hitech': 'true', 'sport': 'false', 'music': 'false'}
+body: {}
 extras: {}
-headers: {'Content-Type': 'application/json', 'User-Agent': 'PostmanRuntime/7.36.1', 'Accept': '*/*', 'Postman-Token': '5dc2d1c7-4d53-46ef-a148-3025dbe00334', 'Host': '127.0.0.1:8080', 'Accept-Encoding': 'gzip, deflate, br', 'Connection': 'keep-alive', 'Content-Length': '90', 'Cookie': 'csrftoken=jmX0wdLCmXYEVskYhmyAvNeXkpB3dN2nAhRpf7ZHa6OccKvXlok9ow99rCeHf4aA'}
+headers: {'Host': '127.0.0.1:8080', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'sec-ch-ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"', 'sec-ch-ua-mobile': '?0', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'sec-ch-ua-platform': '"Linux"', 'Accept': 'text/css,*/*;q=0.1', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'no-cors', 'Sec-Fetch-Dest': 'style', 'Referer': 'http://127.0.0.1:8080/index.html', 'Accept-Encoding': 'gzip, deflate, br', 'Accept-Language': 'ru-RU,ru;q=0.9'}
+file: {'Content-Type': 'text/css', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/print.css', 'Accept-Ranges': 'bytes'}
+[2024.02.13 13:21:20] I [worker 8501] ответ для соединения ('127.0.0.1', 47138): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 10:19:27 GMT\r\nLast-Modifie'
+[2024.02.13 13:21:20] I [worker 8501] закрываем соединение ('127.0.0.1', 47138)
+[2024.02.13 13:21:20] I [worker 8502] новое соединение ('127.0.0.1', 47142)
+[2024.02.13 13:21:20] I Данные запроса от ('127.0.0.1', 47142):
+path: {0: 'favicon.ico'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'Host': '127.0.0.1:8080', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'sec-ch-ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"', 'sec-ch-ua-mobile': '?0', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'sec-ch-ua-platform': '"Linux"', 'Accept': 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'no-cors', 'Sec-Fetch-Dest': 'image', 'Referer': 'http://127.0.0.1:8080/index.html', 'Accept-Encoding': 'gzip, deflate, br', 'Accept-Language': 'ru-RU,ru;q=0.9'}
+file: {'Content-Type': 'image/x-icon', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/favicon.ico', 'Accept-Ranges': 'bytes'}
+[2024.02.13 13:21:20] I [worker 8502] ответ для соединения ('127.0.0.1', 47142): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 10:19:27 GMT\r\nLast-Modifie'
+[2024.02.13 13:21:20] I [worker 8502] закрываем соединение ('127.0.0.1', 47142)
+[2024.02.13 13:21:33] I [worker 8504] новое соединение ('127.0.0.1', 43710)
+[2024.02.13 13:21:33] I Данные запроса от ('127.0.0.1', 43710):
+path: {0: 'directory1', 1: 'directory2', 2: 'index.ru'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'Host': '127.0.0.1:8080', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'sec-ch-ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"', 'sec-ch-ua-mobile': '?0', 'sec-ch-ua-platform': '"Linux"', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', 'Sec-Fetch-Site': 'none', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Sec-Fetch-Dest': 'document', 'Accept-Encoding': 'gzip, deflate, br', 'Accept-Language': 'ru-RU,ru;q=0.9'}
 file: {}
-[2024.02.13 05:46:43] I [worker 29396] ответ для соединения ('127.0.0.1', 39114): b'HTTP/1.1 405 Method Not Allowed\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 02:44:26 G'
-[2024.02.13 05:46:43] I [worker 29396] закрываем соединение ('127.0.0.1', 39114)
-[2024.02.13 05:47:02] I [worker 29400] остановка процесса
-[2024.02.13 05:47:02] I [worker 29398] остановка процесса
-[2024.02.13 05:47:02] I [worker 29404] остановка процесса
-[2024.02.13 05:47:02] I [worker 29401] остановка процесса
-[2024.02.13 05:47:02] I [worker 29397] остановка процесса
-[2024.02.13 05:47:02] I [worker 29396] остановка процесса
-[2024.02.13 05:47:02] I Остановка работы сервера: 127.0.0.1:8080
+[2024.02.13 13:21:33] I [worker 8504] ответ для соединения ('127.0.0.1', 43710): b'HTTP/1.1. 301 Moved Permanently\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 10:19:27 G'
+[2024.02.13 13:21:33] I [worker 8504] закрываем соединение ('127.0.0.1', 43710)
+[2024.02.13 13:21:33] I [worker 8503] новое соединение ('127.0.0.1', 43712)
+[2024.02.13 13:21:33] I Данные запроса от ('127.0.0.1', 43712):
+path: {0: 'index.html'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'Host': '127.0.0.1:8080', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', 'Sec-Fetch-Site': 'none', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Sec-Fetch-Dest': 'document', 'sec-ch-ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"', 'sec-ch-ua-mobile': '?0', 'sec-ch-ua-platform': '"Linux"', 'Accept-Encoding': 'gzip, deflate, br', 'Accept-Language': 'ru-RU,ru;q=0.9'}
+file: {'Content-Type': 'text/html', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/index.html', 'Accept-Ranges': 'bytes'}
+[2024.02.13 13:21:33] I [worker 8503] ответ для соединения ('127.0.0.1', 43712): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 10:19:27 GMT\r\nLast-Modifie'
+[2024.02.13 13:21:33] I [worker 8503] закрываем соединение ('127.0.0.1', 43712)
+[2024.02.13 13:21:34] I [worker 8505] новое соединение ('127.0.0.1', 43720)
+[2024.02.13 13:21:34] I Данные запроса от ('127.0.0.1', 43720):
+path: {0: 'print.css'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'Host': '127.0.0.1:8080', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'sec-ch-ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"', 'sec-ch-ua-mobile': '?0', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'sec-ch-ua-platform': '"Linux"', 'Accept': 'text/css,*/*;q=0.1', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'no-cors', 'Sec-Fetch-Dest': 'style', 'Referer': 'http://127.0.0.1:8080/index.html', 'Accept-Encoding': 'gzip, deflate, br', 'Accept-Language': 'ru-RU,ru;q=0.9'}
+file: {'Content-Type': 'text/css', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/print.css', 'Accept-Ranges': 'bytes'}
+[2024.02.13 13:21:34] I [worker 8505] ответ для соединения ('127.0.0.1', 43720): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 10:19:27 GMT\r\nLast-Modifie'
+[2024.02.13 13:21:34] I [worker 8505] закрываем соединение ('127.0.0.1', 43720)
+[2024.02.13 13:21:34] I [worker 8507] новое соединение ('127.0.0.1', 43730)
+[2024.02.13 13:21:34] I Данные запроса от ('127.0.0.1', 43730):
+path: {0: 'favicon.ico'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'Host': '127.0.0.1:8080', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'sec-ch-ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"', 'sec-ch-ua-mobile': '?0', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'sec-ch-ua-platform': '"Linux"', 'Accept': 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'no-cors', 'Sec-Fetch-Dest': 'image', 'Referer': 'http://127.0.0.1:8080/index.html', 'Accept-Encoding': 'gzip, deflate, br', 'Accept-Language': 'ru-RU,ru;q=0.9'}
+file: {'Content-Type': 'image/x-icon', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/favicon.ico', 'Accept-Ranges': 'bytes'}
+[2024.02.13 13:21:34] I [worker 8507] ответ для соединения ('127.0.0.1', 43730): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 10:19:27 GMT\r\nLast-Modifie'
+[2024.02.13 13:21:34] I [worker 8507] закрываем соединение ('127.0.0.1', 43730)
+[2024.02.13 13:21:57] I [worker 8506] новое соединение ('127.0.0.1', 38496)
+[2024.02.13 13:21:57] I Данные запроса от ('127.0.0.1', 38496):
+path: {0: 'menu'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'Host': '127.0.0.1:8080', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'sec-ch-ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"', 'sec-ch-ua-mobile': '?0', 'sec-ch-ua-platform': '"Linux"', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', 'Sec-Fetch-Site': 'none', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Sec-Fetch-Dest': 'document', 'Accept-Encoding': 'gzip, deflate, br', 'Accept-Language': 'ru-RU,ru;q=0.9'}
+file: {}
+[2024.02.13 13:21:57] I [worker 8506] ответ для соединения ('127.0.0.1', 38496): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 10:19:27 GMT\r\nLast-Modifie'
+[2024.02.13 13:21:57] I [worker 8506] закрываем соединение ('127.0.0.1', 38496)
+[2024.02.13 13:21:57] I [worker 8508] новое соединение ('127.0.0.1', 38506)
+[2024.02.13 13:21:57] I Данные запроса от ('127.0.0.1', 38506):
+path: {0: 'favicon.ico'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'Host': '127.0.0.1:8080', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'sec-ch-ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"', 'sec-ch-ua-mobile': '?0', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'sec-ch-ua-platform': '"Linux"', 'Accept': 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'no-cors', 'Sec-Fetch-Dest': 'image', 'Referer': 'http://127.0.0.1:8080/menu/', 'Accept-Encoding': 'gzip, deflate, br', 'Accept-Language': 'ru-RU,ru;q=0.9'}
+file: {'Content-Type': 'image/x-icon', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/favicon.ico', 'Accept-Ranges': 'bytes'}
+[2024.02.13 13:21:57] I [worker 8508] ответ для соединения ('127.0.0.1', 38506): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 10:19:27 GMT\r\nLast-Modifie'
+[2024.02.13 13:21:57] I [worker 8508] закрываем соединение ('127.0.0.1', 38506)
+[2024.02.13 13:21:57] I [worker 8509] новое соединение ('127.0.0.1', 38514)
+[2024.02.13 13:21:57] I Данные запроса от ('127.0.0.1', 38514):
+path: {0: 'favicon.ico'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'Host': '127.0.0.1:8080', 'Connection': 'keep-alive', 'sec-ch-ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"', 'sec-ch-ua-mobile': '?0', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'sec-ch-ua-platform': '"Linux"', 'Accept': 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8', 'Sec-Fetch-Site': 'cross-site', 'Sec-Fetch-Mode': 'no-cors', 'Sec-Fetch-Dest': 'image', 'Accept-Encoding': 'gzip, deflate, br', 'Accept-Language': 'ru-RU,ru;q=0.9'}
+file: {'Content-Type': 'image/x-icon', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/favicon.ico', 'Accept-Ranges': 'bytes'}
+[2024.02.13 13:21:57] I [worker 8509] ответ для соединения ('127.0.0.1', 38514): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 10:19:27 GMT\r\nLast-Modifie'
+[2024.02.13 13:21:57] I [worker 8509] закрываем соединение ('127.0.0.1', 38514)
+[2024.02.13 13:22:03] I [worker 8500] новое соединение ('127.0.0.1', 60250)
+[2024.02.13 13:22:03] I Данные запроса от ('127.0.0.1', 60250):
+path: {0: 'menu', 1: 'index.html'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'Host': '127.0.0.1:8080', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'sec-ch-ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"', 'sec-ch-ua-mobile': '?0', 'sec-ch-ua-platform': '"Linux"', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', 'Sec-Fetch-Site': 'none', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Sec-Fetch-Dest': 'document', 'Accept-Encoding': 'gzip, deflate, br', 'Accept-Language': 'ru-RU,ru;q=0.9'}
+file: {'Content-Type': 'text/html', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/menu/index.html', 'Accept-Ranges': 'bytes'}
+[2024.02.13 13:22:03] I [worker 8500] ответ для соединения ('127.0.0.1', 60250): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 10:19:27 GMT\r\nLast-Modifie'
+[2024.02.13 13:22:03] I [worker 8500] закрываем соединение ('127.0.0.1', 60250)
+[2024.02.13 13:22:03] I [worker 8501] новое соединение ('127.0.0.1', 60254)
+[2024.02.13 13:22:03] I Данные запроса от ('127.0.0.1', 60254):
+path: {0: 'favicon.ico'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'Host': '127.0.0.1:8080', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'sec-ch-ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"', 'sec-ch-ua-mobile': '?0', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'sec-ch-ua-platform': '"Linux"', 'Accept': 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'no-cors', 'Sec-Fetch-Dest': 'image', 'Referer': 'http://127.0.0.1:8080/menu/index.html', 'Accept-Encoding': 'gzip, deflate, br', 'Accept-Language': 'ru-RU,ru;q=0.9'}
+file: {'Content-Type': 'image/x-icon', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/favicon.ico', 'Accept-Ranges': 'bytes'}
+[2024.02.13 13:22:03] I [worker 8501] ответ для соединения ('127.0.0.1', 60254): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 10:19:27 GMT\r\nLast-Modifie'
+[2024.02.13 13:22:03] I [worker 8501] закрываем соединение ('127.0.0.1', 60254)
+[2024.02.13 13:22:09] I [worker 8502] новое соединение ('127.0.0.1', 60264)
+[2024.02.13 13:22:09] I Данные запроса от ('127.0.0.1', 60264):
+path: {}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'Host': '127.0.0.1:8080', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'sec-ch-ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"', 'sec-ch-ua-mobile': '?0', 'sec-ch-ua-platform': '"Linux"', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', 'Sec-Fetch-Site': 'none', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Sec-Fetch-Dest': 'document', 'Accept-Encoding': 'gzip, deflate, br', 'Accept-Language': 'ru-RU,ru;q=0.9'}
+file: {}
+[2024.02.13 13:22:09] I [worker 8502] ответ для соединения ('127.0.0.1', 60264): b'HTTP/1.1 404 Not Found\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 10:19:27 GMT\r\nConte'
+[2024.02.13 13:22:09] I [worker 8502] закрываем соединение ('127.0.0.1', 60264)
+[2024.02.13 13:22:10] I [worker 8504] новое соединение ('127.0.0.1', 60278)
+[2024.02.13 13:22:10] I Данные запроса от ('127.0.0.1', 60278):
+path: {0: 'favicon.ico'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'Host': '127.0.0.1:8080', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'sec-ch-ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"', 'sec-ch-ua-mobile': '?0', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'sec-ch-ua-platform': '"Linux"', 'Accept': 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'no-cors', 'Sec-Fetch-Dest': 'image', 'Referer': 'http://127.0.0.1:8080/', 'Accept-Encoding': 'gzip, deflate, br', 'Accept-Language': 'ru-RU,ru;q=0.9'}
+file: {'Content-Type': 'image/x-icon', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/favicon.ico', 'Accept-Ranges': 'bytes'}
+[2024.02.13 13:22:10] I [worker 8504] ответ для соединения ('127.0.0.1', 60278): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 10:19:27 GMT\r\nLast-Modifie'
+[2024.02.13 13:22:10] I [worker 8504] закрываем соединение ('127.0.0.1', 60278)
+[2024.02.13 13:26:39] I [worker 8508] остановка процесса
+[2024.02.13 13:26:39] I [worker 8504] остановка процесса
+[2024.02.13 13:26:39] I [worker 8509] остановка процесса
+[2024.02.13 13:26:39] I [worker 8507] остановка процесса
+[2024.02.13 13:26:39] I [worker 8506] остановка процесса
+[2024.02.13 13:26:39] I Остановка работы сервера: 127.0.0.1:8080
 
-[2024.02.13 05:47:02] I [worker 29403] остановка процесса
-[2024.02.13 05:47:02] I [worker 29399] остановка процесса
-[2024.02.13 05:47:02] I [worker 29395] остановка процесса
-[2024.02.13 05:47:02] I [worker 29402] остановка процесса
-[2024.02.13 05:47:20] I Запуск сервера: 127.0.0.1:8080 workers:10
-[2024.02.13 05:47:20] E Найден файл с БД: 'backend.db'
-[2024.02.13 05:47:20] E Ошибка запуска сервера: [Errno 98] Address already in use
-[2024.02.13 05:47:51] I Запуск сервера: 127.0.0.1:8080 workers:10
-[2024.02.13 05:47:51] E Найден файл с БД: 'backend.db'
-[2024.02.13 05:47:51] I [worker 29578] запуск процесса 
-[2024.02.13 05:47:51] I [worker 29579] запуск процесса 
-[2024.02.13 05:47:51] I [worker 29580] запуск процесса 
-[2024.02.13 05:47:51] I [worker 29581] запуск процесса 
-[2024.02.13 05:47:51] I [worker 29582] запуск процесса 
-[2024.02.13 05:47:51] I [worker 29584] запуск процесса 
-[2024.02.13 05:47:51] I [worker 29585] запуск процесса 
-[2024.02.13 05:47:51] I [worker 29583] запуск процесса 
-[2024.02.13 05:47:51] I [worker 29587] запуск процесса 
-[2024.02.13 05:47:51] I [worker 29586] запуск процесса 
-[2024.02.13 05:47:57] I [worker 29578] новое соединение ('127.0.0.1', 37236)
-[2024.02.13 05:47:57] I Данные запроса от ('127.0.0.1', 37236):
+[2024.02.13 13:26:39] I [worker 8503] остановка процесса
+[2024.02.13 13:26:39] I [worker 8502] остановка процесса
+[2024.02.13 13:26:39] I [worker 8505] остановка процесса
+[2024.02.13 13:26:39] I [worker 8500] остановка процесса
+[2024.02.13 13:26:39] I [worker 8501] остановка процесса
+[2024.02.13 13:26:41] I Запуск сервера: 127.0.0.1:8080 workers:10
+[2024.02.13 13:26:41] E Найден файл с БД: 'backend.db'
+[2024.02.13 13:26:41] I [worker 8895] запуск процесса 
+[2024.02.13 13:26:41] I [worker 8896] запуск процесса 
+[2024.02.13 13:26:41] I [worker 8898] запуск процесса 
+[2024.02.13 13:26:41] I [worker 8899] запуск процесса 
+[2024.02.13 13:26:41] I [worker 8897] запуск процесса 
+[2024.02.13 13:26:41] I [worker 8900] запуск процесса 
+[2024.02.13 13:26:41] I [worker 8902] запуск процесса 
+[2024.02.13 13:26:41] I [worker 8901] запуск процесса 
+[2024.02.13 13:26:41] I [worker 8904] запуск процесса 
+[2024.02.13 13:26:41] I [worker 8903] запуск процесса 
+[2024.02.13 13:27:09] I [worker 8895] новое соединение ('127.0.0.1', 42454)
+[2024.02.13 13:27:09] I Данные запроса от ('127.0.0.1', 42454):
+path: {0: 'directory1', 1: 'directory2', 2: 'price.html'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'Host': '127.0.0.1:8080', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'sec-ch-ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"', 'sec-ch-ua-mobile': '?0', 'sec-ch-ua-platform': '"Linux"', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', 'Sec-Fetch-Site': 'none', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Sec-Fetch-Dest': 'document', 'Accept-Encoding': 'gzip, deflate, br', 'Accept-Language': 'ru-RU,ru;q=0.9'}
+file: {'Content-Type': 'text/html', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/directory1/directory2/price.html', 'Accept-Ranges': 'bytes'}
+[2024.02.13 13:27:09] I [worker 8895] ответ для соединения ('127.0.0.1', 42454): b'HTTP/1.1. 301 Moved Permanently\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 10:26:41 G'
+[2024.02.13 13:27:09] I [worker 8895] закрываем соединение ('127.0.0.1', 42454)
+[2024.02.13 13:27:09] I [worker 8896] новое соединение ('127.0.0.1', 42462)
+[2024.02.13 13:27:09] I Данные запроса от ('127.0.0.1', 42462):
+path: {0: 'index.html'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'Host': '127.0.0.1:8080', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', 'Sec-Fetch-Site': 'none', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Sec-Fetch-Dest': 'document', 'sec-ch-ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"', 'sec-ch-ua-mobile': '?0', 'sec-ch-ua-platform': '"Linux"', 'Accept-Encoding': 'gzip, deflate, br', 'Accept-Language': 'ru-RU,ru;q=0.9'}
+file: {'Content-Type': 'text/html', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/index.html', 'Accept-Ranges': 'bytes'}
+[2024.02.13 13:27:09] I [worker 8896] ответ для соединения ('127.0.0.1', 42462): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 10:26:41 GMT\r\nLast-Modifie'
+[2024.02.13 13:27:09] I [worker 8896] закрываем соединение ('127.0.0.1', 42462)
+[2024.02.13 13:27:09] I [worker 8898] новое соединение ('127.0.0.1', 42466)
+[2024.02.13 13:27:09] I Данные запроса от ('127.0.0.1', 42466):
+path: {0: 'print.css'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'Host': '127.0.0.1:8080', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'sec-ch-ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"', 'sec-ch-ua-mobile': '?0', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'sec-ch-ua-platform': '"Linux"', 'Accept': 'text/css,*/*;q=0.1', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'no-cors', 'Sec-Fetch-Dest': 'style', 'Referer': 'http://127.0.0.1:8080/index.html', 'Accept-Encoding': 'gzip, deflate, br', 'Accept-Language': 'ru-RU,ru;q=0.9'}
+file: {'Content-Type': 'text/css', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/print.css', 'Accept-Ranges': 'bytes'}
+[2024.02.13 13:27:09] I [worker 8898] ответ для соединения ('127.0.0.1', 42466): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 10:26:41 GMT\r\nLast-Modifie'
+[2024.02.13 13:27:09] I [worker 8898] закрываем соединение ('127.0.0.1', 42466)
+[2024.02.13 13:27:09] I [worker 8899] новое соединение ('127.0.0.1', 42470)
+[2024.02.13 13:27:09] I Данные запроса от ('127.0.0.1', 42470):
+path: {0: 'favicon.ico'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'Host': '127.0.0.1:8080', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'sec-ch-ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"', 'sec-ch-ua-mobile': '?0', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'sec-ch-ua-platform': '"Linux"', 'Accept': 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'no-cors', 'Sec-Fetch-Dest': 'image', 'Referer': 'http://127.0.0.1:8080/index.html', 'Accept-Encoding': 'gzip, deflate, br', 'Accept-Language': 'ru-RU,ru;q=0.9'}
+file: {'Content-Type': 'image/x-icon', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/favicon.ico', 'Accept-Ranges': 'bytes'}
+[2024.02.13 13:27:09] I [worker 8899] ответ для соединения ('127.0.0.1', 42470): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 10:26:41 GMT\r\nLast-Modifie'
+[2024.02.13 13:27:09] I [worker 8899] закрываем соединение ('127.0.0.1', 42470)
+[2024.02.13 13:27:35] I [worker 8897] новое соединение ('127.0.0.1', 50036)
+[2024.02.13 13:27:35] I Данные запроса от ('127.0.0.1', 50036):
+path: {0: 'directory1', 1: 'price.html'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'Host': '127.0.0.1:8080', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'sec-ch-ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"', 'sec-ch-ua-mobile': '?0', 'sec-ch-ua-platform': '"Linux"', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', 'Sec-Fetch-Site': 'none', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Sec-Fetch-Dest': 'document', 'Accept-Encoding': 'gzip, deflate, br', 'Accept-Language': 'ru-RU,ru;q=0.9'}
+file: {'Content-Type': 'text/html', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/directory1/price.html', 'Accept-Ranges': 'bytes'}
+[2024.02.13 13:27:35] I [worker 8897] ответ для соединения ('127.0.0.1', 50036): b'HTTP/1.1 404 Not Found\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 10:26:41 GMT\r\nConte'
+[2024.02.13 13:27:35] I [worker 8897] закрываем соединение ('127.0.0.1', 50036)
+[2024.02.13 13:27:35] I [worker 8900] новое соединение ('127.0.0.1', 50038)
+[2024.02.13 13:27:35] I Данные запроса от ('127.0.0.1', 50038):
+path: {0: 'favicon.ico'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'Host': '127.0.0.1:8080', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'sec-ch-ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"', 'sec-ch-ua-mobile': '?0', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'sec-ch-ua-platform': '"Linux"', 'Accept': 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'no-cors', 'Sec-Fetch-Dest': 'image', 'Referer': 'http://127.0.0.1:8080/directory1/price.html', 'Accept-Encoding': 'gzip, deflate, br', 'Accept-Language': 'ru-RU,ru;q=0.9'}
+file: {'Content-Type': 'image/x-icon', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/favicon.ico', 'Accept-Ranges': 'bytes'}
+[2024.02.13 13:27:35] I [worker 8900] ответ для соединения ('127.0.0.1', 50038): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 10:26:41 GMT\r\nLast-Modifie'
+[2024.02.13 13:27:35] I [worker 8900] закрываем соединение ('127.0.0.1', 50038)
+[2024.02.13 13:27:48] I [worker 8902] новое соединение ('127.0.0.1', 60058)
+[2024.02.13 13:27:48] I Данные запроса от ('127.0.0.1', 60058):
+path: {0: 'main', 1: 'directory1', 2: 'price.html'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'Host': '127.0.0.1:8080', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'sec-ch-ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"', 'sec-ch-ua-mobile': '?0', 'sec-ch-ua-platform': '"Linux"', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', 'Sec-Fetch-Site': 'none', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Sec-Fetch-Dest': 'document', 'Accept-Encoding': 'gzip, deflate, br', 'Accept-Language': 'ru-RU,ru;q=0.9'}
+file: {'Content-Type': 'text/html', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/main/directory1/price.html', 'Accept-Ranges': 'bytes'}
+[2024.02.13 13:27:48] I [worker 8902] ответ для соединения ('127.0.0.1', 60058): b'HTTP/1.1. 301 Moved Permanently\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 10:26:41 G'
+[2024.02.13 13:27:48] I [worker 8902] закрываем соединение ('127.0.0.1', 60058)
+[2024.02.13 13:27:48] I [worker 8901] новое соединение ('127.0.0.1', 60062)
+[2024.02.13 13:27:48] I Данные запроса от ('127.0.0.1', 60062):
+path: {0: 'index.html'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'Host': '127.0.0.1:8080', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', 'Sec-Fetch-Site': 'none', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Sec-Fetch-Dest': 'document', 'sec-ch-ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"', 'sec-ch-ua-mobile': '?0', 'sec-ch-ua-platform': '"Linux"', 'Accept-Encoding': 'gzip, deflate, br', 'Accept-Language': 'ru-RU,ru;q=0.9'}
+file: {'Content-Type': 'text/html', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/index.html', 'Accept-Ranges': 'bytes'}
+[2024.02.13 13:27:48] I [worker 8901] ответ для соединения ('127.0.0.1', 60062): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 10:26:41 GMT\r\nLast-Modifie'
+[2024.02.13 13:27:48] I [worker 8901] закрываем соединение ('127.0.0.1', 60062)
+[2024.02.13 13:27:48] I [worker 8904] новое соединение ('127.0.0.1', 60066)
+[2024.02.13 13:27:48] I Данные запроса от ('127.0.0.1', 60066):
+path: {0: 'print.css'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'Host': '127.0.0.1:8080', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'sec-ch-ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"', 'sec-ch-ua-mobile': '?0', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'sec-ch-ua-platform': '"Linux"', 'Accept': 'text/css,*/*;q=0.1', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'no-cors', 'Sec-Fetch-Dest': 'style', 'Referer': 'http://127.0.0.1:8080/index.html', 'Accept-Encoding': 'gzip, deflate, br', 'Accept-Language': 'ru-RU,ru;q=0.9'}
+file: {'Content-Type': 'text/css', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/print.css', 'Accept-Ranges': 'bytes'}
+[2024.02.13 13:27:48] I [worker 8904] ответ для соединения ('127.0.0.1', 60066): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 10:26:41 GMT\r\nLast-Modifie'
+[2024.02.13 13:27:48] I [worker 8904] закрываем соединение ('127.0.0.1', 60066)
+[2024.02.13 13:27:48] I [worker 8903] новое соединение ('127.0.0.1', 60072)
+[2024.02.13 13:27:48] I Данные запроса от ('127.0.0.1', 60072):
+path: {0: 'favicon.ico'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'Host': '127.0.0.1:8080', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'sec-ch-ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"', 'sec-ch-ua-mobile': '?0', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'sec-ch-ua-platform': '"Linux"', 'Accept': 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'no-cors', 'Sec-Fetch-Dest': 'image', 'Referer': 'http://127.0.0.1:8080/index.html', 'Accept-Encoding': 'gzip, deflate, br', 'Accept-Language': 'ru-RU,ru;q=0.9'}
+file: {'Content-Type': 'image/x-icon', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/favicon.ico', 'Accept-Ranges': 'bytes'}
+[2024.02.13 13:27:48] I [worker 8903] ответ для соединения ('127.0.0.1', 60072): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 10:26:41 GMT\r\nLast-Modifie'
+[2024.02.13 13:27:48] I [worker 8903] закрываем соединение ('127.0.0.1', 60072)
+[2024.02.13 13:32:38] I [worker 8899] остановка процесса
+[2024.02.13 13:32:38] I [worker 8903] остановка процесса
+[2024.02.13 13:32:38] I [worker 8900] остановка процесса
+[2024.02.13 13:32:38] I [worker 8898] остановка процесса
+[2024.02.13 13:32:38] I [worker 8902] остановка процесса
+[2024.02.13 13:32:38] I [worker 8901] остановка процесса
+[2024.02.13 13:32:38] I [worker 8896] остановка процесса
+[2024.02.13 13:32:38] I [worker 8904] остановка процесса
+[2024.02.13 13:32:38] I [worker 8897] остановка процесса
+[2024.02.13 13:32:38] I [worker 8895] остановка процесса
+[2024.02.13 13:32:38] I Остановка работы сервера: 127.0.0.1:8080
+
+[2024.02.13 13:32:39] I Запуск сервера: 127.0.0.1:8080 workers:10
+[2024.02.13 13:32:39] E Найден файл с БД: 'backend.db'
+[2024.02.13 13:32:39] I [worker 9106] запуск процесса 
+[2024.02.13 13:32:39] I [worker 9107] запуск процесса 
+[2024.02.13 13:32:39] I [worker 9108] запуск процесса 
+[2024.02.13 13:32:39] I [worker 9110] запуск процесса 
+[2024.02.13 13:32:39] I [worker 9113] запуск процесса 
+[2024.02.13 13:32:39] I [worker 9114] запуск процесса 
+[2024.02.13 13:32:39] I [worker 9111] запуск процесса 
+[2024.02.13 13:32:39] I [worker 9115] запуск процесса 
+[2024.02.13 13:32:39] I [worker 9109] запуск процесса 
+[2024.02.13 13:32:39] I [worker 9112] запуск процесса 
+[2024.02.13 13:33:01] I [worker 9106] новое соединение ('127.0.0.1', 52144)
+[2024.02.13 13:33:01] I Данные запроса от ('127.0.0.1', 52144):
+path: {0: 'main', 1: 'directory1', 2: 'price.html'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'Host': '127.0.0.1:8080', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'sec-ch-ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"', 'sec-ch-ua-mobile': '?0', 'sec-ch-ua-platform': '"Linux"', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', 'Sec-Fetch-Site': 'none', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Sec-Fetch-Dest': 'document', 'Accept-Encoding': 'gzip, deflate, br', 'Accept-Language': 'ru-RU,ru;q=0.9'}
+file: {'Content-Type': 'text/html', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/main/directory1/price.html', 'Accept-Ranges': 'bytes'}
+[2024.02.13 13:33:01] I [worker 9106] ответ для соединения ('127.0.0.1', 52144): b'HTTP/1.1. 301 Moved Permanently\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 10:32:39 G'
+[2024.02.13 13:33:01] I [worker 9106] закрываем соединение ('127.0.0.1', 52144)
+[2024.02.13 13:33:01] I [worker 9107] новое соединение ('127.0.0.1', 52158)
+[2024.02.13 13:33:01] I Данные запроса от ('127.0.0.1', 52158):
+path: {0: 'file 5.html'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'Host': '127.0.0.1:8080', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', 'Sec-Fetch-Site': 'none', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Sec-Fetch-Dest': 'document', 'sec-ch-ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"', 'sec-ch-ua-mobile': '?0', 'sec-ch-ua-platform': '"Linux"', 'Accept-Encoding': 'gzip, deflate, br', 'Accept-Language': 'ru-RU,ru;q=0.9'}
+file: {'Content-Type': 'text/html', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/file 5.html', 'Accept-Ranges': 'bytes'}
+[2024.02.13 13:33:01] I [worker 9107] ответ для соединения ('127.0.0.1', 52158): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 10:32:39 GMT\r\nLast-Modifie'
+[2024.02.13 13:33:01] I [worker 9107] закрываем соединение ('127.0.0.1', 52158)
+[2024.02.13 13:33:01] I [worker 9108] новое соединение ('127.0.0.1', 52166)
+[2024.02.13 13:33:01] I Данные запроса от ('127.0.0.1', 52166):
+path: {0: 'favicon.ico'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'Host': '127.0.0.1:8080', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'sec-ch-ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"', 'sec-ch-ua-mobile': '?0', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'sec-ch-ua-platform': '"Linux"', 'Accept': 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'no-cors', 'Sec-Fetch-Dest': 'image', 'Referer': 'http://127.0.0.1:8080/file%205.html', 'Accept-Encoding': 'gzip, deflate, br', 'Accept-Language': 'ru-RU,ru;q=0.9'}
+file: {'Content-Type': 'image/x-icon', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/favicon.ico', 'Accept-Ranges': 'bytes'}
+[2024.02.13 13:33:01] I [worker 9108] ответ для соединения ('127.0.0.1', 52166): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 10:32:39 GMT\r\nLast-Modifie'
+[2024.02.13 13:33:01] I [worker 9108] закрываем соединение ('127.0.0.1', 52166)
+[2024.02.13 13:33:18] I [worker 9110] новое соединение ('127.0.0.1', 56450)
+[2024.02.13 13:33:18] I Данные запроса от ('127.0.0.1', 56450):
+path: {0: 'directory1', 1: 'directory2', 2: 'index.html'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'Host': '127.0.0.1:8080', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'sec-ch-ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"', 'sec-ch-ua-mobile': '?0', 'sec-ch-ua-platform': '"Linux"', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', 'Sec-Fetch-Site': 'none', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Sec-Fetch-Dest': 'document', 'Accept-Encoding': 'gzip, deflate, br', 'Accept-Language': 'ru-RU,ru;q=0.9'}
+file: {'Content-Type': 'text/html', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/directory1/directory2/index.html', 'Accept-Ranges': 'bytes'}
+[2024.02.13 13:33:18] I [worker 9110] ответ для соединения ('127.0.0.1', 56450): b'HTTP/1.1. 301 Moved Permanently\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 10:32:39 G'
+[2024.02.13 13:33:18] I [worker 9110] закрываем соединение ('127.0.0.1', 56450)
+[2024.02.13 13:33:18] I [worker 9113] новое соединение ('127.0.0.1', 56456)
+[2024.02.13 13:33:18] I Данные запроса от ('127.0.0.1', 56456):
+path: {0: 'index.html'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'Host': '127.0.0.1:8080', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'Upgrade-Insecure-Requests': '1', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', 'Sec-Fetch-Site': 'none', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Sec-Fetch-Dest': 'document', 'sec-ch-ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"', 'sec-ch-ua-mobile': '?0', 'sec-ch-ua-platform': '"Linux"', 'Accept-Encoding': 'gzip, deflate, br', 'Accept-Language': 'ru-RU,ru;q=0.9'}
+file: {'Content-Type': 'text/html', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/index.html', 'Accept-Ranges': 'bytes'}
+[2024.02.13 13:33:18] I [worker 9113] ответ для соединения ('127.0.0.1', 56456): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 10:32:39 GMT\r\nLast-Modifie'
+[2024.02.13 13:33:18] I [worker 9113] закрываем соединение ('127.0.0.1', 56456)
+[2024.02.13 13:33:18] I [worker 9114] новое соединение ('127.0.0.1', 56460)
+[2024.02.13 13:33:18] I Данные запроса от ('127.0.0.1', 56460):
+path: {0: 'print.css'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'Host': '127.0.0.1:8080', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'sec-ch-ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"', 'sec-ch-ua-mobile': '?0', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'sec-ch-ua-platform': '"Linux"', 'Accept': 'text/css,*/*;q=0.1', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'no-cors', 'Sec-Fetch-Dest': 'style', 'Referer': 'http://127.0.0.1:8080/index.html', 'Accept-Encoding': 'gzip, deflate, br', 'Accept-Language': 'ru-RU,ru;q=0.9'}
+file: {'Content-Type': 'text/css', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/print.css', 'Accept-Ranges': 'bytes'}
+[2024.02.13 13:33:18] I [worker 9114] ответ для соединения ('127.0.0.1', 56460): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 10:32:39 GMT\r\nLast-Modifie'
+[2024.02.13 13:33:18] I [worker 9114] закрываем соединение ('127.0.0.1', 56460)
+[2024.02.13 13:33:18] I [worker 9111] новое соединение ('127.0.0.1', 56476)
+[2024.02.13 13:33:18] I Данные запроса от ('127.0.0.1', 56476):
+path: {0: 'favicon.ico'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'Host': '127.0.0.1:8080', 'Connection': 'keep-alive', 'Pragma': 'no-cache', 'Cache-Control': 'no-cache', 'sec-ch-ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"', 'sec-ch-ua-mobile': '?0', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'sec-ch-ua-platform': '"Linux"', 'Accept': 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'no-cors', 'Sec-Fetch-Dest': 'image', 'Referer': 'http://127.0.0.1:8080/index.html', 'Accept-Encoding': 'gzip, deflate, br', 'Accept-Language': 'ru-RU,ru;q=0.9'}
+file: {'Content-Type': 'image/x-icon', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/favicon.ico', 'Accept-Ranges': 'bytes'}
+[2024.02.13 13:33:18] I [worker 9111] ответ для соединения ('127.0.0.1', 56476): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 10:32:39 GMT\r\nLast-Modifie'
+[2024.02.13 13:33:18] I [worker 9111] закрываем соединение ('127.0.0.1', 56476)
+[2024.02.13 13:33:48] I [worker 9115] новое соединение ('127.0.0.1', 40784)
+[2024.02.13 13:33:48] I Данные запроса от ('127.0.0.1', 40784):
 path: {0: 'httptest', 1: 'dir2'}
 queries: {}
 method: GET
@@ -59,10 +428,10 @@ body: {}
 extras: {}
 headers: {'Host': 'localhost:8080', 'Accept-Encoding': 'identity'}
 file: {}
-[2024.02.13 05:47:57] I [worker 29578] ответ для соединения ('127.0.0.1', 37236): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 02:47:51 GMT\r\nLast-Modifie'
-[2024.02.13 05:47:57] I [worker 29578] закрываем соединение ('127.0.0.1', 37236)
-[2024.02.13 05:47:57] I [worker 29579] новое соединение ('127.0.0.1', 37252)
-[2024.02.13 05:47:57] I Данные запроса от ('127.0.0.1', 37252):
+[2024.02.13 13:33:48] I [worker 9115] ответ для соединения ('127.0.0.1', 40784): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 10:32:39 GMT\r\nLast-Modifie'
+[2024.02.13 13:33:48] I [worker 9115] закрываем соединение ('127.0.0.1', 40784)
+[2024.02.13 13:33:48] I [worker 9109] новое соединение ('127.0.0.1', 40788)
+[2024.02.13 13:33:48] I Данные запроса от ('127.0.0.1', 40788):
 path: {0: 'httptest', 1: '..', 2: '..', 3: '..', 4: '..', 5: '..', 6: '..', 7: '..', 8: '..', 9: '..', 10: '..', 11: '..', 12: '..', 13: '..', 14: 'etc', 15: 'passwd'}
 queries: {}
 method: GET
@@ -71,13 +440,12 @@ body: {}
 extras: {}
 headers: {'Host': 'localhost:8080', 'Accept-Encoding': 'identity'}
 file: {}
-[2024.02.13 05:47:57] I [worker 29579] ответ для соединения ('127.0.0.1', 37252): b'HTTP/1.1 404 Not Found\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 02:47:51 GMT\r\nConte'
-[2024.02.13 05:47:57] I [worker 29579] закрываем соединение ('127.0.0.1', 37252)
-[2024.02.13 05:47:57] I [worker 29580] новое соединение ('127.0.0.1', 37256)
-[2024.02.13 05:47:57] I [worker 29581] новое соединение ('127.0.0.1', 37264)
-[2024.02.13 05:47:57] I [worker 29580] ответ для соединения ('127.0.0.1', 37256): b'\xd0\xad\xd0\xa5\xd0\x9e: \n'
-[2024.02.13 05:47:57] I [worker 29580] закрываем соединение ('127.0.0.1', 37256)
-[2024.02.13 05:47:57] I Данные запроса от ('127.0.0.1', 37264):
+[2024.02.13 13:33:48] I [worker 9109] ответ для соединения ('127.0.0.1', 40788): b'HTTP/1.1 404 Not Found\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 10:32:39 GMT\r\nConte'
+[2024.02.13 13:33:48] I [worker 9109] закрываем соединение ('127.0.0.1', 40788)
+[2024.02.13 13:33:48] I [worker 9112] новое соединение ('127.0.0.1', 40802)
+[2024.02.13 13:33:48] I [worker 9106] новое соединение ('127.0.0.1', 40810)
+[2024.02.13 13:33:48] I [worker 9112] ответ для соединения ('127.0.0.1', 40802): b'\xd0\xad\xd0\xa5\xd0\x9e: \n'
+[2024.02.13 13:33:48] I Данные запроса от ('127.0.0.1', 40810):
 path: {0: 'httptest', 1: 'dir1', 2: 'dir12', 3: 'dir123', 4: 'deep.txt'}
 queries: {}
 method: GET
@@ -86,10 +454,11 @@ body: {}
 extras: {}
 headers: {'Host': 'localhost:8080', 'Accept-Encoding': 'identity'}
 file: {'Content-Type': 'text/plain', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/httptest/dir1/dir12/dir123/deep.txt', 'Accept-Ranges': 'bytes'}
-[2024.02.13 05:47:57] I [worker 29581] ответ для соединения ('127.0.0.1', 37264): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 02:47:51 GMT\r\nLast-Modifie'
-[2024.02.13 05:47:57] I [worker 29581] закрываем соединение ('127.0.0.1', 37264)
-[2024.02.13 05:47:57] I [worker 29582] новое соединение ('127.0.0.1', 37266)
-[2024.02.13 05:47:57] I Данные запроса от ('127.0.0.1', 37266):
+[2024.02.13 13:33:48] I [worker 9112] закрываем соединение ('127.0.0.1', 40802)
+[2024.02.13 13:33:48] I [worker 9106] ответ для соединения ('127.0.0.1', 40810): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 10:32:39 GMT\r\nLast-Modifie'
+[2024.02.13 13:33:48] I [worker 9106] закрываем соединение ('127.0.0.1', 40810)
+[2024.02.13 13:33:48] I [worker 9107] новое соединение ('127.0.0.1', 40814)
+[2024.02.13 13:33:48] I Данные запроса от ('127.0.0.1', 40814):
 path: {0: 'httptest', 1: 'smdklcdsmvdfjnvdfjvdfvdfvdsfssdmfdsdfsd.html'}
 queries: {}
 method: GET
@@ -98,10 +467,10 @@ body: {}
 extras: {}
 headers: {'Host': 'localhost:8080', 'Accept-Encoding': 'identity'}
 file: {'Content-Type': 'text/html', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/httptest/smdklcdsmvdfjnvdfjvdfvdfvdsfssdmfdsdfsd.html', 'Accept-Ranges': 'bytes'}
-[2024.02.13 05:47:57] I [worker 29582] ответ для соединения ('127.0.0.1', 37266): b'HTTP/1.1 404 Not Found\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 02:47:51 GMT\r\nConte'
-[2024.02.13 05:47:57] I [worker 29582] закрываем соединение ('127.0.0.1', 37266)
-[2024.02.13 05:47:57] I [worker 29584] новое соединение ('127.0.0.1', 37270)
-[2024.02.13 05:47:57] I Данные запроса от ('127.0.0.1', 37270):
+[2024.02.13 13:33:48] I [worker 9107] ответ для соединения ('127.0.0.1', 40814): b'HTTP/1.1 404 Not Found\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 10:32:39 GMT\r\nConte'
+[2024.02.13 13:33:48] I [worker 9107] закрываем соединение ('127.0.0.1', 40814)
+[2024.02.13 13:33:48] I [worker 9108] новое соединение ('127.0.0.1', 40830)
+[2024.02.13 13:33:48] I Данные запроса от ('127.0.0.1', 40830):
 path: {0: 'httptest', 1: 'dir2', 2: 'page.html'}
 queries: {}
 method: GET
@@ -110,10 +479,10 @@ body: {}
 extras: {}
 headers: {'Host': 'localhost:8080', 'Accept-Encoding': 'identity'}
 file: {'Content-Type': 'text/html', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/httptest/dir2/page.html', 'Accept-Ranges': 'bytes'}
-[2024.02.13 05:47:57] I [worker 29584] ответ для соединения ('127.0.0.1', 37270): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 02:47:51 GMT\r\nLast-Modifie'
-[2024.02.13 05:47:57] I [worker 29584] закрываем соединение ('127.0.0.1', 37270)
-[2024.02.13 05:47:57] I [worker 29583] новое соединение ('127.0.0.1', 37280)
-[2024.02.13 05:47:57] I Данные запроса от ('127.0.0.1', 37280):
+[2024.02.13 13:33:48] I [worker 9108] ответ для соединения ('127.0.0.1', 40830): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 10:32:39 GMT\r\nLast-Modifie'
+[2024.02.13 13:33:48] I [worker 9108] закрываем соединение ('127.0.0.1', 40830)
+[2024.02.13 13:33:48] I [worker 9110] новое соединение ('127.0.0.1', 40842)
+[2024.02.13 13:33:48] I Данные запроса от ('127.0.0.1', 40842):
 path: {0: 'httptest', 1: 'text..txt'}
 queries: {}
 method: GET
@@ -122,10 +491,10 @@ body: {}
 extras: {}
 headers: {'Host': 'localhost:8080', 'Accept-Encoding': 'identity'}
 file: {'Content-Type': 'text/plain', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/httptest/text..txt', 'Accept-Ranges': 'bytes'}
-[2024.02.13 05:47:57] I [worker 29583] ответ для соединения ('127.0.0.1', 37280): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 02:47:51 GMT\r\nLast-Modifie'
-[2024.02.13 05:47:57] I [worker 29583] закрываем соединение ('127.0.0.1', 37280)
-[2024.02.13 05:47:57] I [worker 29585] новое соединение ('127.0.0.1', 37282)
-[2024.02.13 05:47:57] I Данные запроса от ('127.0.0.1', 37282):
+[2024.02.13 13:33:48] I [worker 9110] ответ для соединения ('127.0.0.1', 40842): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 10:32:39 GMT\r\nLast-Modifie'
+[2024.02.13 13:33:48] I [worker 9110] закрываем соединение ('127.0.0.1', 40842)
+[2024.02.13 13:33:48] I [worker 9113] новое соединение ('127.0.0.1', 40848)
+[2024.02.13 13:33:48] I Данные запроса от ('127.0.0.1', 40848):
 path: {0: 'httptest', 1: 'dir2', 2: 'page.html'}
 queries: {'arg1': 'value', 'arg2': 'value'}
 method: GET
@@ -134,10 +503,10 @@ body: {}
 extras: {}
 headers: {'Host': 'localhost:8080', 'Accept-Encoding': 'identity'}
 file: {'Content-Type': 'text/html', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/httptest/dir2/page.html', 'Accept-Ranges': 'bytes'}
-[2024.02.13 05:47:57] I [worker 29585] ответ для соединения ('127.0.0.1', 37282): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 02:47:51 GMT\r\nLast-Modifie'
-[2024.02.13 05:47:57] I [worker 29585] закрываем соединение ('127.0.0.1', 37282)
-[2024.02.13 05:47:57] I [worker 29587] новое соединение ('127.0.0.1', 37296)
-[2024.02.13 05:47:57] I Данные запроса от ('127.0.0.1', 37296):
+[2024.02.13 13:33:48] I [worker 9113] ответ для соединения ('127.0.0.1', 40848): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 10:32:39 GMT\r\nLast-Modifie'
+[2024.02.13 13:33:48] I [worker 9113] закрываем соединение ('127.0.0.1', 40848)
+[2024.02.13 13:33:48] I [worker 9114] новое соединение ('127.0.0.1', 40850)
+[2024.02.13 13:33:48] I Данные запроса от ('127.0.0.1', 40850):
 path: {0: 'httptest', 1: 'dir2', 2: 'page.html'}
 queries: {}
 method: GET
@@ -146,10 +515,10 @@ body: {}
 extras: {}
 headers: {'Host': 'localhost:8080', 'Accept-Encoding': 'identity'}
 file: {}
-[2024.02.13 05:47:57] I [worker 29587] ответ для соединения ('127.0.0.1', 37296): b'HTTP/1.1 404 Not Found\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 02:47:51 GMT\r\nConte'
-[2024.02.13 05:47:57] I [worker 29587] закрываем соединение ('127.0.0.1', 37296)
-[2024.02.13 05:47:57] I [worker 29586] новое соединение ('127.0.0.1', 37302)
-[2024.02.13 05:47:57] I Данные запроса от ('127.0.0.1', 37302):
+[2024.02.13 13:33:48] I [worker 9114] ответ для соединения ('127.0.0.1', 40850): b'HTTP/1.1 404 Not Found\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 10:32:39 GMT\r\nConte'
+[2024.02.13 13:33:48] I [worker 9114] закрываем соединение ('127.0.0.1', 40850)
+[2024.02.13 13:33:48] I [worker 9111] новое соединение ('127.0.0.1', 40860)
+[2024.02.13 13:33:48] I Данные запроса от ('127.0.0.1', 40860):
 path: {0: 'httptest', 1: 'space in name.txt'}
 queries: {}
 method: GET
@@ -158,10 +527,10 @@ body: {}
 extras: {}
 headers: {'Host': 'localhost:8080', 'Accept-Encoding': 'identity'}
 file: {'Content-Type': 'text/plain', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/httptest/space in name.txt', 'Accept-Ranges': 'bytes'}
-[2024.02.13 05:47:57] I [worker 29586] ответ для соединения ('127.0.0.1', 37302): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 02:47:51 GMT\r\nLast-Modifie'
-[2024.02.13 05:47:57] I [worker 29586] закрываем соединение ('127.0.0.1', 37302)
-[2024.02.13 05:47:57] I [worker 29578] новое соединение ('127.0.0.1', 37308)
-[2024.02.13 05:47:57] I Данные запроса от ('127.0.0.1', 37308):
+[2024.02.13 13:33:48] I [worker 9111] ответ для соединения ('127.0.0.1', 40860): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 10:32:39 GMT\r\nLast-Modifie'
+[2024.02.13 13:33:48] I [worker 9111] закрываем соединение ('127.0.0.1', 40860)
+[2024.02.13 13:33:48] I [worker 9115] новое соединение ('127.0.0.1', 40864)
+[2024.02.13 13:33:48] I Данные запроса от ('127.0.0.1', 40864):
 path: {0: 'httptest', 1: 'splash.css'}
 queries: {}
 method: GET
@@ -170,10 +539,10 @@ body: {}
 extras: {}
 headers: {'Host': 'localhost:8080', 'Accept-Encoding': 'identity'}
 file: {'Content-Type': 'text/css', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/httptest/splash.css', 'Accept-Ranges': 'bytes'}
-[2024.02.13 05:47:57] I [worker 29578] ответ для соединения ('127.0.0.1', 37308): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 02:47:51 GMT\r\nLast-Modifie'
-[2024.02.13 05:47:57] I [worker 29578] закрываем соединение ('127.0.0.1', 37308)
-[2024.02.13 05:47:57] I [worker 29579] новое соединение ('127.0.0.1', 37322)
-[2024.02.13 05:47:57] I Данные запроса от ('127.0.0.1', 37322):
+[2024.02.13 13:33:48] I [worker 9115] ответ для соединения ('127.0.0.1', 40864): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 10:32:39 GMT\r\nLast-Modifie'
+[2024.02.13 13:33:48] I [worker 9115] закрываем соединение ('127.0.0.1', 40864)
+[2024.02.13 13:33:48] I [worker 9109] новое соединение ('127.0.0.1', 40880)
+[2024.02.13 13:33:48] I Данные запроса от ('127.0.0.1', 40880):
 path: {0: 'httptest', 1: 'pic_ask.gif'}
 queries: {}
 method: GET
@@ -182,10 +551,10 @@ body: {}
 extras: {}
 headers: {'Host': 'localhost:8080', 'Accept-Encoding': 'identity'}
 file: {'Content-Type': 'image/gif', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/httptest/pic_ask.gif', 'Accept-Ranges': 'bytes'}
-[2024.02.13 05:47:57] I [worker 29579] ответ для соединения ('127.0.0.1', 37322): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 02:47:51 GMT\r\nLast-Modifie'
-[2024.02.13 05:47:57] I [worker 29579] закрываем соединение ('127.0.0.1', 37322)
-[2024.02.13 05:47:57] I [worker 29580] новое соединение ('127.0.0.1', 37336)
-[2024.02.13 05:47:57] I Данные запроса от ('127.0.0.1', 37336):
+[2024.02.13 13:33:48] I [worker 9109] ответ для соединения ('127.0.0.1', 40880): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 10:32:39 GMT\r\nLast-Modifie'
+[2024.02.13 13:33:48] I [worker 9109] закрываем соединение ('127.0.0.1', 40880)
+[2024.02.13 13:33:48] I [worker 9112] новое соединение ('127.0.0.1', 40896)
+[2024.02.13 13:33:48] I Данные запроса от ('127.0.0.1', 40896):
 path: {0: 'httptest', 1: 'dir2', 2: 'page.html'}
 queries: {}
 method: GET
@@ -194,10 +563,10 @@ body: {}
 extras: {}
 headers: {'Host': 'localhost:8080', 'Accept-Encoding': 'identity'}
 file: {'Content-Type': 'text/html', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/httptest/dir2/page.html', 'Accept-Ranges': 'bytes'}
-[2024.02.13 05:47:57] I [worker 29580] ответ для соединения ('127.0.0.1', 37336): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 02:47:51 GMT\r\nLast-Modifie'
-[2024.02.13 05:47:57] I [worker 29580] закрываем соединение ('127.0.0.1', 37336)
-[2024.02.13 05:47:57] I [worker 29581] новое соединение ('127.0.0.1', 37342)
-[2024.02.13 05:47:57] I Данные запроса от ('127.0.0.1', 37342):
+[2024.02.13 13:33:48] I [worker 9112] ответ для соединения ('127.0.0.1', 40896): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 10:32:39 GMT\r\nLast-Modifie'
+[2024.02.13 13:33:48] I [worker 9112] закрываем соединение ('127.0.0.1', 40896)
+[2024.02.13 13:33:48] I [worker 9106] новое соединение ('127.0.0.1', 40910)
+[2024.02.13 13:33:48] I Данные запроса от ('127.0.0.1', 40910):
 path: {0: 'httptest', 1: 'ef35c.jpeg'}
 queries: {}
 method: GET
@@ -206,10 +575,10 @@ body: {}
 extras: {}
 headers: {'Host': 'localhost:8080', 'Accept-Encoding': 'identity'}
 file: {'Content-Type': 'image/jpeg', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/httptest/ef35c.jpeg', 'Accept-Ranges': 'bytes'}
-[2024.02.13 05:47:57] I [worker 29581] ответ для соединения ('127.0.0.1', 37342): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 02:47:51 GMT\r\nLast-Modifie'
-[2024.02.13 05:47:57] I [worker 29581] закрываем соединение ('127.0.0.1', 37342)
-[2024.02.13 05:47:57] I [worker 29582] новое соединение ('127.0.0.1', 37348)
-[2024.02.13 05:47:57] I Данные запроса от ('127.0.0.1', 37348):
+[2024.02.13 13:33:48] I [worker 9106] ответ для соединения ('127.0.0.1', 40910): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 10:32:39 GMT\r\nLast-Modifie'
+[2024.02.13 13:33:48] I [worker 9106] закрываем соединение ('127.0.0.1', 40910)
+[2024.02.13 13:33:48] I [worker 9107] новое соединение ('127.0.0.1', 40912)
+[2024.02.13 13:33:48] I Данные запроса от ('127.0.0.1', 40912):
 path: {0: 'httptest', 1: '160313.jpg'}
 queries: {}
 method: GET
@@ -218,10 +587,10 @@ body: {}
 extras: {}
 headers: {'Host': 'localhost:8080', 'Accept-Encoding': 'identity'}
 file: {'Content-Type': 'image/jpeg', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/httptest/160313.jpg', 'Accept-Ranges': 'bytes'}
-[2024.02.13 05:47:57] I [worker 29582] ответ для соединения ('127.0.0.1', 37348): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 02:47:51 GMT\r\nLast-Modifie'
-[2024.02.13 05:47:57] I [worker 29582] закрываем соединение ('127.0.0.1', 37348)
-[2024.02.13 05:47:57] I [worker 29584] новое соединение ('127.0.0.1', 37360)
-[2024.02.13 05:47:57] I Данные запроса от ('127.0.0.1', 37360):
+[2024.02.13 13:33:48] I [worker 9107] ответ для соединения ('127.0.0.1', 40912): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 10:32:39 GMT\r\nLast-Modifie'
+[2024.02.13 13:33:48] I [worker 9107] закрываем соединение ('127.0.0.1', 40912)
+[2024.02.13 13:33:48] I [worker 9108] новое соединение ('127.0.0.1', 40924)
+[2024.02.13 13:33:48] I Данные запроса от ('127.0.0.1', 40924):
 path: {0: 'httptest', 1: 'jquery-1.9.1.js'}
 queries: {}
 method: GET
@@ -230,10 +599,10 @@ body: {}
 extras: {}
 headers: {'Host': 'localhost:8080', 'Accept-Encoding': 'identity'}
 file: {'Content-Type': 'application/javascript', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/httptest/jquery-1.9.1.js', 'Accept-Ranges': 'bytes'}
-[2024.02.13 05:47:57] I [worker 29584] ответ для соединения ('127.0.0.1', 37360): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 02:47:51 GMT\r\nLast-Modifie'
-[2024.02.13 05:47:57] I [worker 29584] закрываем соединение ('127.0.0.1', 37360)
-[2024.02.13 05:47:57] I [worker 29583] новое соединение ('127.0.0.1', 37374)
-[2024.02.13 05:47:57] I Данные запроса от ('127.0.0.1', 37374):
+[2024.02.13 13:33:48] I [worker 9108] ответ для соединения ('127.0.0.1', 40924): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 10:32:39 GMT\r\nLast-Modifie'
+[2024.02.13 13:33:48] I [worker 9108] закрываем соединение ('127.0.0.1', 40924)
+[2024.02.13 13:33:48] I [worker 9110] новое соединение ('127.0.0.1', 40938)
+[2024.02.13 13:33:48] I Данные запроса от ('127.0.0.1', 40938):
 path: {0: 'httptest', 1: 'logo.v2.png'}
 queries: {}
 method: GET
@@ -242,10 +611,10 @@ body: {}
 extras: {}
 headers: {'Host': 'localhost:8080', 'Accept-Encoding': 'identity'}
 file: {'Content-Type': 'image/png', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/httptest/logo.v2.png', 'Accept-Ranges': 'bytes'}
-[2024.02.13 05:47:57] I [worker 29583] ответ для соединения ('127.0.0.1', 37374): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 02:47:51 GMT\r\nLast-Modifie'
-[2024.02.13 05:47:57] I [worker 29583] закрываем соединение ('127.0.0.1', 37374)
-[2024.02.13 05:47:57] I [worker 29585] новое соединение ('127.0.0.1', 37390)
-[2024.02.13 05:47:57] I Данные запроса от ('127.0.0.1', 37390):
+[2024.02.13 13:33:48] I [worker 9110] ответ для соединения ('127.0.0.1', 40938): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 10:32:39 GMT\r\nLast-Modifie'
+[2024.02.13 13:33:48] I [worker 9110] закрываем соединение ('127.0.0.1', 40938)
+[2024.02.13 13:33:48] I [worker 9113] новое соединение ('127.0.0.1', 40948)
+[2024.02.13 13:33:48] I Данные запроса от ('127.0.0.1', 40948):
 path: {0: 'httptest', 1: 'b16261023.swf'}
 queries: {}
 method: GET
@@ -254,10 +623,10 @@ body: {}
 extras: {}
 headers: {'Host': 'localhost:8080', 'Accept-Encoding': 'identity'}
 file: {'Content-Type': 'application/x-shockwave-flash', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/httptest/b16261023.swf', 'Accept-Ranges': 'bytes'}
-[2024.02.13 05:47:57] I [worker 29585] ответ для соединения ('127.0.0.1', 37390): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 02:47:51 GMT\r\nLast-Modifie'
-[2024.02.13 05:47:57] I [worker 29585] закрываем соединение ('127.0.0.1', 37390)
-[2024.02.13 05:47:57] I [worker 29587] новое соединение ('127.0.0.1', 37402)
-[2024.02.13 05:47:57] I Данные запроса от ('127.0.0.1', 37402):
+[2024.02.13 13:33:48] I [worker 9113] ответ для соединения ('127.0.0.1', 40948): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 10:32:39 GMT\r\nLast-Modifie'
+[2024.02.13 13:33:48] I [worker 9113] закрываем соединение ('127.0.0.1', 40948)
+[2024.02.13 13:33:49] I [worker 9114] новое соединение ('127.0.0.1', 40964)
+[2024.02.13 13:33:49] I Данные запроса от ('127.0.0.1', 40964):
 path: {0: 'httptest', 1: 'dir2', 2: 'page.html'}
 queries: {}
 method: HEAD
@@ -266,10 +635,10 @@ body: {}
 extras: {}
 headers: {}
 file: {'Content-Type': 'text/html', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/httptest/dir2/page.html', 'Accept-Ranges': 'bytes'}
-[2024.02.13 05:47:57] I [worker 29587] ответ для соединения ('127.0.0.1', 37402): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 02:47:51 GMT\r\nLast-Modifie'
-[2024.02.13 05:47:57] I [worker 29587] закрываем соединение ('127.0.0.1', 37402)
-[2024.02.13 05:47:57] I [worker 29586] новое соединение ('127.0.0.1', 37410)
-[2024.02.13 05:47:57] I Данные запроса от ('127.0.0.1', 37410):
+[2024.02.13 13:33:49] I [worker 9114] ответ для соединения ('127.0.0.1', 40964): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 10:32:39 GMT\r\nLast-Modifie'
+[2024.02.13 13:33:49] I [worker 9114] закрываем соединение ('127.0.0.1', 40964)
+[2024.02.13 13:33:49] I [worker 9111] новое соединение ('127.0.0.1', 40980)
+[2024.02.13 13:33:49] I Данные запроса от ('127.0.0.1', 40980):
 path: {0: 'httptest', 1: 'dir1'}
 queries: {}
 method: GET
@@ -278,10 +647,10 @@ body: {}
 extras: {}
 headers: {'Host': 'localhost:8080', 'Accept-Encoding': 'identity'}
 file: {}
-[2024.02.13 05:47:57] I [worker 29586] ответ для соединения ('127.0.0.1', 37410): b'HTTP/1.1 404 Not Found\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 02:47:51 GMT\r\nConte'
-[2024.02.13 05:47:57] I [worker 29586] закрываем соединение ('127.0.0.1', 37410)
-[2024.02.13 05:47:57] I [worker 29578] новое соединение ('127.0.0.1', 37426)
-[2024.02.13 05:47:57] I Данные запроса от ('127.0.0.1', 37426):
+[2024.02.13 13:33:49] I [worker 9111] ответ для соединения ('127.0.0.1', 40980): b'HTTP/1.1 404 Not Found\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 10:32:39 GMT\r\nConte'
+[2024.02.13 13:33:49] I [worker 9111] закрываем соединение ('127.0.0.1', 40980)
+[2024.02.13 13:33:49] I [worker 9115] новое соединение ('127.0.0.1', 40990)
+[2024.02.13 13:33:49] I Данные запроса от ('127.0.0.1', 40990):
 path: {0: 'httptest', 1: 'wikipedia_russia.html'}
 queries: {}
 method: GET
@@ -290,10 +659,10 @@ body: {}
 extras: {}
 headers: {'Host': 'localhost:8080', 'Accept-Encoding': 'identity'}
 file: {'Content-Type': 'text/html', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/httptest/wikipedia_russia.html', 'Accept-Ranges': 'bytes'}
-[2024.02.13 05:47:57] I [worker 29578] ответ для соединения ('127.0.0.1', 37426): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 02:47:51 GMT\r\nLast-Modifie'
-[2024.02.13 05:47:57] I [worker 29578] закрываем соединение ('127.0.0.1', 37426)
-[2024.02.13 05:47:57] I [worker 29579] новое соединение ('127.0.0.1', 37440)
-[2024.02.13 05:47:57] I Данные запроса от ('127.0.0.1', 37440):
+[2024.02.13 13:33:49] I [worker 9115] ответ для соединения ('127.0.0.1', 40990): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 10:32:39 GMT\r\nLast-Modifie'
+[2024.02.13 13:33:49] I [worker 9115] закрываем соединение ('127.0.0.1', 40990)
+[2024.02.13 13:33:49] I [worker 9109] новое соединение ('127.0.0.1', 41004)
+[2024.02.13 13:33:49] I Данные запроса от ('127.0.0.1', 41004):
 path: {0: 'httptest', 1: 'dir2', 2: 'page.html'}
 queries: {}
 method: POST
@@ -302,10 +671,10 @@ body: {}
 extras: {}
 headers: {'Host': 'localhost:8080', 'Accept-Encoding': 'identity', 'Content-Length': '0'}
 file: {'Content-Type': 'text/html', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/httptest/dir2/page.html', 'Accept-Ranges': 'bytes'}
-[2024.02.13 05:47:57] I [worker 29579] ответ для соединения ('127.0.0.1', 37440): b'HTTP/1.1 405 Method Not Allowed\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 02:47:51 G'
-[2024.02.13 05:47:57] I [worker 29579] закрываем соединение ('127.0.0.1', 37440)
-[2024.02.13 05:47:57] I [worker 29580] новое соединение ('127.0.0.1', 37454)
-[2024.02.13 05:47:57] I Данные запроса от ('127.0.0.1', 37454):
+[2024.02.13 13:33:49] I [worker 9109] ответ для соединения ('127.0.0.1', 41004): b'HTTP/1.1 405 Method Not Allowed\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 10:32:39 G'
+[2024.02.13 13:33:49] I [worker 9109] закрываем соединение ('127.0.0.1', 41004)
+[2024.02.13 13:33:49] I [worker 9112] новое соединение ('127.0.0.1', 41012)
+[2024.02.13 13:33:49] I Данные запроса от ('127.0.0.1', 41012):
 path: {0: 'httptest'}
 queries: {}
 method: GET
@@ -314,17 +683,17 @@ body: {}
 extras: {}
 headers: {'Host': 'localhost:8080', 'Accept-Encoding': 'identity'}
 file: {}
-[2024.02.13 05:47:57] I [worker 29580] ответ для соединения ('127.0.0.1', 37454): b'HTTP/1.1 404 Not Found\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 02:47:51 GMT\r\nConte'
-[2024.02.13 05:47:57] I [worker 29580] закрываем соединение ('127.0.0.1', 37454)
-[2024.02.13 05:48:11] I [worker 29585] остановка процесса
-[2024.02.13 05:48:11] I [worker 29586] остановка процесса
-[2024.02.13 05:48:11] I [worker 29582] остановка процесса
-[2024.02.13 05:48:11] I [worker 29584] остановка процесса
-[2024.02.13 05:48:11] I [worker 29580] остановка процесса
-[2024.02.13 05:48:11] I [worker 29583] остановка процесса
-[2024.02.13 05:48:11] I Остановка работы сервера: 127.0.0.1:8080
+[2024.02.13 13:33:49] I [worker 9112] ответ для соединения ('127.0.0.1', 41012): b'HTTP/1.1 404 Not Found\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Tue, 13 Feb 2024 10:32:39 GMT\r\nConte'
+[2024.02.13 13:33:49] I [worker 9112] закрываем соединение ('127.0.0.1', 41012)
+[2024.02.13 13:34:06] I [worker 9115] остановка процесса
+[2024.02.13 13:34:06] I [worker 9110] остановка процесса
+[2024.02.13 13:34:06] I [worker 9114] остановка процесса
+[2024.02.13 13:34:06] I [worker 9111] остановка процесса
+[2024.02.13 13:34:06] I [worker 9107] остановка процесса
+[2024.02.13 13:34:06] I [worker 9112] остановка процесса
+[2024.02.13 13:34:06] I [worker 9109] остановка процесса
+[2024.02.13 13:34:06] I Остановка работы сервера: 127.0.0.1:8080
 
-[2024.02.13 05:48:11] I [worker 29578] остановка процесса
-[2024.02.13 05:48:11] I [worker 29587] остановка процесса
-[2024.02.13 05:48:11] I [worker 29581] остановка процесса
-[2024.02.13 05:48:11] I [worker 29579] остановка процесса
+[2024.02.13 13:34:06] I [worker 9108] остановка процесса
+[2024.02.13 13:34:06] I [worker 9113] остановка процесса
+[2024.02.13 13:34:06] I [worker 9106] остановка процесса

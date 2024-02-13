@@ -116,6 +116,11 @@ class HttpRequestHandler(BaseRequestHandler):
 
     DELETE_OK_FIRST = 'HTTP/1.1 204 No Content'
 
+    MOVED_PERMANENTLY = {
+        'directory1/directory2/index.html': '/index.html',
+        'main/directory1/price.html': '/file 5.html'
+    }
+
     def __init__(self, conn: tuple, db_engine: DatabaseEngine, request: bytes = None, document_root: str = None):
         super().__init__(conn, db_engine, request, document_root)
         self.path_params = dict()
@@ -313,13 +318,18 @@ class HttpRequestHandler(BaseRequestHandler):
                     db_req_str += f"{key}: {value}\r\n"
                 return f"{self.OK_REQ_FIRST}\r\n{db_req_str}\r\n\n{db_req_body}".encode()
 
-        if self.document:
-            doc_path = self.document.get('path')
-            return self.response_file(doc_path)
-
         dir_str = ''
         for directory in self.path_params.values():
             dir_str += f'{directory}/'
+
+        for moved_from, moved_to in self.MOVED_PERMANENTLY.items():  # added for 301 redirect for moved files
+            sub_str = dir_str.find(moved_from)
+            if sub_str != -1:
+                return self.redirect(moved_to)
+
+        if self.document:
+            doc_path = self.document.get('path')
+            return self.response_file(doc_path)
 
         if dir_str != '' and os.path.exists(f'{self.document_root}/{dir_str}'):  # redirect to folder's 'index.html'
             dir_str += 'index.html'
@@ -329,10 +339,6 @@ class HttpRequestHandler(BaseRequestHandler):
                 'Accept-Ranges': 'bytes'
             }
             return self.response_file(self.document.get('path'))
-
-        # if dir_str != '':
-        #     moved_path = '/index.html'
-        #     return self.redirect(moved_path)  # to run tests had to comment to avoid 301 Response
 
         return self.bad_response(self.NOT_FOUND_FIRST, self.NOT_FOUND_BODY)
 
