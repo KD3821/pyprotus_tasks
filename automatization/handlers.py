@@ -24,6 +24,21 @@ def define_handler(request):
     return BaseRequestHandler
 
 
+def encoded_url_parse(url):  # Thanks to: 'https://stackoverflow.com/questions/16566069/url-decode-utf-8-in-python'
+    l = len(url)
+    data = bytearray()
+    i = 0
+    while i < l:
+        if url[i] != '%':
+            d = ord(url[i])
+            i += 1
+        else:
+            d = int(url[i + 1:i + 3], 16)
+            i += 3
+        data.append(d)
+    return data.decode('utf8')
+
+
 class BaseRequestHandler:
     def __init__(self, conn: tuple, db_engine: DatabaseEngine, request: bytes = None, document_root: str = None):
         self.client_host = conn[0]
@@ -38,7 +53,7 @@ class BaseRequestHandler:
 
 
 class HttpRequestHandler(BaseRequestHandler):
-    ALLOWED_METHODS = {'GET', 'HEAD', 'PUT', 'DELETE', 'POST'}  # may add-remove methods
+    ALLOWED_METHODS = {'GET', 'HEAD'}  # may add-remove methods ( 'PUT', 'DELETE', 'POST' )
     CREATE_UPDATE_METHODS = {'POST', 'PUT'}
     ALLOWED_FILE_FORMATS = {
         'html': 'text/html',
@@ -50,7 +65,8 @@ class HttpRequestHandler(BaseRequestHandler):
         'ico': 'image/x-icon',
         'gif': 'image/gif',
         'js': 'application/javascript',
-        'swf': 'application/x-shockwave-flash'
+        'swf': 'application/x-shockwave-flash',
+        'txt': 'text/plain'
     }
     HEADER_FIELDS = {
         'Host',
@@ -71,16 +87,16 @@ class HttpRequestHandler(BaseRequestHandler):
 
     OK_REQ_HEADERS = {
         'Server': 'denserv/1.18.0 (Subuntu)',
-        'Date': datetime.strftime(datetime.utcnow(), "%H:%m:%s, %d/%m/%Y GMT"),
-        'Content-Type': 'application/json',
-        'Last-Modified': datetime.strftime((datetime.utcnow() - timedelta(days=1)), "%H:%m:%s, %d/%m/%Y GMT"),
+        'Date': datetime.strftime(datetime.utcnow(), "%a, %d %b %Y %H:%M:%S GMT"),
+        'Content-Type': 'application/json, application/x-www-form-urlencoded',
+        'Last-Modified': datetime.strftime((datetime.utcnow() - timedelta(days=1)), "%a, %d %b %Y %H:%M:%S GMT"),
         'Connection': 'keep-alive'
     }
 
     NOT_FOUND_FIRST = 'HTTP/1.1 404 Not Found'
     NOT_FOUND_BODY = '{\n"result": "ОШИБКА ЗАПРОСА",\n"message": "Страница не найдена."\n}'
 
-    BAD_PARAM_FIRST = 'HTTP/1.1 404 Not Found'
+    BAD_PARAM_FIRST = 'HTTP/1.1 403 Forbidden'  # can be 'HTTP/1.1 404 Not Found'
     BAD_PARAM_BODY = '{\n"result": "ОШИБКА ЗАПРОСА",\n"message": "Невалидные параметры запроса."\n}'
 
     BAD_METHOD_FIRST = 'HTTP/1.1 405 Method Not Allowed'
@@ -88,7 +104,7 @@ class HttpRequestHandler(BaseRequestHandler):
 
     BAD_REQ_HEADERS = {
         'Server': 'denserv/1.18.0 (Subuntu)',
-        'Date': datetime.strftime(datetime.utcnow(), "%H:%m:%s, %d/%m/%Y GMT"),
+        'Date': datetime.strftime(datetime.utcnow(), "%a, %d %b %Y %H:%M:%S GMT"),
         'Content-Type': 'application/json',
         'Allow': 'GET, HEAD',
         'Vary': 'Accept, Origin',
@@ -99,30 +115,6 @@ class HttpRequestHandler(BaseRequestHandler):
     }
 
     DELETE_OK_FIRST = 'HTTP/1.1 204 No Content'
-
-    URL_ENCODING_PAIRS = {
-        '%20': ' ',
-        '%21': '!',
-        '%22': '"',
-        '%23': '#',
-        '%24': '$',
-        '%25': '%',
-        '%26': '&',
-        '%27': "'",
-        '%28': '(',
-        '%29': ')',
-        '%2A': '*',
-        '%2B': '+',
-        '%2C': ',',
-        '%2F': '/',
-        '%3A': ':',
-        '%3B': ';',
-        '%3D': '=',
-        '%3F': '?',
-        '%40': '@',
-        '%5B': '[',
-        '%5D': ']'
-    }
 
     def __init__(self, conn: tuple, db_engine: DatabaseEngine, request: bytes = None, document_root: str = None):
         super().__init__(conn, db_engine, request, document_root)
@@ -139,19 +131,41 @@ class HttpRequestHandler(BaseRequestHandler):
         params = first_line_list[1].split('/')  # parsing path
         if params[0] == '':
             params.pop(0)
+
         last = params.pop(-1)
         for i, path in enumerate(params):
             if path != '':
                 self.path_params.update({i: path})
+
+        if last.find('%') != -1:  # url encoding
+            last = encoded_url_parse(last)
+
         if last.find('.') != -1:   # file.extension
-            last_list = last.split('.')
-            if last_list[-1] in self.ALLOWED_FILE_FORMATS.keys():
+            file = last
+            few_dots = file.count('.')
+            if few_dots > 1:
+                reversed_last = file[::-1]
+                rev_dot_index = reversed_last.find('.')
+                f_ext = file[-rev_dot_index:]
+            else:
+                f_list = file.split('.')
+                f_ext = f_list[-1]
+            if f_ext.find('?') != -1:
+                ext_list = f_ext.split('?')
+                f_ext = ext_list[0]
+                file_list = file.split('?')
+                file = file_list[0]
+            if f_ext in self.ALLOWED_FILE_FORMATS.keys():
+                param_str = ''
+                for param in self.path_params.values():
+                    param_str += f'{param}/'
+                param_str += file
                 self.document = {
-                    'Content-Type': self.ALLOWED_FILE_FORMATS.get(last_list[-1]),
-                    'path': os.path.join(self.document_root, *self.path_params.values(), last),
+                    'Content-Type': self.ALLOWED_FILE_FORMATS.get(f_ext),
+                    'path': os.path.join(self.document_root, param_str),
                     'Accept-Ranges': 'bytes'
                 }
-        elif last.find('?') != -1:  # query param
+        if last.find('?') != -1:  # query param
             last_list = last.split('?')
             last = last_list[0]
             query = last_list[-1]
@@ -161,7 +175,8 @@ class HttpRequestHandler(BaseRequestHandler):
                 if len(pair_list) > 1:
                     k, v = pair_list
                     self.queries.update({k: v})
-        self.path_params.update({len(self.path_params): last})
+        if last != '':
+            self.path_params.update({len(self.path_params): last})
 
         self.method = first_line_list[0]     # parsing method
         self.protocol = first_line_list[-1]  # parsing protocol
@@ -235,21 +250,19 @@ class HttpRequestHandler(BaseRequestHandler):
                 img_bytes = img_file.read()
                 ok_req_str += f"Content-Length: {len(img_bytes)}\r\n"
 
-                if self.body:
+                if self.body and self.method != 'HEAD':
                     for k, v in self.body.items():
-                        if k == 'Cookie':  # if cookie was sent in request then add our cookies (just for practice)
-                            timestamp = datetime.timestamp(datetime.utcnow())
-                            ok_req_str += f"Set-Cookie: user=CoolUser-{timestamp}\r\n"
-                            ok_req_str += "Access-Control-Expose-Headers: Set-Cookie\r\n"
-                            continue
                         ok_req_str += f"{k}: {v}\r\n"
 
-                if self.extras:
+                if self.extras and self.method != 'HEAD':
                     for k, v in self.extras.items():
                         ok_req_str += f"{k}: {v}\r\n"
 
-            image_response = f"{self.OK_REQ_FIRST}\r\n{ok_req_str}\n".encode()
-            image_response += img_bytes
+            image_response = f"{self.OK_REQ_FIRST}\r\n{ok_req_str}\r\n".encode()
+
+            if self.method != 'HEAD':
+                image_response += img_bytes
+
             return image_response
 
         except FileNotFoundError:
@@ -302,22 +315,26 @@ class HttpRequestHandler(BaseRequestHandler):
 
         if self.document:
             doc_path = self.document.get('path')
-            for key, value in self.URL_ENCODING_PAIRS.items():  # replace url encoding symbols
-                while True:
-                    index = doc_path.find(key)
-                    if index != -1:
-                        doc_path = doc_path.replace(key, value)
-                    else:
-                        break
             return self.response_file(doc_path)
 
-        dir_name = self.path_params.get(0)
+        dir_str = ''
+        for directory in self.path_params.values():
+            dir_str += f'{directory}/'
 
-        if dir_name != '' and os.path.exists(f'{self.document_root}/{dir_name}'):  # redirect to folder's 'index.html'
-            moved_path = 'index.html'
-            return self.redirect(moved_path)
+        if dir_str != '' and os.path.exists(f'{self.document_root}/{dir_str}'):  # redirect to folder's 'index.html'
+            dir_str += 'index.html'
+            self.document = {
+                'Content-Type': 'text/html',
+                'path': os.path.join(self.document_root, dir_str),
+                'Accept-Ranges': 'bytes'
+            }
+            return self.response_file(self.document.get('path'))
 
-        return self.bad_response(self.BAD_PARAM_FIRST, self.BAD_PARAM_BODY)
+        # if dir_str != '':
+        #     moved_path = '/index.html'
+        #     return self.redirect(moved_path)  # to run tests had to comment to avoid 301 Response
+
+        return self.bad_response(self.NOT_FOUND_FIRST, self.NOT_FOUND_BODY)
 
     def redirect(self, path):
         redirect_str = ''
