@@ -9,6 +9,7 @@ from utils import encoded_url_parse
 
 
 def define_handler(request):
+    """ Определяем является ли запрос HTTP-запросом """
     request_data = request.decode().split('\r\n')
     first_line_list = request_data[0].split(' ')
     protocol = first_line_list[-1]
@@ -20,21 +21,29 @@ def define_handler(request):
 
 
 class BaseRequestHandler:
-    def __init__(self, conn: tuple, db_engine: DatabaseEngine, request: bytes = None, document_root: str = None):
+    """ Базовый обработчик запросов - отвечает на запросы от TCP-соединений (тест в терминале: nc 127.0.0.1 8080)"""
+    def __init__(self, conn: tuple, request: bytes = None, **kwargs):
         self.client_host = conn[0]
         self.client_port = conn[-1]
         self.data = request.decode()
-        self.db_engine = db_engine
-        self.document_root = document_root
 
-    def response(self):
+    def response(self):  # response with echo in upper case (just simple example)
         response_data = 'ЭХО: ' + self.data.upper()
         return response_data.encode()
 
 
 class HttpRequestHandler(BaseRequestHandler):
-
-    ALLOWED_METHODS = {'GET', 'HEAD'}  # may add-remove methods ( 'PUT', 'DELETE', 'POST' )
+    """
+    ALLOWED_METHODS - разрешенные типы HTTP запросов
+    CREATE_UPDATE_METHODS - для методов из этого списка парсит тело HTTP запроса в JSON-формате
+    ALLOWED_FILE_FORMATS - словарь разрешенных форматов файлов и соответствующих им значений для заголовков ответа
+    Обработчик HTTP запросов - обрабатывает запросы к API, раздает статику, перенаправляет запросы.
+    ТипОтвета_FIRST - первая часть заголовков ответа
+    ТипОтвета_HEADERS - средняя часть заголовков ответа
+    ТипОтвета_BODY - тело ответа
+    MOVED_PERMANENTLY - пары для редиректа (откуда-куда)
+    """
+    ALLOWED_METHODS = {'GET', 'HEAD'}  # for full consuming of API need add other methods: 'PUT', 'DELETE', 'POST'
     CREATE_UPDATE_METHODS = {'POST', 'PUT'}
     ALLOWED_FILE_FORMATS = {
         'html': 'text/html',
@@ -49,22 +58,12 @@ class HttpRequestHandler(BaseRequestHandler):
         'swf': 'application/x-shockwave-flash',
         'txt': 'text/plain'
     }
-    HEADER_FIELDS = {
-        'Host',
-        'Content-Type',
-        'Authorization',
-        'User-Agent',
-        'Accept',
-        'Host',
-        'Accept-Encoding',
-        'Connection',
-        'Content-Length',
-        'Cookie'
-    }
 
     OK_REQ_FIRST = 'HTTP/1.1 200 OK'
 
     REDIRECT_FIRST = 'HTTP/1.1. 301 Moved Permanently'
+
+    DELETE_OK_FIRST = 'HTTP/1.1 204 No Content'
 
     OK_REQ_HEADERS = {
         'Server': 'denserv/1.18.0 (Subuntu)',
@@ -95,15 +94,15 @@ class HttpRequestHandler(BaseRequestHandler):
         'Cross-Origin-Opener-Policy': 'same-origin'
     }
 
-    DELETE_OK_FIRST = 'HTTP/1.1 204 No Content'
-
     MOVED_PERMANENTLY = {
-        'directory1/directory2/index.html': '/index.html',
-        'main/directory1/price.html': '/file 5.html'
+        'directory1/directory2/index.html': 'index.html',
+        'main/directory1/price.html': 'file 5.html'
     }
 
     def __init__(self, conn: tuple, db_engine: DatabaseEngine, request: bytes = None, document_root: str = None):
-        super().__init__(conn, db_engine, request, document_root)
+        super().__init__(conn, request)
+        self.db_engine = db_engine
+        self.document_root = document_root
         self.path_params = dict()
         self.queries = dict()
         self.headers = dict()
@@ -120,16 +119,16 @@ class HttpRequestHandler(BaseRequestHandler):
 
         last = params.pop(-1)  # get 'index.html?search=black'
 
-        for i, path in enumerate(params):
+        for i, path in enumerate(params):  # path without last
             if path != '':
                 self.path_params.update({i: path})
 
-        if last.find('%') != -1:  # if url encoding
+        if last.find('%') != -1:  # if url encoding present
             last = encoded_url_parse(last)
 
         if last.find('.') != -1:   # file.extension
             file = last
-            dots = file.count('.')
+            dots = file.count('.')  # if few dots
             if dots > 1:
                 reversed_last = file[::-1]
                 rev_dot_index = reversed_last.find('.')
@@ -138,7 +137,7 @@ class HttpRequestHandler(BaseRequestHandler):
                 f_list = file.split('.')
                 f_ext = f_list[-1]
 
-            if f_ext.find('?') != -1:
+            if f_ext.find('?') != -1:  # if query present
                 ext_list = f_ext.split('?')
                 f_ext = ext_list[0]
                 file_list = file.split('?')
@@ -224,7 +223,7 @@ class HttpRequestHandler(BaseRequestHandler):
             return True
         return False
 
-    def pass_to_backend(self):
+    def proxy_to_backend(self):
         if self.path_params.get(0) == 'api':
             return True
         return False
@@ -264,14 +263,14 @@ class HttpRequestHandler(BaseRequestHandler):
         redirect_str = ''
         for key, value in self.OK_REQ_HEADERS.items():
             redirect_str += f"{key}: {value}\r\n"
-        redirect_str += f"Location: {path}"
+        redirect_str += f"Location: /{path}"
         return f"{self.REDIRECT_FIRST}\r\n{redirect_str}\r\n".encode()
 
     def response(self):
         if not self.check_method_allowed():
             return self.bad_response(self.BAD_METHOD_FIRST, self.BAD_METHOD_BODY)
 
-        if self.pass_to_backend():
+        if self.proxy_to_backend():  # proxy to API service
             api_service_handler = get_api_service(
                 path_params=self.path_params,
                 method=self.method,
@@ -313,19 +312,19 @@ class HttpRequestHandler(BaseRequestHandler):
                 return f"{self.OK_REQ_FIRST}\r\n{db_req_str}\r\n\n{db_req_body}".encode()
 
         dir_str = ''
-        for directory in self.path_params.values():
+        for directory in self.path_params.values():  # concat path_params
             dir_str += f'{directory}/'
 
         for moved_from, moved_to in self.MOVED_PERMANENTLY.items():  # added for 301 redirect for moved files
-            sub_str = dir_str.find(moved_from)
+            sub_str = dir_str.find(moved_from)  # check if path need redirect
             if sub_str != -1:
                 return self.redirect(moved_to)
 
-        if self.document:
+        if self.document:  # if document was defined while parsing 'last'
             doc_path = self.document.get('path')
             return self.response_file(doc_path)
 
-        if dir_str != '' and os.path.exists(f'{self.document_root}/{dir_str}'):  # redirect to folder's 'index.html'
+        if dir_str != '' and os.path.exists(f'{self.document_root}/{dir_str}'):  # then try default folder 'index.html'
             dir_str += 'index.html'
             self.document = {
                 'Content-Type': 'text/html',
@@ -334,4 +333,4 @@ class HttpRequestHandler(BaseRequestHandler):
             }
             return self.response_file(self.document.get('path'))
 
-        return self.bad_response(self.NOT_FOUND_FIRST, self.NOT_FOUND_BODY)
+        return self.bad_response(self.NOT_FOUND_FIRST, self.NOT_FOUND_BODY)  # otherwise Not Found response

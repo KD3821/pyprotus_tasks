@@ -32,6 +32,7 @@ url_patterns = [
 
 
 def get_api_service(path_params: dict, method: str, db: DatabaseEngine, data: dict = None):
+    """ Парсит путь в строке запроса и вызывает соответствующий обработчик запроса к API  """
     url = ''
     id_key = None
     for key, path in path_params.items():

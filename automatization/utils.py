@@ -12,9 +12,7 @@ config = {
 
 
 def get_config():
-    """
-    Считываем (или используем встроенный) конфиг
-    """
+    """ считывает (или использует встроенный) конфиг """
     parser = argparse.ArgumentParser(description='Чтение настроек из файла конфигурации (--config=*.json)')
     parser.add_argument("-config", required=False, type=str)
     parser.add_argument("-w", required=False, type=str)
@@ -53,6 +51,7 @@ def get_config():
 
 
 def encoded_url_parse(url):  # Thanks to: 'https://stackoverflow.com/questions/16566069/url-decode-utf-8-in-python'
+    """ парсит URL encoded путь запроса и возвращает декодированную строку """
     l = len(url)
     data = bytearray()
     i = 0

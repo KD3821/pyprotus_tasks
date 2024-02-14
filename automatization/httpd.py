@@ -16,11 +16,13 @@ class CustomServer:
         self.workers = workers
         self.document_root = document_root
         self.db_engine = DatabaseEngine(db_name)
+        self.sock = None
 
     def serve_forever(self):
         server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         server_socket.bind((self.host, self.port))
         server_socket.listen(self.workers)
+        self.sock = server_socket
 
         for i in range(self.workers):
             child_pid = os.fork()
@@ -40,7 +42,7 @@ class CustomServer:
                             worker_pid=worker_pid
                         )
                         client_socket.send(response)
-                        self.finish_request(conn=connection, worker_pid=worker_pid)
+                        logging.info(f'[worker {worker_pid}] закрываем соединение {connection}\n')
                         client_socket.close()
                 except KeyboardInterrupt:
                     logging.info(f"[worker {worker_pid}] остановка процесса")
@@ -61,9 +63,8 @@ class CustomServer:
                      f"{response_data[:100]}")
         return response_data
 
-    @staticmethod
-    def finish_request(conn, worker_pid):
-        logging.info(f'[worker {worker_pid}] закрываем соединение {conn}\n')
+    def stop_serving(self):
+        self.sock.close()
 
 
 if __name__ == "__main__":
@@ -96,6 +97,7 @@ if __name__ == "__main__":
             os.waitpid(-1, 0)
         except KeyboardInterrupt:
             logging.info(f"Остановка работы сервера: {config.get('HOST')}:{config.get('PORT')}\n")
+            server.stop_serving()
             sys.exit()
     except socket.error as e:
         logging.error(f"Ошибка запуска сервера: {e}")
@@ -103,7 +105,15 @@ if __name__ == "__main__":
 
 
 """
+Варианты команд запуска сервера из консоли:
 python3 httpd.py -config server_config.json
-python3 httpd.py -w 1
-python3 httpd.py -w 1 -r /home/dk/PycharmProjects/pyprotus/automatization/documents
+python3 httpd.py -w 10
+python3 httpd.py -w 10 -r /home/dk/PycharmProjects/pyprotus/automatization/documents
+###
+Завершить процессы из консоли:
+pkill -f 'python3 httpd.py -w 10 -r /home/dk/PycharmProjects/pyprotus/automatization/documents'
+###
+Load benchmark with 'wrk' tool:
+docker pull williamyeh/wrk
+docker run --network="host" --rm williamyeh/wrk -t12 -c400 -d30s http://127.0.0.1:8080/index.html
 """
