@@ -1,0 +1,147 @@
+* {
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+body {
+    background-color:darkcyan;
+    width: 70%;
+    margin: -1% auto;
+
+}
+.container {
+    background-color:lightgrey;
+    /* padding-bottom: 3%; */
+    padding-bottom: 5%;
+    margin-bottom: -5%;
+    
+}
+aside {
+    background-color: lightgrey;
+    width: 21%;
+    margin-right: auto;
+    margin-left: auto;
+    float: right;
+    height: 100%;
+    padding-top: 2%;
+    padding-bottom: 3%;
+}
+.rightSide {
+    padding-right: 2%;
+    height: 100%;
+
+}
+article {
+    float: left;
+    width: 74%;
+    padding-top: 2%;
+    padding-left: 1%; 
+    padding-bottom: 15.5%;
+    padding-right: 1%;
+    border-right: 1px solid white;
+    height: 100%;
+}
+section {
+    margin-bottom: 10px;
+    margin-top: 20px;
+    clear: both;
+    font-size: 11pt;
+}
+section > a {
+    box-sizing: border-box;
+    background-color: red;
+    text-decoration: none;
+    padding: 10px;
+    color: white;
+    float: right;
+}
+footer {
+    width: 95.5%;
+    display: table;
+    padding: 2% 2% 2%;
+    box-sizing: border-box;
+
+
+}
+aside > ul > li {
+    box-sizing: border-box;
+    text-align: center;
+    padding: 8% 15%;
+    margin-left: -20%;
+    border: 1px solid white;
+}    
+aside > ul > li > a {
+    color: black;
+    text-decoration: none;
+}
+aside > ul {
+    list-style-type: none;
+    
+}
+.clearing {
+    clear: both;
+    border-top: 2px solid blue; 
+    padding-bottom: 23%;
+    margin-bottom: -23%;
+}
+footer > nav {
+    box-sizing: border-box;
+    float: left;
+    width: 33.33%;
+}
+footer > nav > p {
+    text-decoration: underline;
+    
+}
+footer > nav > ul {
+    list-style-type: none;
+    padding: 0;
+}
+footer > nav > ul > li > a {
+    color: black;
+    text-decoration: none;
+}
+aside > ul > li:hover {
+    background-color: darkcyan;
+    color: white;
+}
+@media print {
+    body {
+        line-height: 0.95;
+        background-color: transparent;
+        width: 100%;
+    }
+    aside, footer, .clearing {
+        background-color: transparent;
+    }
+    .clearing {
+        padding-bottom: 28%;
+    }
+    footer {
+        margin-top: -28%;
+    }
+}
+@media print {
+    main {
+        background-color: lime;
+    }
+}
+@media print {
+    article {
+        width: 98%;
+        height: auto;
+        background-color: inherit;
+        margin: auto auto;
+        border: none;
+    }
+    footer, aside {
+        display: none;
+    }
+    .clearing {
+        height: auto;
+        border-top: none;
+    }
+    main article section:nth-child(3) {
+        page-break-after: auto;
+    }
+}

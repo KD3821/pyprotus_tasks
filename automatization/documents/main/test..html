@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Формы и кнопки</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <form method="post" action="test.html">
+            <p>Поля ввода и редактирования данных</p>
+            <label>
+            <span>Логин</span><br>
+            <input type="text" placeholder="Введите логин" name="field for your text" size="25" maxlength="20">
+            </label><br>
+            <label for="pass_text"><span>Пароль</span></label><br>
+            <input type="password" id="pass_text" placeholder="Введите пароль" name="field_password" size="25" maxlength="22"><br>
+            <label for="number_text"><span>Число</span></label><br>
+            <input type="number" id="number_text" placeholder="Введите число" name="field_number" max="25" min="-25" value="10"><br>
+            <label for="text_a"><span>Текст</span></label><br>
+            <textarea name="textarea" id="text_a" rows="10" cols="25"></textarea>
+        </form>
+    </body>
+</html>

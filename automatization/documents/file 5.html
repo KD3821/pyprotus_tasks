@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <title>Главная страница сайта</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width:device-width, initial-scale=1.0">
+        <style type="text/css">
+            html body {
+                margin: 0;
+                padding: 0;
+            }
+            a {
+                text-decoration: none;
+                color: black;
+            }
+            a:hover {
+                text-decoration: underline;
+                color: blue;
+            }
+            .container {
+                width: 886px;
+                margin: 0 auto;
+                border-left: 1px solid blue;
+                border-right: 1px solid blue;
+                background-color: lemonchiffon;
+            }
+            .wrapper {
+                height: 100vh;
+                margin-bottom: -20px;
+            }
+            header {
+                background-color: chartreuse;
+                height: 65px;
+                text-align: left;
+                font-size: 25px;
+                padding: 25px;
+            }
+            aside {
+                background-color: lemonchiffon;
+            }
+            .leftSidebar {
+                float: left;
+                width: 127.11px;
+                font-size: 25px;
+                padding: 25px 25px 50px;
+                
+                
+            }
+            .rightSidebar {
+                float: right;
+                width: 127.11px;
+                font-size: 25px;
+                padding: 25px;
+                
+            }
+            section {
+                width: 481.34px;
+                background-color: white;
+                float: left;
+                font-size: 25px;
+                padding: 25px 25px;
+                height: 100vh;
+                
+            }
+            footer {
+                background-color: chartreuse;
+                height: 65px;
+                text-align: left;
+                font-size: 25px;
+                padding: 25px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="wrapper">
+                <header><a href="#">Шапка</a></header>
+                <main>
+                    <aside class="leftSidebar"><a href="#">Навигация</a></aside>
+                    <section><a href="#">Статья</a></section>
+                    <aside class="rightSidebar"><a href="#">Боковая панель</a></aside>
+                </main>
+            </div>
+            <div style="clear: both;"></div>
+            <footer><a href="#">Подвал</a></footer>
+        </div>
+    </body>
+</html>
