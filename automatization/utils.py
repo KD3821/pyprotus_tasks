@@ -7,7 +7,6 @@ config = {
     "HOST": "127.0.0.1",
     "PORT": 8080,
     "WORKER_PROCESSES": 2,
-    "ERROR_LOG_FILE": "./logs/error.log",
     "ACCESS_LOG_FILE": "./logs/access.log"
 }
 
@@ -51,3 +50,18 @@ def get_config():
             return config
 
     return config
+
+
+def encoded_url_parse(url):  # Thanks to: 'https://stackoverflow.com/questions/16566069/url-decode-utf-8-in-python'
+    l = len(url)
+    data = bytearray()
+    i = 0
+    while i < l:
+        if url[i] != '%':
+            d = ord(url[i])
+            i += 1
+        else:
+            d = int(url[i + 1:i + 3], 16)
+            i += 3
+        data.append(d)
+    return data.decode('utf8')

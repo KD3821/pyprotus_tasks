@@ -1,42 +1,22 @@
 import os
 import logging
-from datetime import datetime, timedelta
 import json
+from datetime import datetime, timedelta
 
 from routers import get_api_service
 from database import DatabaseEngine
+from utils import encoded_url_parse
 
 
-def confirm_http_protocol(request):
+def define_handler(request):
     request_data = request.decode().split('\r\n')
     first_line_list = request_data[0].split(' ')
     protocol = first_line_list[-1]
     try:
         if protocol.index('HTTP') != -1 and len(request_data) > 1:  # add more verification
-            return True
+            return HttpRequestHandler
     except ValueError:
-        return False
-
-
-def define_handler(request):
-    if confirm_http_protocol(request):
-        return HttpRequestHandler
-    return BaseRequestHandler
-
-
-def encoded_url_parse(url):  # Thanks to: 'https://stackoverflow.com/questions/16566069/url-decode-utf-8-in-python'
-    l = len(url)
-    data = bytearray()
-    i = 0
-    while i < l:
-        if url[i] != '%':
-            d = ord(url[i])
-            i += 1
-        else:
-            d = int(url[i + 1:i + 3], 16)
-            i += 3
-        data.append(d)
-    return data.decode('utf8')
+        return BaseRequestHandler
 
 
 class BaseRequestHandler:
@@ -53,6 +33,7 @@ class BaseRequestHandler:
 
 
 class HttpRequestHandler(BaseRequestHandler):
+
     ALLOWED_METHODS = {'GET', 'HEAD'}  # may add-remove methods ( 'PUT', 'DELETE', 'POST' )
     CREATE_UPDATE_METHODS = {'POST', 'PUT'}
     ALLOWED_FILE_FORMATS = {
@@ -88,7 +69,7 @@ class HttpRequestHandler(BaseRequestHandler):
     OK_REQ_HEADERS = {
         'Server': 'denserv/1.18.0 (Subuntu)',
         'Date': datetime.strftime(datetime.utcnow(), "%a, %d %b %Y %H:%M:%S GMT"),
-        'Content-Type': 'application/json, application/x-www-form-urlencoded',
+        'Content-Type': 'application/json',
         'Last-Modified': datetime.strftime((datetime.utcnow() - timedelta(days=1)), "%a, %d %b %Y %H:%M:%S GMT"),
         'Connection': 'keep-alive'
     }
@@ -137,29 +118,32 @@ class HttpRequestHandler(BaseRequestHandler):
         if params[0] == '':
             params.pop(0)
 
-        last = params.pop(-1)
+        last = params.pop(-1)  # get 'index.html?search=black'
+
         for i, path in enumerate(params):
             if path != '':
                 self.path_params.update({i: path})
 
-        if last.find('%') != -1:  # url encoding
+        if last.find('%') != -1:  # if url encoding
             last = encoded_url_parse(last)
 
         if last.find('.') != -1:   # file.extension
             file = last
-            few_dots = file.count('.')
-            if few_dots > 1:
+            dots = file.count('.')
+            if dots > 1:
                 reversed_last = file[::-1]
                 rev_dot_index = reversed_last.find('.')
                 f_ext = file[-rev_dot_index:]
             else:
                 f_list = file.split('.')
                 f_ext = f_list[-1]
+
             if f_ext.find('?') != -1:
                 ext_list = f_ext.split('?')
                 f_ext = ext_list[0]
                 file_list = file.split('?')
                 file = file_list[0]
+
             if f_ext in self.ALLOWED_FILE_FORMATS.keys():
                 param_str = ''
                 for param in self.path_params.values():
@@ -170,6 +154,7 @@ class HttpRequestHandler(BaseRequestHandler):
                     'path': os.path.join(self.document_root, param_str),
                     'Accept-Ranges': 'bytes'
                 }
+
         if last.find('?') != -1:  # query param
             last_list = last.split('?')
             last = last_list[0]
@@ -180,14 +165,16 @@ class HttpRequestHandler(BaseRequestHandler):
                 if len(pair_list) > 1:
                     k, v = pair_list
                     self.queries.update({k: v})
+
         if last != '':
             self.path_params.update({len(self.path_params): last})
 
         self.method = first_line_list[0]     # parsing method
         self.protocol = first_line_list[-1]  # parsing protocol
-        body = data.pop(-1)                  # parsing body
+
+        body = data.pop(-1)  # parsing body
         if body != '':
-            if self.method in self.CREATE_UPDATE_METHODS:  # for json request body
+            if self.method in self.CREATE_UPDATE_METHODS:  # for json request body (for API)
                 try:
                     self.body = json.loads(body)
                 except json.decoder.JSONDecodeError:
@@ -208,7 +195,7 @@ class HttpRequestHandler(BaseRequestHandler):
                 value = extras[sep_index + 1:].strip()
                 self.extras.update({name: value})
 
-        for line in data:  # parsing Accept-Encoding
+        for line in data:  # parsing what's left - can be Accept-Encoding
             sep_index = line.find(':')
             name = line[:sep_index].strip()
             value = line[sep_index + 1:].strip()
@@ -272,6 +259,13 @@ class HttpRequestHandler(BaseRequestHandler):
 
         except FileNotFoundError:
             return self.bad_response(self.NOT_FOUND_FIRST, self.NOT_FOUND_BODY)
+
+    def redirect(self, path):
+        redirect_str = ''
+        for key, value in self.OK_REQ_HEADERS.items():
+            redirect_str += f"{key}: {value}\r\n"
+        redirect_str += f"Location: {path}"
+        return f"{self.REDIRECT_FIRST}\r\n{redirect_str}\r\n".encode()
 
     def response(self):
         if not self.check_method_allowed():
@@ -341,10 +335,3 @@ class HttpRequestHandler(BaseRequestHandler):
             return self.response_file(self.document.get('path'))
 
         return self.bad_response(self.NOT_FOUND_FIRST, self.NOT_FOUND_BODY)
-
-    def redirect(self, path):
-        redirect_str = ''
-        for key, value in self.OK_REQ_HEADERS.items():
-            redirect_str += f"{key}: {value}\r\n"
-        redirect_str += f"Location: {path}"
-        return f"{self.REDIRECT_FIRST}\r\n{redirect_str}\r\n".encode()

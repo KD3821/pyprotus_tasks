@@ -32,19 +32,6 @@ class AbstractAPIService:
             return False
         return True
 
-    def response(self):
-        if not self.allowed_method():
-            return {'error': True, 'method': self.method}
-        fields_order = list()
-        service_method = getattr(self, self.method.lower())
-        response_method = getattr(self, self.method.lower() + '_response')
-        if self.method in ('GET', 'DELETE'):
-            query = service_method()
-        elif self.method in ('PUT', 'POST'):
-            query, fields_order = service_method()
-        response = response_method(query, fields_order=fields_order)
-        return response
-
     def format_get_data(self, data):  # for formatting 'bool' type data from 1-0 to true-false (from db_records to repr)
         need_formatting = getattr(self, 'need_formatting')
         skip_fields = getattr(self, 'skip_formatting_fields')
@@ -80,6 +67,19 @@ class AbstractAPIService:
         data = {'total': counter, 'results': results}
         return {'json': True, 'data': data}
 
+    def response(self):
+        if not self.allowed_method():
+            return {'error': True, 'method': self.method}
+        fields_order = list()
+        service_method = getattr(self, self.method.lower())
+        response_method = getattr(self, self.method.lower() + '_response')
+        if self.method in ('GET', 'DELETE'):
+            query = service_method()
+        elif self.method in ('PUT', 'POST'):
+            query, fields_order = service_method()
+        response = response_method(query, fields_order=fields_order)
+        return response
+
 
 class AbstractListCreateAPIService(AbstractAPIService):
     ALLOWED_METHODS = {'GET', 'POST'}
@@ -87,6 +87,17 @@ class AbstractListCreateAPIService(AbstractAPIService):
     def __init__(self, method: str, db: DatabaseEngine, data: dict = None):
         super().__init__(method, db)
         self.data = data
+
+    def format_post_data(self, data, order):  # for bool formatting from true-false to 1-0 (from repr to db_records)
+        value_list = list()
+        need_formatting = getattr(self, 'need_formatting')
+        if need_formatting:
+            for key in order:
+                value_list.append('1' if data.get(key) == 'true' else '0')
+        else:
+            for key in order:
+                value_list.append(data.get(key))
+        return tuple(value_list)
 
     def post_response(self, query, fields_order):
         try:
@@ -102,17 +113,6 @@ class AbstractListCreateAPIService(AbstractAPIService):
             if conn:
                 conn.close()
         return self.get_response(getattr(self, 'get').__call__())
-
-    def format_post_data(self, data, order):  # for bool formatting from true-false to 1-0 (from repr to db_records)
-        value_list = list()
-        need_formatting = getattr(self, 'need_formatting')
-        if need_formatting:
-            for key in order:
-                value_list.append('1' if data.get(key) == 'true' else '0')
-        else:
-            for key in order:
-                value_list.append(data.get(key))
-        return tuple(value_list)
 
 
 class AbstractDetailAPIService(AbstractAPIService):
@@ -133,6 +133,23 @@ class AbstractDetailAPIService(AbstractAPIService):
         query = f"DELETE from {table} WHERE {field_id} = ?"""
         return query
 
+    def validate_service_attrs(self):  # override validate_service_attrs for detail repr
+        try:
+            table = getattr(self, 'table')
+        except AttributeError:
+            raise KeyError(f"Не установлен аттрибут 'table' для {self.__class__.__name__}")  # for debug
+        try:
+            field_id = getattr(self, 'field_id')
+        except AttributeError:
+            raise KeyError(f"Не установлен аттрибут 'field_id' для {self.__class__.__name__}")  # for debug
+        return table, field_id
+
+    def validate_data(self, data):
+        if not data:
+            data = {'error': True, 'client_id': self.client_id}
+            logging.error(f"Предупреждение БД: отсутствуют данные для пользователя с id: {self.client_id}")
+        return data
+
     def format_put_data(self, data, order):  # for bool formatting from true-false to 1-0 (from repr to db_records)
         value_list = list()
         need_formatting = getattr(self, 'need_formatting', False)
@@ -143,38 +160,6 @@ class AbstractDetailAPIService(AbstractAPIService):
             for key in order:
                 value_list.append(data.get(key))
         return tuple(value_list)
-
-    def delete_response(self, query, **kwargs):
-        data = dict()
-        try:
-            conn = self.db.get_reg_con()
-            cursor = conn.cursor()
-            cursor.execute(query, (self.client_id,))
-            conn.commit()
-            cursor.close()
-            logging.info(f"Удаление записи из таблицы БД: {self.table} для {self.field_id} - {self.client_id}")
-            data = {'deleted': True, 'client_id': self.client_id}
-        except sqlite3.Error as e:
-            logging.error(f"нет соединения с БД: {e}")
-        finally:
-            if conn:
-                conn.close()
-        return self.validate_data(data)
-
-    def put_response(self, query, fields_order):
-        try:
-            db_data = self.format_put_data(self.data, fields_order)
-            conn = self.db.get_reg_con()
-            cursor = conn.cursor()
-            cursor.execute(query, (db_data + (str(self.client_id),)))
-            conn.commit()
-            cursor.close()
-        except sqlite3.Error as e:
-            logging.error(f"нет соединения с БД: {e}")
-        finally:
-            if conn:
-                conn.close()
-        return self.get_response(getattr(self, 'get').__call__())
 
     def get_response(self, query, **kwargs):  # override get_response for detail repr
         db_data = dict()
@@ -193,19 +178,34 @@ class AbstractDetailAPIService(AbstractAPIService):
                 conn.close()
         return self.validate_data(db_data)
 
-    def validate_data(self, data):
-        if not data:
-            data = {'error': True, 'client_id': self.client_id}
-            logging.error(f"Предупреждение БД: отсутствуют данные для пользователя с id: {self.client_id}")
-        return data
+    def put_response(self, query, fields_order):
+        try:
+            db_data = self.format_put_data(self.data, fields_order)
+            conn = self.db.get_reg_con()
+            cursor = conn.cursor()
+            cursor.execute(query, (db_data + (str(self.client_id),)))
+            conn.commit()
+            cursor.close()
+        except sqlite3.Error as e:
+            logging.error(f"нет соединения с БД: {e}")
+        finally:
+            if conn:
+                conn.close()
+        return self.get_response(getattr(self, 'get').__call__())
 
-    def validate_service_attrs(self):  # override validate_service_attrs for detail repr
+    def delete_response(self, query, **kwargs):
+        data = dict()
         try:
-            table = getattr(self, 'table')
-        except AttributeError:
-            raise KeyError(f"Не установлен аттрибут 'table' для {self.__class__.__name__}")  # for debug
-        try:
-            field_id = getattr(self, 'field_id')
-        except AttributeError:
-            raise KeyError(f"Не установлен аттрибут 'field_id' для {self.__class__.__name__}")  # for debug
-        return table, field_id
+            conn = self.db.get_reg_con()
+            cursor = conn.cursor()
+            cursor.execute(query, (self.client_id,))
+            conn.commit()
+            cursor.close()
+            logging.info(f"Удаление записи из таблицы БД: {self.table} для {self.field_id} - {self.client_id}")
+            data = {'deleted': True, 'client_id': self.client_id}
+        except sqlite3.Error as e:
+            logging.error(f"нет соединения с БД: {e}")
+        finally:
+            if conn:
+                conn.close()
+        return self.validate_data(data)

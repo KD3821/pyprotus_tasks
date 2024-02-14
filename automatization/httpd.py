@@ -63,7 +63,7 @@ class CustomServer:
 
     @staticmethod
     def finish_request(conn, worker_pid):
-        logging.info(f'[worker {worker_pid}] закрываем соединение {conn}')
+        logging.info(f'[worker {worker_pid}] закрываем соединение {conn}\n')
 
 
 if __name__ == "__main__":
