@@ -388,3 +388,317 @@ file: {}
 [2024.02.14 23:07:05] I [worker 33211] остановка процесса
 [2024.02.14 23:07:05] I Остановка работы сервера: 127.0.0.1:8080
 
+[2024.02.17 15:15:01] I Запуск сервера: 127.0.0.1:8080 workers:10
+[2024.02.17 15:15:01] E Найден файл с БД: 'backend.db'
+[2024.02.17 15:15:01] I [worker 11889] запуск процесса 
+[2024.02.17 15:15:01] I [worker 11890] запуск процесса 
+[2024.02.17 15:15:01] I [worker 11893] запуск процесса 
+[2024.02.17 15:15:01] I [worker 11891] запуск процесса 
+[2024.02.17 15:15:01] I [worker 11896] запуск процесса 
+[2024.02.17 15:15:01] I [worker 11892] запуск процесса 
+[2024.02.17 15:15:01] I [worker 11895] запуск процесса 
+[2024.02.17 15:15:01] I [worker 11894] запуск процесса 
+[2024.02.17 15:15:01] I [worker 11897] запуск процесса 
+[2024.02.17 15:15:01] I [worker 11898] запуск процесса 
+[2024.02.17 15:15:07] I [worker 11889] новое соединение ('127.0.0.1', 46396)
+[2024.02.17 15:15:07] I Данные запроса от ('127.0.0.1', 46396):
+path: {0: 'httptest', 1: 'dir2'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'Host': 'localhost:8080', 'Accept-Encoding': 'identity'}
+file: {}
+[2024.02.17 15:15:07] I [worker 11889] ответ для соединения ('127.0.0.1', 46396): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Sat, 17 Feb 2024 12:15:01 GMT\r\nLast-Modifie'
+[2024.02.17 15:15:07] I [worker 11889] закрываем соединение ('127.0.0.1', 46396)
+
+[2024.02.17 15:15:07] I [worker 11893] новое соединение ('127.0.0.1', 46404)
+[2024.02.17 15:15:07] I Данные запроса от ('127.0.0.1', 46404):
+path: {0: 'httptest', 1: '..', 2: '..', 3: '..', 4: '..', 5: '..', 6: '..', 7: '..', 8: '..', 9: '..', 10: '..', 11: '..', 12: '..', 13: '..', 14: 'etc', 15: 'passwd'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'Host': 'localhost:8080', 'Accept-Encoding': 'identity'}
+file: {}
+[2024.02.17 15:15:07] I [worker 11893] ответ для соединения ('127.0.0.1', 46404): b'HTTP/1.1 404 Not Found\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Sat, 17 Feb 2024 12:15:01 GMT\r\nConte'
+[2024.02.17 15:15:07] I [worker 11893] закрываем соединение ('127.0.0.1', 46404)
+
+[2024.02.17 15:15:07] I [worker 11896] новое соединение ('127.0.0.1', 46428)
+[2024.02.17 15:15:07] I [worker 11891] новое соединение ('127.0.0.1', 46414)
+[2024.02.17 15:15:07] I [worker 11891] ответ для соединения ('127.0.0.1', 46414): b'\xd0\xad\xd0\xa5\xd0\x9e: \n'
+[2024.02.17 15:15:07] I Данные запроса от ('127.0.0.1', 46428):
+path: {0: 'httptest', 1: 'dir1', 2: 'dir12', 3: 'dir123', 4: 'deep.txt'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'Host': 'localhost:8080', 'Accept-Encoding': 'identity'}
+file: {'Content-Type': 'text/plain', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/httptest/dir1/dir12/dir123/deep.txt', 'Accept-Ranges': 'bytes'}
+[2024.02.17 15:15:07] I [worker 11891] закрываем соединение ('127.0.0.1', 46414)
+
+[2024.02.17 15:15:07] I [worker 11896] ответ для соединения ('127.0.0.1', 46428): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Sat, 17 Feb 2024 12:15:01 GMT\r\nLast-Modifie'
+[2024.02.17 15:15:07] I [worker 11896] закрываем соединение ('127.0.0.1', 46428)
+
+[2024.02.17 15:15:07] I [worker 11892] новое соединение ('127.0.0.1', 46444)
+[2024.02.17 15:15:07] I Данные запроса от ('127.0.0.1', 46444):
+path: {0: 'httptest', 1: 'smdklcdsmvdfjnvdfjvdfvdfvdsfssdmfdsdfsd.html'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'Host': 'localhost:8080', 'Accept-Encoding': 'identity'}
+file: {'Content-Type': 'text/html', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/httptest/smdklcdsmvdfjnvdfjvdfvdfvdsfssdmfdsdfsd.html', 'Accept-Ranges': 'bytes'}
+[2024.02.17 15:15:07] I [worker 11892] ответ для соединения ('127.0.0.1', 46444): b'HTTP/1.1 404 Not Found\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Sat, 17 Feb 2024 12:15:01 GMT\r\nConte'
+[2024.02.17 15:15:07] I [worker 11892] закрываем соединение ('127.0.0.1', 46444)
+
+[2024.02.17 15:15:07] I [worker 11890] новое соединение ('127.0.0.1', 46446)
+[2024.02.17 15:15:07] I Данные запроса от ('127.0.0.1', 46446):
+path: {0: 'httptest', 1: 'dir2', 2: 'page.html'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'Host': 'localhost:8080', 'Accept-Encoding': 'identity'}
+file: {'Content-Type': 'text/html', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/httptest/dir2/page.html', 'Accept-Ranges': 'bytes'}
+[2024.02.17 15:15:07] I [worker 11890] ответ для соединения ('127.0.0.1', 46446): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Sat, 17 Feb 2024 12:15:01 GMT\r\nLast-Modifie'
+[2024.02.17 15:15:07] I [worker 11890] закрываем соединение ('127.0.0.1', 46446)
+
+[2024.02.17 15:15:07] I [worker 11895] новое соединение ('127.0.0.1', 46458)
+[2024.02.17 15:15:07] I Данные запроса от ('127.0.0.1', 46458):
+path: {0: 'httptest', 1: 'text..txt'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'Host': 'localhost:8080', 'Accept-Encoding': 'identity'}
+file: {'Content-Type': 'text/plain', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/httptest/text..txt', 'Accept-Ranges': 'bytes'}
+[2024.02.17 15:15:07] I [worker 11895] ответ для соединения ('127.0.0.1', 46458): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Sat, 17 Feb 2024 12:15:01 GMT\r\nLast-Modifie'
+[2024.02.17 15:15:07] I [worker 11895] закрываем соединение ('127.0.0.1', 46458)
+
+[2024.02.17 15:15:07] I [worker 11894] новое соединение ('127.0.0.1', 46466)
+[2024.02.17 15:15:07] I Данные запроса от ('127.0.0.1', 46466):
+path: {0: 'httptest', 1: 'dir2', 2: 'page.html'}
+queries: {'arg1': 'value', 'arg2': 'value'}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'Host': 'localhost:8080', 'Accept-Encoding': 'identity'}
+file: {'Content-Type': 'text/html', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/httptest/dir2/page.html', 'Accept-Ranges': 'bytes'}
+[2024.02.17 15:15:07] I [worker 11894] ответ для соединения ('127.0.0.1', 46466): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Sat, 17 Feb 2024 12:15:01 GMT\r\nLast-Modifie'
+[2024.02.17 15:15:07] I [worker 11894] закрываем соединение ('127.0.0.1', 46466)
+
+[2024.02.17 15:15:07] I [worker 11897] новое соединение ('127.0.0.1', 46482)
+[2024.02.17 15:15:07] I Данные запроса от ('127.0.0.1', 46482):
+path: {0: 'httptest', 1: 'dir2', 2: 'page.html'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'Host': 'localhost:8080', 'Accept-Encoding': 'identity'}
+file: {}
+[2024.02.17 15:15:07] I [worker 11897] ответ для соединения ('127.0.0.1', 46482): b'HTTP/1.1 404 Not Found\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Sat, 17 Feb 2024 12:15:01 GMT\r\nConte'
+[2024.02.17 15:15:07] I [worker 11897] закрываем соединение ('127.0.0.1', 46482)
+
+[2024.02.17 15:15:07] I [worker 11898] новое соединение ('127.0.0.1', 46494)
+[2024.02.17 15:15:07] I Данные запроса от ('127.0.0.1', 46494):
+path: {0: 'httptest', 1: 'space in name.txt'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'Host': 'localhost:8080', 'Accept-Encoding': 'identity'}
+file: {'Content-Type': 'text/plain', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/httptest/space in name.txt', 'Accept-Ranges': 'bytes'}
+[2024.02.17 15:15:07] I [worker 11898] ответ для соединения ('127.0.0.1', 46494): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Sat, 17 Feb 2024 12:15:01 GMT\r\nLast-Modifie'
+[2024.02.17 15:15:07] I [worker 11898] закрываем соединение ('127.0.0.1', 46494)
+
+[2024.02.17 15:15:07] I [worker 11889] новое соединение ('127.0.0.1', 46498)
+[2024.02.17 15:15:07] I Данные запроса от ('127.0.0.1', 46498):
+path: {0: 'httptest', 1: 'splash.css'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'Host': 'localhost:8080', 'Accept-Encoding': 'identity'}
+file: {'Content-Type': 'text/css', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/httptest/splash.css', 'Accept-Ranges': 'bytes'}
+[2024.02.17 15:15:07] I [worker 11889] ответ для соединения ('127.0.0.1', 46498): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Sat, 17 Feb 2024 12:15:01 GMT\r\nLast-Modifie'
+[2024.02.17 15:15:07] I [worker 11889] закрываем соединение ('127.0.0.1', 46498)
+
+[2024.02.17 15:15:07] I [worker 11893] новое соединение ('127.0.0.1', 46500)
+[2024.02.17 15:15:07] I Данные запроса от ('127.0.0.1', 46500):
+path: {0: 'httptest', 1: 'pic_ask.gif'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'Host': 'localhost:8080', 'Accept-Encoding': 'identity'}
+file: {'Content-Type': 'image/gif', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/httptest/pic_ask.gif', 'Accept-Ranges': 'bytes'}
+[2024.02.17 15:15:07] I [worker 11893] ответ для соединения ('127.0.0.1', 46500): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Sat, 17 Feb 2024 12:15:01 GMT\r\nLast-Modifie'
+[2024.02.17 15:15:07] I [worker 11893] закрываем соединение ('127.0.0.1', 46500)
+
+[2024.02.17 15:15:07] I [worker 11891] новое соединение ('127.0.0.1', 46508)
+[2024.02.17 15:15:07] I Данные запроса от ('127.0.0.1', 46508):
+path: {0: 'httptest', 1: 'dir2', 2: 'page.html'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'Host': 'localhost:8080', 'Accept-Encoding': 'identity'}
+file: {'Content-Type': 'text/html', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/httptest/dir2/page.html', 'Accept-Ranges': 'bytes'}
+[2024.02.17 15:15:07] I [worker 11891] ответ для соединения ('127.0.0.1', 46508): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Sat, 17 Feb 2024 12:15:01 GMT\r\nLast-Modifie'
+[2024.02.17 15:15:07] I [worker 11891] закрываем соединение ('127.0.0.1', 46508)
+
+[2024.02.17 15:15:07] I [worker 11896] новое соединение ('127.0.0.1', 46524)
+[2024.02.17 15:15:07] I Данные запроса от ('127.0.0.1', 46524):
+path: {0: 'httptest', 1: 'ef35c.jpeg'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'Host': 'localhost:8080', 'Accept-Encoding': 'identity'}
+file: {'Content-Type': 'image/jpeg', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/httptest/ef35c.jpeg', 'Accept-Ranges': 'bytes'}
+[2024.02.17 15:15:07] I [worker 11896] ответ для соединения ('127.0.0.1', 46524): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Sat, 17 Feb 2024 12:15:01 GMT\r\nLast-Modifie'
+[2024.02.17 15:15:07] I [worker 11896] закрываем соединение ('127.0.0.1', 46524)
+
+[2024.02.17 15:15:07] I [worker 11892] новое соединение ('127.0.0.1', 46536)
+[2024.02.17 15:15:07] I Данные запроса от ('127.0.0.1', 46536):
+path: {0: 'httptest', 1: '160313.jpg'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'Host': 'localhost:8080', 'Accept-Encoding': 'identity'}
+file: {'Content-Type': 'image/jpeg', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/httptest/160313.jpg', 'Accept-Ranges': 'bytes'}
+[2024.02.17 15:15:07] I [worker 11892] ответ для соединения ('127.0.0.1', 46536): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Sat, 17 Feb 2024 12:15:01 GMT\r\nLast-Modifie'
+[2024.02.17 15:15:07] I [worker 11892] закрываем соединение ('127.0.0.1', 46536)
+
+[2024.02.17 15:15:07] I [worker 11890] новое соединение ('127.0.0.1', 46542)
+[2024.02.17 15:15:07] I Данные запроса от ('127.0.0.1', 46542):
+path: {0: 'httptest', 1: 'jquery-1.9.1.js'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'Host': 'localhost:8080', 'Accept-Encoding': 'identity'}
+file: {'Content-Type': 'application/javascript', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/httptest/jquery-1.9.1.js', 'Accept-Ranges': 'bytes'}
+[2024.02.17 15:15:07] I [worker 11890] ответ для соединения ('127.0.0.1', 46542): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Sat, 17 Feb 2024 12:15:01 GMT\r\nLast-Modifie'
+[2024.02.17 15:15:07] I [worker 11890] закрываем соединение ('127.0.0.1', 46542)
+
+[2024.02.17 15:15:07] I [worker 11895] новое соединение ('127.0.0.1', 46554)
+[2024.02.17 15:15:07] I Данные запроса от ('127.0.0.1', 46554):
+path: {0: 'httptest', 1: 'logo.v2.png'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'Host': 'localhost:8080', 'Accept-Encoding': 'identity'}
+file: {'Content-Type': 'image/png', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/httptest/logo.v2.png', 'Accept-Ranges': 'bytes'}
+[2024.02.17 15:15:07] I [worker 11895] ответ для соединения ('127.0.0.1', 46554): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Sat, 17 Feb 2024 12:15:01 GMT\r\nLast-Modifie'
+[2024.02.17 15:15:07] I [worker 11895] закрываем соединение ('127.0.0.1', 46554)
+
+[2024.02.17 15:15:07] I [worker 11894] новое соединение ('127.0.0.1', 46560)
+[2024.02.17 15:15:07] I Данные запроса от ('127.0.0.1', 46560):
+path: {0: 'httptest', 1: 'b16261023.swf'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'Host': 'localhost:8080', 'Accept-Encoding': 'identity'}
+file: {'Content-Type': 'application/x-shockwave-flash', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/httptest/b16261023.swf', 'Accept-Ranges': 'bytes'}
+[2024.02.17 15:15:07] I [worker 11894] ответ для соединения ('127.0.0.1', 46560): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Sat, 17 Feb 2024 12:15:01 GMT\r\nLast-Modifie'
+[2024.02.17 15:15:07] I [worker 11894] закрываем соединение ('127.0.0.1', 46560)
+
+[2024.02.17 15:15:07] I [worker 11897] новое соединение ('127.0.0.1', 46574)
+[2024.02.17 15:15:07] I Данные запроса от ('127.0.0.1', 46574):
+path: {0: 'httptest', 1: 'dir2', 2: 'page.html'}
+queries: {}
+method: HEAD
+protocol: HTTP/1.0
+body: {}
+extras: {}
+headers: {}
+file: {'Content-Type': 'text/html', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/httptest/dir2/page.html', 'Accept-Ranges': 'bytes'}
+[2024.02.17 15:15:07] I [worker 11897] ответ для соединения ('127.0.0.1', 46574): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Sat, 17 Feb 2024 12:15:01 GMT\r\nLast-Modifie'
+[2024.02.17 15:15:07] I [worker 11897] закрываем соединение ('127.0.0.1', 46574)
+
+[2024.02.17 15:15:07] I [worker 11898] новое соединение ('127.0.0.1', 46582)
+[2024.02.17 15:15:07] I Данные запроса от ('127.0.0.1', 46582):
+path: {0: 'httptest', 1: 'dir1'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'Host': 'localhost:8080', 'Accept-Encoding': 'identity'}
+file: {}
+[2024.02.17 15:15:07] I [worker 11898] ответ для соединения ('127.0.0.1', 46582): b'HTTP/1.1 404 Not Found\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Sat, 17 Feb 2024 12:15:01 GMT\r\nConte'
+[2024.02.17 15:15:07] I [worker 11898] закрываем соединение ('127.0.0.1', 46582)
+
+[2024.02.17 15:15:07] I [worker 11889] новое соединение ('127.0.0.1', 46596)
+[2024.02.17 15:15:07] I Данные запроса от ('127.0.0.1', 46596):
+path: {0: 'httptest', 1: 'wikipedia_russia.html'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'Host': 'localhost:8080', 'Accept-Encoding': 'identity'}
+file: {'Content-Type': 'text/html', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/httptest/wikipedia_russia.html', 'Accept-Ranges': 'bytes'}
+[2024.02.17 15:15:07] I [worker 11889] ответ для соединения ('127.0.0.1', 46596): b'HTTP/1.1 200 OK\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Sat, 17 Feb 2024 12:15:01 GMT\r\nLast-Modifie'
+[2024.02.17 15:15:07] I [worker 11889] закрываем соединение ('127.0.0.1', 46596)
+
+[2024.02.17 15:15:07] I [worker 11893] новое соединение ('127.0.0.1', 46602)
+[2024.02.17 15:15:07] I Данные запроса от ('127.0.0.1', 46602):
+path: {0: 'httptest', 1: 'dir2', 2: 'page.html'}
+queries: {}
+method: POST
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'Host': 'localhost:8080', 'Accept-Encoding': 'identity', 'Content-Length': '0'}
+file: {'Content-Type': 'text/html', 'path': '/home/dk/PycharmProjects/pyprotus/automatization/documents/httptest/dir2/page.html', 'Accept-Ranges': 'bytes'}
+[2024.02.17 15:15:07] I [worker 11893] ответ для соединения ('127.0.0.1', 46602): b'HTTP/1.1 405 Method Not Allowed\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Sat, 17 Feb 2024 12:15:01 G'
+[2024.02.17 15:15:07] I [worker 11893] закрываем соединение ('127.0.0.1', 46602)
+
+[2024.02.17 15:15:07] I [worker 11891] новое соединение ('127.0.0.1', 46618)
+[2024.02.17 15:15:07] I Данные запроса от ('127.0.0.1', 46618):
+path: {0: 'httptest'}
+queries: {}
+method: GET
+protocol: HTTP/1.1
+body: {}
+extras: {}
+headers: {'Host': 'localhost:8080', 'Accept-Encoding': 'identity'}
+file: {}
+[2024.02.17 15:15:07] I [worker 11891] ответ для соединения ('127.0.0.1', 46618): b'HTTP/1.1 404 Not Found\r\nServer: denserv/1.18.0 (Subuntu)\r\nDate: Sat, 17 Feb 2024 12:15:01 GMT\r\nConte'
+[2024.02.17 15:15:07] I [worker 11891] закрываем соединение ('127.0.0.1', 46618)
+
+[2024.02.17 15:15:21] I [worker 11889] остановка процесса
+[2024.02.17 15:15:21] I [worker 11895] остановка процесса
+[2024.02.17 15:15:21] I [worker 11897] остановка процесса
+[2024.02.17 15:15:21] I Остановка работы сервера: 127.0.0.1:8080
+
+[2024.02.17 15:15:21] I [worker 11891] остановка процесса
+[2024.02.17 15:15:21] I [worker 11898] остановка процесса
+[2024.02.17 15:15:21] I [worker 11894] остановка процесса
+[2024.02.17 15:15:21] I [worker 11896] остановка процесса
+[2024.02.17 15:15:21] I [worker 11893] остановка процесса
+[2024.02.17 15:15:21] I [worker 11892] остановка процесса
+[2024.02.17 15:15:21] I [worker 11890] остановка процесса
