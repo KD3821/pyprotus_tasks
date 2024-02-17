@@ -43,7 +43,7 @@ class HttpRequestHandler(BaseRequestHandler):
     ТипОтвета_BODY - тело ответа
     MOVED_PERMANENTLY - пары для редиректа (откуда-куда)
     """
-    ALLOWED_METHODS = {'GET', 'HEAD'}  # for full consuming of API need add other methods: 'PUT', 'DELETE', 'POST'
+    ALLOWED_METHODS = {'GET', 'HEAD'}  # for full consuming of API add other methods: 'PUT', 'DELETE', 'POST'
     CREATE_UPDATE_METHODS = {'POST', 'PUT'}
     ALLOWED_FILE_FORMATS = {
         'html': 'text/html',
@@ -101,6 +101,7 @@ class HttpRequestHandler(BaseRequestHandler):
 
     def __init__(self, conn: tuple, db_engine: DatabaseEngine, request: bytes = None, document_root: str = None):
         super().__init__(conn, request)
+        self.request_data = request.decode().split('\r\n')
         self.db_engine = db_engine
         self.document_root = document_root
         self.path_params = dict()
@@ -109,8 +110,10 @@ class HttpRequestHandler(BaseRequestHandler):
         self.document = dict()
         self.body = dict()
         self.extras = dict()
+        self.method = ''
+        self.protocol = ''
 
-        data = request.decode().split('\r\n')
+    def parse_request_data(self, data):
         first_line_list = data.pop(0).split(' ')  # method - path - version of HTTP protocol
 
         params = first_line_list[1].split('/')  # parsing path
@@ -224,9 +227,45 @@ class HttpRequestHandler(BaseRequestHandler):
         return False
 
     def proxy_to_backend(self):
-        if self.path_params.get(0) == 'api':
-            return True
-        return False
+        api_service_handler = get_api_service(
+            path_params=self.path_params,
+            method=self.method,
+            data=self.body,
+            db=self.db_engine
+        )
+
+        if api_service_handler is None:
+            return self.bad_response(self.BAD_PARAM_FIRST, self.BAD_PARAM_BODY)
+
+        data = api_service_handler.response()
+
+        if data.get('error'):
+            if data.get('method') is not None:
+                return self.bad_response(self.BAD_METHOD_FIRST, self.BAD_METHOD_BODY)
+            return self.bad_response(self.NOT_FOUND_FIRST, self.NOT_FOUND_BODY)
+
+        if data.get('deleted'):
+            db_req_str = ''
+            for key, value in self.OK_REQ_HEADERS.items():
+                db_req_str += f"{key}: {value}\r\n"
+            return f"{self.DELETE_OK_FIRST}\r\n{db_req_str}\r\n".encode()
+
+        if data.get('json'):
+            db_req_body = json.dumps(data.get('data'))
+            db_req_str = ''
+            for key, value in self.OK_REQ_HEADERS.items():
+                db_req_str += f"{key}: {value}\r\n"
+            return f"{self.OK_REQ_FIRST}\r\n{db_req_str}\r\n\n{db_req_body}".encode()
+
+        else:
+            db_req_body = '{'
+            for key, value in data.items():
+                db_req_body += f'\n"{key}": "{value}",'
+            db_req_body = db_req_body.rstrip(',') + '\n}'
+            db_req_str = ''
+            for key, value in self.OK_REQ_HEADERS.items():
+                db_req_str += f"{key}: {value}\r\n"
+            return f"{self.OK_REQ_FIRST}\r\n{db_req_str}\r\n\n{db_req_body}".encode()
 
     def response_file(self, file_path):
         ok_req_str = ''
@@ -267,49 +306,13 @@ class HttpRequestHandler(BaseRequestHandler):
         return f"{self.REDIRECT_FIRST}\r\n{redirect_str}\r\n".encode()
 
     def response(self):
+        self.parse_request_data(self.request_data)
+
         if not self.check_method_allowed():
             return self.bad_response(self.BAD_METHOD_FIRST, self.BAD_METHOD_BODY)
 
-        if self.proxy_to_backend():  # proxy to API service
-            api_service_handler = get_api_service(
-                path_params=self.path_params,
-                method=self.method,
-                data=self.body,
-                db=self.db_engine
-            )
-
-            if api_service_handler is None:
-                return self.bad_response(self.BAD_PARAM_FIRST, self.BAD_PARAM_BODY)
-
-            data = api_service_handler.response()
-
-            if data.get('error'):
-                if data.get('method') is not None:
-                    return self.bad_response(self.BAD_METHOD_FIRST, self.BAD_METHOD_BODY)
-                return self.bad_response(self.NOT_FOUND_FIRST, self.NOT_FOUND_BODY)
-
-            if data.get('deleted'):
-                db_req_str = ''
-                for key, value in self.OK_REQ_HEADERS.items():
-                    db_req_str += f"{key}: {value}\r\n"
-                return f"{self.DELETE_OK_FIRST}\r\n{db_req_str}\r\n".encode()
-
-            if data.get('json'):
-                db_req_body = json.dumps(data.get('data'))
-                db_req_str = ''
-                for key, value in self.OK_REQ_HEADERS.items():
-                    db_req_str += f"{key}: {value}\r\n"
-                return f"{self.OK_REQ_FIRST}\r\n{db_req_str}\r\n\n{db_req_body}".encode()
-
-            else:
-                db_req_body = '{'
-                for key, value in data.items():
-                    db_req_body += f'\n"{key}": "{value}",'
-                db_req_body = db_req_body.rstrip(',') + '\n}'
-                db_req_str = ''
-                for key, value in self.OK_REQ_HEADERS.items():
-                    db_req_str += f"{key}: {value}\r\n"
-                return f"{self.OK_REQ_FIRST}\r\n{db_req_str}\r\n\n{db_req_body}".encode()
+        if self.path_params.get(0) == 'api':
+            return self.proxy_to_backend()
 
         dir_str = ''
         for directory in self.path_params.values():  # concat path_params

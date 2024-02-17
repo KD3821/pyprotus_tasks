@@ -76,10 +76,10 @@ class AbstractAPIService:
         fields_order = list()
         service_method = getattr(self, self.method.lower())
         response_method = getattr(self, self.method.lower() + '_response')
-        if self.method in ('GET', 'DELETE'):
-            query = service_method()
-        elif self.method in ('PUT', 'POST'):
+        if self.method in ('PUT', 'POST'):
             query, fields_order = service_method()
+        else:
+            query = service_method()
         response = response_method(query, fields_order=fields_order)
         return response
 
@@ -111,7 +111,7 @@ class AbstractListCreateAPIService(AbstractAPIService):
             conn = self.db.get_reg_con()
             cursor = conn.cursor()
             cursor.execute(query, db_data)
-            logging.info(f"Добавлена новая запись в таблицу БД: {self.table} с id: {cursor.lastrowid}")
+            logging.info(f"Добавлена новая запись в таблицу БД - {self.table} - с id: {cursor.lastrowid}")
             conn.commit()
             cursor.close()
         except sqlite3.Error as e:
@@ -194,6 +194,7 @@ class AbstractDetailAPIService(AbstractAPIService):
             conn = self.db.get_reg_con()
             cursor = conn.cursor()
             cursor.execute(query, (db_data + (str(self.client_id),)))
+            logging.info(f"Изменена запись в таблице БД - {self.table} - для {self.field_id} c id: {self.client_id}")
             conn.commit()
             cursor.close()
         except sqlite3.Error as e:
@@ -211,7 +212,7 @@ class AbstractDetailAPIService(AbstractAPIService):
             cursor.execute(query, (self.client_id,))
             conn.commit()
             cursor.close()
-            logging.info(f"Удаление записи из таблицы БД: {self.table} для {self.field_id} - {self.client_id}")
+            logging.info(f"Удаление записи из таблицы БД: - {self.table} - для {self.field_id} c id: {self.client_id}")
             data = {'deleted': True, 'client_id': self.client_id}
         except sqlite3.Error as e:
             logging.error(f"нет соединения с БД: {e}")
